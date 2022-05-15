@@ -1,0 +1,24 @@
+body{
+    background-color: rgb(208, 190, 176);
+}
+
+.list_div{
+    display: inline-block;
+    margin-top: 10%;
+}
+
+.perfume_list{
+    height: 85px;
+    width: 300px;
+    padding-left: 80px;
+    margin: 10px;
+    text-align: center;
+    line-height: 85px;
+
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(94, 83, 70);
+    font-size: 15pt;
+    
+    background-image: url(../images/paper.png);
+    opacity: 90%;
+}

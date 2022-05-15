@@ -1,0 +1,32 @@
+{
+    "perfumes":[
+        {
+            "id" : 1,
+            "type" : "FLORAL"
+        },
+        {
+            "id" : 2,
+            "type" : "FRUITY"
+        },
+        {
+            "id" : 3,
+            "type" : "WOODY"
+        },
+        {
+            "id" : 4,
+            "type" : "CITRUS"
+        },
+        {
+            "id" : 5,
+            "type" : "GREEN"
+        },
+        {
+            "id" : 6,
+            "type" : "POWDERY"
+        },
+        {
+            "id" : 7,
+            "type" : "MOSSY"
+        }
+    ]
+}
