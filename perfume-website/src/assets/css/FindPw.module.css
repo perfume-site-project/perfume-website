@@ -1,0 +1,56 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.findPw {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.findPw .container {
+  display: flex;
+  flex-direction: column;
+  width: 610px;
+}
+
+.findPw .label {
+  margin-bottom: 6px;
+}
+
+.findPw .input {
+  box-sizing: border-box;
+  outline: none;
+  padding: 12px;
+  border: 1px solid #AC917B;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.findPw .description {
+  margin: 0 0 24px 0;
+}
+
+.findPw .button {
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.findPw .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}
