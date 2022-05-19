@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Switch,
   Route,
@@ -12,6 +13,22 @@ const Login = () => {
     userPassword: '',
   });
 
+  const requestPost = async (url, data) => {
+    try {
+      const options = {
+        method: 'POST',
+        url,
+        data
+      }
+      const res = await axios(options);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  }
+
   const handleChangeState = (e) => {
     const target = e.target;
     setState(
@@ -22,10 +39,9 @@ const Login = () => {
     );
   }
 
-  const handleSubmit = () => {
-    // Server request
-    const url = '/users/login';
-    fetch(url).then(res => console.log(res));
+  const handleLogin = () => {
+    requestPost('/users/login', state).then(res => console.log(res));
+    // res == true이면 home(로그인 상태)으로 이동
   }
 
   return (
@@ -66,7 +82,7 @@ const Login = () => {
         </div>
         <button 
           type="button"
-          onClick={handleSubmit}
+          onClick={handleLogin}
           className={styles.button}
         >
           로그인
@@ -81,7 +97,6 @@ const Login = () => {
           <button 
             type="button" 
             className={styles.button}
-            onClick={handleSubmit}
           >
             회원가입
           </button>

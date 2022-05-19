@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styles from '../assets/css/FindId.module.css'
 
 const FindId = () => {
@@ -7,6 +8,22 @@ const FindId = () => {
       phoneNumber: ''
     }
   );
+
+  const requestPost = async (url, data) => {
+    try {
+      const options = {
+        method: 'POST',
+        url,
+        data
+      }
+      const res = await axios(options);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  }
 
   const handleChangePhoneNumber = (e) => {
     const target = e.target;
@@ -19,8 +36,9 @@ const FindId = () => {
   }
 
   const handleSubmit = () => {
-    // Server Request
-    console.log(phoneNumber)
+    requestPost('/users/id', phoneNumber).then(res => console.log(res));
+    // res == true이면 modal창으로 userId 출력
+    // res == false이면 modal창으로 틀렸음을 출력
   }
 
   return (
