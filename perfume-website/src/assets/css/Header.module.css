@@ -1,0 +1,35 @@
+.header {
+  box-sizing: border-box;
+  width: 312px;
+  height: 100vh;
+  background-color: #F4F2EC;
+  background-color: rgb(255, 255, 255, 0.3);
+  border-right: 2px solid #B59887;
+}
+
+.header .container {
+  width: 300px;
+  height: 100vh;
+  border-right: 2px solid #B59887;
+}
+
+.header .logo_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 385px;
+  border-bottom: 2px solid #B59887;
+}
+
+.header .logo_box img {
+  position: relative;
+  bottom: -30px;
+}
+
+.header .category {
+  list-style: none;
+  padding: 30px;
+  height: 100vh;
+}
+
+/* li: title, subtitle관련해서 font 다르게 설정 */
