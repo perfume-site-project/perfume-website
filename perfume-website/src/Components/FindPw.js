@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styles from '../assets/css/FindPw.module.css'
 
 const FindPw = () => {
@@ -7,6 +8,22 @@ const FindPw = () => {
       userId: '',
     }
   );
+
+  const requestPost = async (url, data) => {
+    try {
+      const options = {
+        method: 'POST',
+        url,
+        data
+      }
+      const res = await axios(options);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  }
 
   const handleChangeUserId = (e) => {
     const target = e.target;
@@ -19,8 +36,9 @@ const FindPw = () => {
   }
 
   const handleSubmit = () => {
-    // Server Request
-    console.log(userId);
+    requestPost('/users/password', userId).then(res => console.log(res));
+    // res == true이면 modal창으로 이메일 발송 완료 출력
+    // res == false이면 modal창으로 틀렸음을 출력
   }
 
   return (
