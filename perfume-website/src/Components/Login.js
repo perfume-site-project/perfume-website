@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom';
+
 import styles from '../assets/css/Login.module.css';
 
 const Login = () => {
@@ -89,11 +86,11 @@ const Login = () => {
         </button>
         <div>
           <div className={styles.links}>
-            {/* Link Component로 변경 */}
-            <a className={styles.link} href="#">아이디 찾기</a>
+            <Link to="/find-id" className={styles.link}>아이디 찾기</Link>
             <span>|</span>
-            <a className={styles.link} href="#">비밀번호 찾기</a>
+            <Link to="/find-id" className={styles.link}>비밀번호 찾기</Link>
           </div>
+          {/* Link to Sign-up */}
           <button 
             type="button" 
             className={styles.button}
