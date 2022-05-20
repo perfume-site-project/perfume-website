@@ -1,12 +1,24 @@
 import './App.css';
-import Header from './Components/Header'
-import PerfumeList from './Components/PerfumeList'
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+
+import Login from "./Components/Login";
+import Main from "./Components/Main";
+import Join from "./Components/Join";
+import Product from "./Components/Product";
+
+
 function App() {
   return (
-    <div className="App">
-      <PerfumeList/>
-      {/*<Header />*/}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+          <Routes>
+              <Route path="/" element={<Main/>}/>
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/join" element={<Join/>}/>
+              <Route path="/product" element={<Product/>}/>
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
