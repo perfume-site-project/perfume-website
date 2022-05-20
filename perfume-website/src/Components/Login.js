@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import React, { useState } from 'react';
 import styles from '../assets/css/Login.module.css';
 
 const Login = () => {
@@ -40,66 +38,48 @@ const Login = () => {
     requestPost('/users/login', state).then(res => console.log(res));
     // res == true이면 home(로그인 상태)으로 이동
   }
-
   return (
-    <section className={styles.login}>
-      <h1 className={styles.srOnly}>로그인</h1>
-      <div className={styles.container}>
-        <div className={styles.inputContainer}>
-          <label 
-            className={styles.label}
-            htmlFor="userId"
-          >
-            아이디
-          </label>
-          <input 
-            className={styles.input}
-            id="userId"
-            type="text"
-            name="userId"
-            value={state.userId}
-            onChange={handleChangeState}
-          />
-        </div>
-        <div className={styles.inputContainer}>
-          <label 
-            className={styles.label}
-            htmlFor="userPassword"
-          >
-            비밀번호
-          </label>
-          <input
-            className={styles.input}
-            id="userPassword"
-            type="text"
-            name="userPassword"
-            value={state.userPassword}
-            onChange={handleChangeState}
-          />
-        </div>
-        <button 
-          type="button"
-          onClick={handleLogin}
-          className={styles.button}
+    <div className={styles.login}>
+      <div className={styles.inputContainer}>
+        <label 
+          className={styles.label}
+          htmlFor="userId"
         >
-          로그인
-        </button>
-        <div>
-          <div className={styles.links}>
-            <Link to="/find-id" className={styles.link}>아이디 찾기</Link>
-            <span>|</span>
-            <Link to="/find-id" className={styles.link}>비밀번호 찾기</Link>
-          </div>
-          {/* Link to Sign-up */}
-          <button 
-            type="button" 
-            className={styles.button}
-          >
-            회원가입
-          </button>
-        </div>
+          아이디
+        </label>
+        <input 
+          className={styles.input}
+          id="userId"
+          type="text"
+          name="userId"
+          value={state.userId}
+          onChange={handleChangeState}
+        />
       </div>
-    </section>
+      <div className={styles.inputContainer}>
+        <label 
+          className={styles.label}
+          htmlFor="userPassword"
+        >
+          비밀번호
+        </label>
+        <input
+          className={styles.input}
+          id="userPassword"
+          type="text"
+          name="userPassword"
+          value={state.userPassword}
+          onChange={handleChangeState}
+        />
+      </div>
+      <button 
+        type="button"
+        onClick={handleLogin}
+        className={styles.button}
+      >
+        로그인
+      </button>
+    </div>
   );
 }
 

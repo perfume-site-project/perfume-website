@@ -4,7 +4,7 @@ import styles from '../assets/css/Cart.module.css';
 
 const Cart = () => {
   return (
-    <div className={styles.cart}>
+    <section className={styles.cart}>
       <div className={styles.cartContainer}>
         <h1 className={styles.title}>결제 내역</h1>
         <ul className={styles.list}>
@@ -56,7 +56,7 @@ const Cart = () => {
           </dl>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,0 +1,57 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.userLogin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userLogin .container {
+  width: 610px;
+}
+
+.userLogin .links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.userLogin .link {
+  color: #000;
+  text-decoration: none;
+}
+
+.userLogin .link:first-child {
+  margin-right: 10px;
+}
+
+.userLogin .link:last-child {
+  margin-left: 10px;
+}
+
+.userLogin .button {
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.userLogin .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}
