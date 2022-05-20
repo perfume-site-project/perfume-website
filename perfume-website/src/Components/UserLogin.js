@@ -12,15 +12,17 @@ const UserLogin = () => {
           <div className={styles.links}>
             <Link to="/find-id" className={styles.link}>아이디 찾기</Link>
             <span>|</span>
-            <Link to="/find-id" className={styles.link}>비밀번호 찾기</Link>
+            <Link to="/find-pw" className={styles.link}>비밀번호 찾기</Link>
           </div>
           {/* Link to Sign-up */}
-          <button 
-            type="button" 
-            className={styles.button}
-          >
-            회원가입
-          </button>
+          <Link to={"/sign-up"}>
+            <button 
+              type="button" 
+              className={styles.button}
+            >
+              회원가입
+            </button>
+          </Link>
         </div>
       </div>
     </section>

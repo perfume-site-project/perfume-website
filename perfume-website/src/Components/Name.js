@@ -1,4 +1,4 @@
-import './Name.css'
+import '../assets/css/Name.css'
 
 export default function Name() {
     return (

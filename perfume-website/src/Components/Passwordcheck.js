@@ -1,4 +1,4 @@
-import './Passwordcheck.css'
+import '../assets/css/Passwordcheck.css'
 
 export default function passwordcheck() {
     return (

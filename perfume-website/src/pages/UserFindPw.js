@@ -4,17 +4,17 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../components/Wrapper';
 import Header from '../components/Header';
-import UserLogin from '../components/UserLogin';
+import FindPw from '../components/FindPw';
 
-const User = () => {
+const UserFindId = () => {
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<UserLogin />} />
+        <Route exact path='/' element={<FindPw />} />
       </Routes>
     </Wrapper>
   );
 }
 
-export default User
+export default UserFindId

@@ -15,9 +15,9 @@ const Main = () => {
                     <PerfumeList/>
                     <img className={styles.main_img} src={main_img} alt="main" />
                     <div className={styles.login_box}>
-                        <Link to={"/user"} className={styles.text}>로그인</Link>
+                        <Link to={"/user-login"} className={styles.text}>로그인</Link>
                         <p className={styles.text}>/</p>
-                        <Link to={"/join"} className={styles.text}>회원가입</Link>
+                        <Link to={"/sign-up"} className={styles.text}>회원가입</Link>
                     </div>
                     <div className="logo_box">
                         <Link to={"/"}>

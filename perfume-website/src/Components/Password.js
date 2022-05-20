@@ -1,4 +1,4 @@
-import './Password.css';
+import '../assets/css/Password.css';
 
 export default function password() {
     return (

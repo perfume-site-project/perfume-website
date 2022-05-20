@@ -1,4 +1,4 @@
-import './Id.css';
+import '../assets/css/Id.css';
 
 export default function Id() {
     return (
