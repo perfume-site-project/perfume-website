@@ -8,6 +8,7 @@ import UserFindPw from './pages/UserFindPw';
 import UserSignUp from './pages/UserSignUp';
 import Order from './pages/Order';
 import OrderNonMember from './pages/OrderNonMember';
+import OrderShipping from './pages/OrderShipping';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route exact path="/sign-up" element={<UserSignUp />}/>
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
+              <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
           </Routes>
       </div>
     </BrowserRouter>

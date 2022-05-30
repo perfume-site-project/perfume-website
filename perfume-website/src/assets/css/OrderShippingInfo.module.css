@@ -1,0 +1,61 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.orderShippingInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderShippingInfo .container {
+  width: 610px;
+}
+
+.orderShippingInfo .inputContainer {
+  margin-bottom: 24px;
+}
+
+.orderShippingInfo .inputContainer input {
+  width: 100%;
+  height: 50px;
+}
+
+.orderShippingInfo .addressContainer {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.orderShippingInfo .addressContainer button {
+  width: 147px;
+  background-color: #FDFAF8;
+  border: 1px solid #B59887;
+  cursor: pointer;
+  outline: none;
+  margin-left: 12px;
+}
+
+.orderShippingInfo .label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.orderShippingInfo .button {
+  display: block;
+  margin: 50px auto 0;
+  width: 420px;
+  height: 50px;
+  color: #fff;
+  background-color: #6A5E5E;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #6A5E5E;
+}
