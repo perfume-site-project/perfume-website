@@ -7,6 +7,7 @@ import UserFindId from './pages/UserFindId';
 import UserFindPw from './pages/UserFindPw';
 import UserSignUp from './pages/UserSignUp';
 import Order from './pages/Order';
+import OrderNonMember from './pages/OrderNonMember';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp />}/>
               <Route exact path="/order" element={<Order />}/>
+              <Route exact path="/order-non-member" element={<OrderNonMember />}/>
           </Routes>
       </div>
     </BrowserRouter>
