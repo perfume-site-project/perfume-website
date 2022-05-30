@@ -8,15 +8,15 @@ import {
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
 import Cart from '../Components/Cart';
-import OrderLogin from '../Components/OrderLogin';
+import OrderInfo from '../Components/OrderInfo';
 
-const Order = () => {
+const OrderNonMember = () => {
   return (
     <Wrapper>
       <Header />
       <div className={styles.container}>
         <Routes>
-          <Route exact path="/" element={<OrderLogin />}></Route>
+        <Route exact path="/" element={<OrderInfo />}></Route>
         </Routes>
         <Cart />
       </div>
@@ -24,4 +24,4 @@ const Order = () => {
   );
 }
 
-export default Order
+export default OrderNonMember

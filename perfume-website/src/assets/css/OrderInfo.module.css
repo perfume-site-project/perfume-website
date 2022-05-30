@@ -1,0 +1,98 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input {
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #B59887;
+  padding: 10px;
+}
+
+.orderInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderInfo .container {
+  width: 610px;
+}
+
+.orderInfo .inputContainer {
+  margin-bottom: 24px;
+}
+
+.orderInfo .inputContainer input {
+  height: 50px;
+}
+
+.orderInfo .label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.orderInfo .email {
+  width: 192px;
+}
+
+.orderInfo .domain {
+  width: 141px;
+}
+
+.orderInfo span {
+  padding: 10px;
+}
+
+.orderInfo .userName {
+ width: 100%;
+}
+
+.orderInfo .phoneNumber {
+  width: 100%;
+}
+
+.orderInfo .checkboxContainer {
+  margin-bottom: 50px;
+}
+
+.orderInfo .checkboxContainer label {
+  margin-left: 4px;
+}
+
+.orderInfo .select {
+  margin-left: 16px;
+  text-align: center;
+  outline: none;
+  width: 140px;
+  height: 50px;
+  background-color: #6A5E5E;
+  color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.orderInfo .button {
+  display: block;
+  margin: 0 auto;
+  width: 420px;
+  height: 50px;
+  color: #fff;
+  background-color: #6A5E5E;
+  border: 1px solid #000;
+  cursor: pointer;
+}

@@ -1,14 +1,15 @@
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Login from "./components/Login";
-import Main from "./components/Main";
-import Join from "./components/Join";
-import Product from "./components/Product";
+import Main from "./Components/Main";
+import Product from "./Components/Product";
 import User from './pages/User';
 import UserFindId from './pages/UserFindId';
 import UserFindPw from './pages/UserFindPw';
 import UserSignUp from './pages/UserSignUp';
-
+import Order from './pages/Order';
+import OrderNonMember from './pages/OrderNonMember';
+import OrderShipping from './pages/OrderShipping';
+import OrderPaying from './pages/OrderPaying';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
               <Route exact path="/find-pw" element={<UserFindPw />}/>
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp />}/>
+              <Route exact path="/order" element={<Order />}/>
+              <Route exact path="/order-non-member" element={<OrderNonMember />}/>
+              <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
+              <Route exact path="/order-pay" element={<OrderPaying />}/>
           </Routes>
       </div>
     </BrowserRouter>
