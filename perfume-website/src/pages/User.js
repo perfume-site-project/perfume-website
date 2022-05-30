@@ -2,9 +2,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Wrapper from '../components/Wrapper';
-import Header from '../components/Header';
-import UserLogin from '../components/UserLogin';
+import Wrapper from '../Components/Wrapper';
+import Header from '../Components/Header';
+import UserLogin from '../Components/UserLogin';
 
 const User = () => {
   return (

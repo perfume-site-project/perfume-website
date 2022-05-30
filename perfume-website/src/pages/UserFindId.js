@@ -2,9 +2,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Wrapper from '../components/Wrapper';
-import Header from '../components/Header';
-import FindId from '../components/FindId';
+import Wrapper from '../Components/Wrapper';
+import Header from '../Components/Header';
+import FindId from '../Components/FindId';
 
 const UserFindId = () => {
   return (

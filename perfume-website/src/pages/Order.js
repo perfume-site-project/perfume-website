@@ -5,24 +5,22 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Wrapper from '../components/Wrapper';
-import Header from '../components/Header';
-import Cart from '../components/Cart';
-import OrderLogin from '../components/OrderLogin';
+import Wrapper from '../Components/Wrapper';
+import Header from '../Components/Header';
+import Cart from '../Components/Cart';
+import OrderLogin from '../Components/OrderLogin';
 
 const Order = () => {
   return (
-    <BrowserRouter>
-      <Wrapper>
-        <Header />
-        <div className={styles.container}>
-          <Routes>
-            <Route exact path="/order" element={<OrderLogin />}></Route>
-          </Routes>
-          <Cart />
-        </div>
-      </Wrapper>
-    </BrowserRouter>
+    <Wrapper>
+      <Header />
+      <div className={styles.container}>
+        <Routes>
+          <Route exact path="/" element={<OrderLogin />}></Route>
+        </Routes>
+        <Cart />
+      </div>
+    </Wrapper>
   );
 }
 

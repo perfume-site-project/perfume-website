@@ -2,9 +2,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Wrapper from '../components/Wrapper';
-import Header from '../components/Header';
-import SignUp from '../components/SignUp';
+import Wrapper from '../Components/Wrapper';
+import Header from '../Components/Header';
+import SignUp from '../Components/SignUp';
 
 const User = () => {
   return (
