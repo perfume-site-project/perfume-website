@@ -9,6 +9,7 @@ import UserSignUp from './pages/UserSignUp';
 import Order from './pages/Order';
 import OrderNonMember from './pages/OrderNonMember';
 import OrderShipping from './pages/OrderShipping';
+import OrderPaying from './pages/OrderPaying';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
+              <Route exact path="/order-pay" element={<OrderPaying />}/>
           </Routes>
       </div>
     </BrowserRouter>
