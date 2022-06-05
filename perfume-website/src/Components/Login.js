@@ -4,8 +4,8 @@ import styles from '../assets/css/Login.module.css';
 
 const Login = () => {
   const [state, setState] = useState({
-    userId: '',
-    userPassword: '',
+    email: '',
+    password: '',
   });
 
   const requestPost = async (url, data) => {
@@ -35,6 +35,7 @@ const Login = () => {
   }
 
   const handleLogin = () => {
+    console.log(state)
     requestPost('/users/login', state).then(res => console.log(res));
     // res == true이면 home(로그인 상태)으로 이동
   }
@@ -43,16 +44,16 @@ const Login = () => {
       <div className={styles.inputContainer}>
         <label 
           className={styles.label}
-          htmlFor="userId"
+          htmlFor="email"
         >
           아이디
         </label>
         <input 
           className={styles.input}
-          id="userId"
+          id="email"
           type="text"
-          name="userId"
-          value={state.userId}
+          name="email"
+          value={state.email}
           onChange={handleChangeState}
         />
       </div>
@@ -65,10 +66,10 @@ const Login = () => {
         </label>
         <input
           className={styles.input}
-          id="userPassword"
+          id="password"
           type="text"
-          name="userPassword"
-          value={state.userPassword}
+          name="password"
+          value={state.password}
           onChange={handleChangeState}
         />
       </div>
