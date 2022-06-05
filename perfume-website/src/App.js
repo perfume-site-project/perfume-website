@@ -1,15 +1,34 @@
 import './App.css';
-import Wrapper from './Components/Wrapper';
-import Header from './Components/Header';
-import Login from './Components/Login';
-import FindId from './Components/FindId';
-import FindPw from './Components/FindPw';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Main from "./Components/Main";
+import Product from "./Components/Product";
+import User from './pages/User';
+import UserFindId from './pages/UserFindId';
+import UserFindPw from './pages/UserFindPw';
+import UserSignUp from './pages/UserSignUp';
+import Order from './pages/Order';
+import OrderNonMember from './pages/OrderNonMember';
+import OrderShipping from './pages/OrderShipping';
+import OrderPaying from './pages/OrderPaying';
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <BrowserRouter>
+      <div className="App">
+          <Routes>
+              <Route exact path="/" element={<Main />}/>
+              <Route exact path="/user-login" element={<User />}/>
+              <Route exact path="/find-id" element={<UserFindId />}/>
+              <Route exact path="/find-pw" element={<UserFindPw />}/>
+              <Route exact path="/product" element={<Product />}/>
+              <Route exact path="/sign-up" element={<UserSignUp />}/>
+              <Route exact path="/order" element={<Order />}/>
+              <Route exact path="/order-non-member" element={<OrderNonMember />}/>
+              <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
+              <Route exact path="/order-pay" element={<OrderPaying />}/>
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

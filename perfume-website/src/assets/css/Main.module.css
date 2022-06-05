@@ -1,0 +1,56 @@
+.head_container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    margin-top: 20px;
+    margin-right: 30px;
+}
+.login_box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+}
+.main_img{
+    height: 960px;
+    width: 960px;
+}
+
+.main_logo{
+    height: 250px;
+    object-fit: contain;
+}
+.text, .text:visited, .text:link {
+    font-size: large;
+    color: black;
+    text-decoration: none;
+    margin: 5px;
+}
+.search_bar{
+    position: fixed;
+    bottom: 30px;
+    height: 80px;
+    width: 30vw;
+    min-width: 300px;
+
+    background-image: url("../../assets/images/search_bar.png");
+    background-position: right center;
+    background-size: 150%;
+    background-repeat: no-repeat;
+}
+.search_input{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+
+    height: 30px;
+    width: 14vw;
+    min-width: 140px;
+
+    font-size: larger;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

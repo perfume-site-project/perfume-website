@@ -1,5 +1,5 @@
 import styles from '../assets/css/Header.module.css'
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo.png'
 
 const Header = () => {
   return (
