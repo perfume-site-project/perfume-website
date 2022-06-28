@@ -1,7 +1,7 @@
 .header {
   box-sizing: border-box;
   width: 312px;
-  height: 100vh;
+  /*height: 100vh;*/
   background-color: #F4F2EC;
   background-color: rgb(255, 255, 255, 0.3);
   border-right: 2px solid #B59887;
@@ -9,7 +9,7 @@
 
 .header .container {
   width: 300px;
-  height: 100vh;
+  height: 100%;
   border-right: 2px solid #B59887;
 }
 
@@ -29,7 +29,7 @@
 .header .category {
   list-style: none;
   padding: 30px;
-  height: 100vh;
+  height: calc(100vh - 385px - 60px);
 }
 
 /* li: title, subtitle관련해서 font 다르게 설정 */
