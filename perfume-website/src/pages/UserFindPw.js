@@ -6,12 +6,12 @@ import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
 import FindPw from '../Components/FindPw';
 
-const UserFindId = () => {
+const UserFindId = ({ requestPost }) => {
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<FindPw />} />
+        <Route exact path='/' element={<FindPw requestPost={requestPost} />} />
       </Routes>
     </Wrapper>
   );
