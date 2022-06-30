@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/FindPw.module.css'
 
-const FindPw = ({ requestPost }) => {
+const FindPw = ({ requestPost, findPw }) => {
+  const navigate = useNavigate();
   const [state, setState] = useState(
     {
       email: '',
@@ -21,8 +23,12 @@ const FindPw = ({ requestPost }) => {
   const handleFindPw = () => {
     const url = '/users/findpw';
     requestPost(url, state);
-    // res == true이면 modal창으로 이메일 발송 완료 출력
-    // res == false이면 modal창으로 틀렸음을 출력
+    if(findPw === true) {
+      navigate('/', {replace: true});
+      // 비밀번호 재설정 경로로 변경
+    } else {
+      alert('회원 정보가 없습니다.');
+    }
   }
 
   return (

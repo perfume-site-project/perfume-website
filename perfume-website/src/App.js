@@ -17,6 +17,7 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [login, setLogin] = useState(false);
   const [findId, setFindId] = useState(false);
+  const [findPw, setFindPw] = useState(false);
 
   const requestPost = async (url, data) => {
     try {
@@ -25,10 +26,9 @@ function App() {
         url,
         data
       }
-      const res = await axios(options);
-      console.log(res);
-      // 응답값의 키값에 따라서 case문을 작성하여 state에 할당한다.
-      return res.data;
+      const req = await axios(options);
+      const res = req.data;
+      res.loginSuccess ? setLogin(true) : setLogin(false)
     } catch (err) {
       console.log(err);
       throw new Error(err);
@@ -42,7 +42,7 @@ function App() {
               <Route exact path="/" element={<Main />}/>
               <Route exact path="/user-login" element={<User requestPost={requestPost} login={login} />} />
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
-              <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />}/>
+              <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp />}/>
               <Route exact path="/order" element={<Order />}/>

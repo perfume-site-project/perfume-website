@@ -22,6 +22,7 @@ const Login = ({requestPost, login}) => {
   const handleLogin = () => {
     const url = '/users/login';
     requestPost(url, state);
+    console.log(login)
     if(login === true) {
       navigate('/', {replace: true});
     } else {
