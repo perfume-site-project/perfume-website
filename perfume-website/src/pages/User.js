@@ -6,12 +6,12 @@ import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
 import UserLogin from '../Components/UserLogin';
 
-const User = () => {
+const User = ({requestPost, login}) => {
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<UserLogin />} />
+        <Route exact path='/' element={<UserLogin requestPost={requestPost} login={login}/>} />
       </Routes>
     </Wrapper>
   );

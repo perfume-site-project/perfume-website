@@ -1,28 +1,13 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/Login.module.css';
 
-const Login = () => {
+const Login = ({requestPost, login}) => {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     email: '',
     password: '',
   });
-
-  const requestPost = async (url, data) => {
-    try {
-      const options = {
-        method: 'POST',
-        url,
-        data
-      }
-      const res = await axios(options);
-      console.log(res);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-      throw new Error(err);
-    }
-  }
 
   const handleChangeState = (e) => {
     const target = e.target;
@@ -35,10 +20,16 @@ const Login = () => {
   }
 
   const handleLogin = () => {
-    console.log(state)
-    requestPost('/users/login', state).then(res => console.log(res));
-    // res == true이면 home(로그인 상태)으로 이동
+    const url = '/users/login';
+    requestPost(url, state);
+    console.log(login)
+    if(login === true) {
+      navigate('/', {replace: true});
+    } else {
+      alert('사용자의 이메일과 비밀번호가 존재하지 않습니다.');
+    }
   }
+
   return (
     <div className={styles.login}>
       <div className={styles.inputContainer}>

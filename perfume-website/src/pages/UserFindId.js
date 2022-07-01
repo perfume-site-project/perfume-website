@@ -6,12 +6,12 @@ import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
 import FindId from '../Components/FindId';
 
-const UserFindId = () => {
+const UserFindId = ({ requestPost, findId, userData }) => {
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<FindId />} />
+        <Route exact path='/' element={<FindId requestPost={requestPost} findId={findId} userData={userData} />} />
       </Routes>
     </Wrapper>
   );

@@ -1,44 +1,32 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import styles from '../assets/css/FindId.module.css'
 
-const FindId = () => {
-  const [phoneNumber, setPhoneNumber] = useState(
+const FindId = ({ requestPost, findId, userData }) => {
+  const [state, setState] = useState(
     {
-      phoneNumber: ''
+      phoneNumber: '',
     }
   );
 
-  const requestPost = async (url, data) => {
-    try {
-      const options = {
-        method: 'POST',
-        url,
-        data
-      }
-      const res = await axios(options);
-      console.log(res);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-      throw new Error(err);
-    }
-  }
-
   const handleChangePhoneNumber = (e) => {
     const target = e.target;
-    setPhoneNumber(
+    setState(
       {
-        ...phoneNumber,
+        ...state,
         [target.name]: target.value, 
       }
     );
   }
 
-  const handleSubmit = () => {
-    requestPost('/users/id', phoneNumber).then(res => console.log(res));
-    // res == true이면 modal창으로 userId 출력
-    // res == false이면 modal창으로 틀렸음을 출력
+  const handleFindId = () => {
+    const url = '/users/findid';
+    requestPost(url, state);
+    if(findId === true) {
+      // 사용자의 아이디(userData.email)를 modal로 출력
+      alert('사용자의 아이디는 {userData.email} 입니다.');
+    } else {
+      alert('일치하는 사용자의 정보가 없습니다.');
+    }
   }
 
   return (
@@ -56,7 +44,7 @@ const FindId = () => {
           id="phoneNumber"
           type="text" 
           name="phoneNumber"
-          value={phoneNumber.phoneNumber}
+          value={state.phoneNumber}
           onChange={handleChangePhoneNumber}
         />
         <p className={styles.description}>
@@ -66,7 +54,7 @@ const FindId = () => {
         </p>
         <button 
           type="button"
-          onClick={handleSubmit}
+          onClick={handleFindId}
           className={styles.button}
         >
           확인

@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import Login from './Login';
 import styles from '../assets/css/UserLogin.module.css';
 
-const UserLogin = () => {
+const UserLogin = ({requestPost, login}) => {
   return (
     <section className={styles.userLogin}>
       <h1 className={styles.srOnly}>로그인</h1>
       <div className={styles.container}>
-        <Login />
+        <Login requestPost={requestPost} login={login}/>
         <div>
           <div className={styles.links}>
             <Link to="/find-id" className={styles.link}>아이디 찾기</Link>
