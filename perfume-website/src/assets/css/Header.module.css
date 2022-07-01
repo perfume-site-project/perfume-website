@@ -28,8 +28,11 @@
 
 .header .category {
   list-style: none;
-  padding: 30px;
-  height: calc(100vh - 385px - 60px);
+  height: calc(100vh - 385px);
 }
 
 /* li: title, subtitle관련해서 font 다르게 설정 */
+.header .category li{
+  font-size: 24px;
+  font-weight: bold;
+}

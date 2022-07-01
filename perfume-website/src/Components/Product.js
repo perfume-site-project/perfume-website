@@ -1,7 +1,33 @@
 import Header from '../Components/Header';
 import Wrapper from '../Components/Wrapper';
 import styles from '../assets/css/Product.module.css'
-const Product = (props) => {
+import {useEffect, useRef, useState} from "react";
+
+const Product = () => {
+    const div1 = useRef(null);
+    const div2 = useRef(null);
+    const div3 = useRef(null);
+    const div4 = useRef(null);
+
+    let div_height_arr = [0, 0, 0, 0];
+    const [heightArr, setHeightArr] = useState(div_height_arr);
+
+    const handleResize = () =>{
+        div_height_arr = [div1?.current.clientHeight,
+            div2?.current.clientHeight,
+            div3?.current.clientHeight,
+            div4?.current.clientHeight];
+        setHeightArr(div_height_arr);
+    }
+
+    useEffect(()=>{
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
     const productInfo = {
         pname: 'perfume name',
         price: 199000,
@@ -30,7 +56,7 @@ const Product = (props) => {
 
     return(
         <Wrapper>
-            <Header/>
+            <Header category={['성분', '테이스팅 노트', '상세정보', '리뷰']} heights={heightArr}/>
             <section className={styles.productInfo}>
                 <div className={styles.intro}>
                     <div className={styles.imgBox}>
@@ -44,22 +70,22 @@ const Product = (props) => {
                         <button>구매하기</button>
                     </div>
                 </div>
-                <div className={styles.ingredients}>
+                <div className={styles.ingredients} ref={div1}>
                     <h2>ingredients</h2>
                     <p>{productInfo["ingredients"]}</p>
                 </div>
-                <div className={styles.notes}>
+                <div className={styles.notes} ref={div2}>
                     <h2>notes</h2>
                     <p>{productInfo["note"]}</p>
                 </div>
-                <div className={styles.detail}>
+                <div className={styles.detail} ref={div3}>
                     <h2>detail</h2>
                     {productInfo["detail"].map((data)=>{
                         return <p>{data}</p>
                     })}
 
                 </div>
-                <div className={styles.review}>
+                <div className={styles.review} ref={div4}>
                     <h2>review</h2>
                     {productInfo["review"].map((data)=>{
                         return(
