@@ -22,7 +22,6 @@ const Login = ({requestPost, login}) => {
   const handleLogin = () => {
     const url = '/users/login';
     requestPost(url, state);
-    console.log(login)
     if(login === true) {
       navigate('/', {replace: true});
     } else {
@@ -58,7 +57,7 @@ const Login = ({requestPost, login}) => {
         <input
           className={styles.input}
           id="password"
-          type="text"
+          type="password"
           name="password"
           value={state.password}
           onChange={handleChangeState}
