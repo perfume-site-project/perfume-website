@@ -2,6 +2,7 @@ import Header from '../Components/Header';
 import Wrapper from '../Components/Wrapper';
 import styles from '../assets/css/Product.module.css'
 import {useEffect, useRef, useState} from "react";
+import {Link} from "react-router-dom";
 
 const Product = () => {
     const div1 = useRef(null);
@@ -67,7 +68,9 @@ const Product = () => {
                         <p>{productInfo['price'].toLocaleString('ko-KR')}원</p>
                         <p>{productInfo["shortInfo"]}</p>
                         <button>장바구니 담기</button>
-                        <button>구매하기</button>
+                        <Link to={"/order"}>
+                            <button>구매하기</button>
+                        </Link>
                     </div>
                 </div>
                 <div className={styles.ingredients} ref={div1}>
