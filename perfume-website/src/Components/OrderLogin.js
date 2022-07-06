@@ -10,13 +10,14 @@ const OrderLogin = () => {
       <div className={styles.container}>
         <Login />
         <div>
-          {/* Link */}
-          <button 
-            type="button" 
-            className={styles.button}
-          >
-            비회원 주문하기
-          </button>
+          <Link to={"/order-non-member"}>
+            <button 
+              type="button" 
+              className={styles.button}
+            >
+              비회원 주문하기
+            </button>
+          </Link>
           <div className={styles.links}>
             <Link to="/find-id" className={styles.link}>아이디 찾기</Link>
             <span>|</span>

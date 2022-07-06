@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../assets/css/OrderInfo.module.css';
+import {Link} from "react-router-dom";
 
 const OrderInfo = () => {
   const [state, setState] = useState(
@@ -9,6 +10,22 @@ const OrderInfo = () => {
       phoneNumber: "",
     }
   );
+  
+  const [checkedButtons, setCheckedButtons] = useState([]);
+
+  const changeHandler = (checked, id) => {
+    if (checked) {
+      setCheckedButtons([...checkedButtons, id]);
+      console.log("체크 반영 완료");
+    } else {
+      setCheckedButtons(checkedButtons.filter(button => button !== id));
+      console.log("체크 해제 반영 완료");
+    }
+  };
+
+  const isAllChecked = checkedButtons.length === 3;
+  const disabled = !isAllChecked;
+
   
   return (
     <section className={styles.orderInfo}>
@@ -41,19 +58,30 @@ const OrderInfo = () => {
         <div>
           <ul className={styles.checkboxContainer}>
             <li>
-              <input type="checkbox" id="allCheck" />
+              <input type="checkbox" id="allCheck" onChange={e => {
+                changeHandler(e.currentTarget.checked, 'allCheck');
+              }}
+              checked={checkedButtons.includes('allCheck') ? true : false}/>
               <label htmlFor="allCheck">모두 동의합니다.</label>
             </li>
             <li>
-              <input type="checkbox" id="infoCheck" />
+              <input type="checkbox" id="infoCheck" onChange={e => {
+                changeHandler(e.currentTarget.checked, 'infoCheck');
+              }}
+              checked={checkedButtons.includes('infoCheck') ? true : false}/>
               <label htmlFor="infoCheck">(필수) 개인정보처리방침 동의</label>
             </li>
             <li>
-              <input type="checkbox" id="usingCheck" />
+              <input type="checkbox" id="usingCheck" onChange={e => {
+                changeHandler(e.currentTarget.checked, 'usingCheck');
+              }}
+              checked={checkedButtons.includes('usingCheck') ? true : false}/>
               <label htmlFor="usingCheck">(필수) 이용약관 동의</label>
             </li>
           </ul>
+          <Link to={"/order-shipping-info"}>
           <button type="button" className={styles.button}>저장하고 다음 단계로</button>
+          </Link>
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 //props = {id, type, loc}
 const ListElement = (props) => {
     
-    const [loc, setLoc] = useState(props.loc);
+    const [loc] = useState(props.loc);
     const locNo = 'loc'+ loc;
     const cx = classNames.bind(styles);
     const sendType = () => {
