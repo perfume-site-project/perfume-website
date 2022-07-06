@@ -1,6 +1,5 @@
 import styles from '../assets/css/ResetPw.module.css';
 import { useState, useRef } from 'react';
-import password from './Password';
 
 const ResetPw = ({ resetPw }) => {
   const passwordInput = useRef()
