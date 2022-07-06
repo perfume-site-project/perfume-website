@@ -1,44 +1,34 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/FindPw.module.css'
 
-const FindPw = () => {
-  const [userId, setUserId] = useState(
+const FindPw = ({ requestPost, findPw }) => {
+  const navigate = useNavigate();
+  const [state, setState] = useState(
     {
-      userId: '',
+      email: '',
     }
   );
 
-  const requestPost = async (url, data) => {
-    try {
-      const options = {
-        method: 'POST',
-        url,
-        data
-      }
-      const res = await axios(options);
-      console.log(res);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-      throw new Error(err);
-    }
-  }
-
-  const handleChangeUserId = (e) => {
+  const handleChangeEmail = (e) => {
     const target = e.target;
-    setUserId(
+    setState(
       {
-        ...userId,
+        ...state,
         [target.name]: target.value,
       }
     );
   }
 
-  const handleSubmit = () => {
-    requestPost('/users/password', userId).then(res => console.log(res));
-    // res == true이면 modal창으로 이메일 발송 완료 출력
-    // res == false이면 modal창으로 틀렸음을 출력
+  const handleFindPw = () => {
+    const url = '/users/findpw';
+    requestPost(url, state);
+    if(findPw === true) {
+      navigate('/', {replace: true});
+      // 비밀번호 재설정 경로로 변경
+    } else {
+      alert('회원 정보가 없습니다.');
+    }
   }
 
   return (
@@ -46,18 +36,18 @@ const FindPw = () => {
       <h1 className={styles.srOnly}>비밀번호 찾기</h1>
       <div className={styles.container}>
         <label 
-          htmlFor="userId"
+          htmlFor="email"
           className={styles.label}
         >
           아이디(이메일)
         </label>
         <input
           className={styles.input}
-          id="userId" 
+          id="email" 
           type="text"
-          name="userId"
-          value={userId.userId}
-          onChange={handleChangeUserId}
+          name="email"
+          value={state.email}
+          onChange={handleChangeEmail}
         />
         <p className={styles.description}>
           회원가입 시 입력한 아이디(이메일 주소)를 입력해주십시오.
@@ -66,7 +56,7 @@ const FindPw = () => {
         </p>
         <button 
           type="button" 
-          onClick={handleSubmit}
+          onClick={handleFindPw}
           className={styles.button}
         >
           이메일 발송

@@ -3,7 +3,7 @@ body {
   background-color: #D0BEB0;
   font-family: 'Gowun Batang', serif;
 }
-input {
+input, button {
   font-family: 'Gowun Batang', serif;
 }
 
