@@ -1,0 +1,37 @@
+.login {
+
+}
+
+.login .inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.login .label {
+  margin-bottom: 6px;
+}
+
+.login .input {
+  box-sizing: border-box;
+  outline: none;
+  padding: 12px;
+  border: 1px solid #AC917B;
+  height: 40px;
+  margin-bottom: 14px;
+}
+
+.login .button {
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.login .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}

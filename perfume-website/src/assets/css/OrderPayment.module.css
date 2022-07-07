@@ -1,0 +1,64 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orderPayment {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderPayment .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 610px;
+}
+
+.orderPayment .paymentContainer {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.orderPayment .paymentBtn {
+  box-sizing: border-box;
+  width: 315px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid #4F2828;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 38px;
+}
+
+.orderPayment .checkList label {
+  margin-left: 4px;
+}
+
+.orderPayment .payBtn {
+  width: 420px;
+  height: 50px;
+  color: #fff;
+  background-color: #6A5E5E;
+  border: 1px solid #000;
+  cursor: pointer;
+}

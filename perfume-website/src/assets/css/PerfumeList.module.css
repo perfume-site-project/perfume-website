@@ -1,0 +1,63 @@
+.list_div{
+    /*display: inline-block;*/
+    /*margin-top: 10%;*/
+    position: absolute;
+    left: -70px;
+    top: 45%;
+    transform: translate(0%, -50%);
+}
+
+.list_element{
+    height: 90px;
+    width: 300px;
+    padding-left: 80px;
+    margin: 10px;
+    text-align: center;
+    line-height: 90px;
+
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(94, 83, 70);
+    font-size: 15pt;
+
+    background-image: url(../images/paper.png);
+    opacity: 90%;
+
+    position: relative;
+}
+
+.text{
+    text-decoration: none;
+}
+.loc0{
+    transform: rotate(-30deg) translate(-80px, 10px) skew(10deg, 0deg);
+    filter: brightness(90%);
+    opacity: 60%;
+    z-index: -1;
+}
+.loc1{
+    transform: rotate(-15deg) translate(-20px, 10px) skew(5deg, 0deg);
+    filter: brightness(95%);
+    opacity: 80%;
+    z-index: 0;
+}
+.loc2{
+    transform: rotate(0deg);
+    opacity: 100%;
+    z-index: 1;
+}
+.loc3{
+    transform: rotate(15deg) translate(-20px, -10px) skew(-5deg, 0deg);
+    filter: brightness(95%);
+    opacity: 80%;
+    z-index: 0;
+}
+.loc4{
+    transform: rotate(30deg) translate(-80px, -10px) skew(-10deg, 0deg);
+    filter: brightness(90%);
+    opacity: 60%;
+    z-index: -1;
+}
+
+.list_element:not(.loc0, .loc1, .loc2, .loc3, .loc4){
+    display: none;
+}
