@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../assets/css/OrderShippingInfo.module.css';
+import { Link } from 'react-router-dom';
 
 const OrderShippingInfo = () => {
   return (
@@ -26,7 +27,9 @@ const OrderShippingInfo = () => {
           <label htmlFor="memo" className={styles.label}>배송 메모</label>
           <input type="text" id="memo" />
         </div>
-        <button type="button" className={styles.button}>저장하고 다음 단계로</button>
+        <Link to={"/order-pay"}>
+          <button type="button" className={styles.button}>저장하고 다음 단계로</button>
+        </Link>
       </div>
     </section>
   );

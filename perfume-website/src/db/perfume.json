@@ -2,7 +2,7 @@
     "perfumes":[
         {
             "id" : 1,
-            "type" : "FLORAL"
+            "type" : "WOODY"
         },
         {
             "id" : 2,
@@ -10,7 +10,7 @@
         },
         {
             "id" : 3,
-            "type" : "WOODY"
+            "type" : "FLORAL"
         },
         {
             "id" : 4,
