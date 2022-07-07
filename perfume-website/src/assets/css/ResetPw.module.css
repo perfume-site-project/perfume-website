@@ -1,0 +1,52 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.resetPw {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetPw .label {
+  margin-bottom: 6px;
+}
+
+.resetPw .container {
+  display: flex;
+  flex-direction: column;
+  width: 610px;
+}
+
+.resetPw .input {
+  box-sizing: border-box;
+  outline: none;
+  padding: 12px;
+  border: 1px solid #AC917B;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.resetPw .button {
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.resetPw .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}
