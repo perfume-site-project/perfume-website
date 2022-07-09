@@ -28,27 +28,16 @@ function App() {
   const [resetPw, setResetPw] = useState(false);
   const [files, setFiles] = useState([]);
 
-  // 로그인 상태 로직
+  // 로그인 상태 유지
   useEffect(() => {
     if(sessionStorage.getItem('user-email') === null) {
-      console.log(isLogin)
       setIsLogin(false);
     } else {
-      console.log(isLogin)
       setIsLogin(true);
     }
-  })
-  
-  const onUserState = () => {
-    if(sessionStorage.getItem('user-email' === null)) {
-      console.log(sessionStorage.getItem('user-email'))
-      setIsLogin(true)
-    } else {
-      console.log(sessionStorage.getItem('user-email'))
-      setIsLogin(false)
-    }
-  }
+  }, [isLogin])
 
+  // POST
   const requestPost = async (url, data) => {
     try {
       const options = {
@@ -57,6 +46,9 @@ function App() {
         data
       }
       const req = await axios(options);
+      const res = req.data;
+      // 로그인
+      res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
       return req;
     } catch (err) {
       console.log(err);
@@ -64,6 +56,16 @@ function App() {
     }
   }
 
+  // 로그아웃 
+  const onUserState = () => {
+    if(sessionStorage.getItem('user-email' === null)) {
+      setIsLogin(true)
+    } else {
+      setIsLogin(false)
+    }
+  }
+
+  // 관리자 상품등록
   const onCreate = async (url, data) => {
     const formData = new FormData();
     formData.append("file", files[0]);
