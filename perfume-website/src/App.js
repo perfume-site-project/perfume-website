@@ -25,6 +25,8 @@ function App() {
   const [findId, setFindId] = useState(false);
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
+  const [shippingInfo, setShippingInfo] = useState(false);
+  const [orderInfo, setOrderInfo] = useState(false);
 
   const requestPost = async (url, data) => {
     try {
@@ -54,8 +56,8 @@ function App() {
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp />}/>
               <Route exact path="/order" element={<Order />}/>
-              <Route exact path="/order-non-member" element={<OrderNonMember />}/>
-              <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
+              <Route exact path="/order-non-member" element={<OrderNonMember requestPost={requestPost} orderInfo={orderInfo} />}/>
+              <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
           </Routes>
       </div>
