@@ -1,7 +1,7 @@
 import './App.css';
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
 import axios from 'axios';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
 
 // Component
 import Main from "./Components/Main";
@@ -21,12 +21,33 @@ import AdminAddProduct from './pages/AdminAddProduct';
 
 function App() {
   const [userData, setUserData] = useState([]);
-  // 하나의 state로 관리 예정
-  const [login, setLogin] = useState(false);
+  // 로그인 상태 관리
+  const [isLogin, setIsLogin] = useState(false);
   const [findId, setFindId] = useState(false);
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
   const [files, setFiles] = useState([]);
+
+  // 로그인 상태 로직
+  useEffect(() => {
+    if(sessionStorage.getItem('user-email') === null) {
+      console.log(isLogin)
+      setIsLogin(false);
+    } else {
+      console.log(isLogin)
+      setIsLogin(true);
+    }
+  })
+  
+  const onUserState = () => {
+    if(sessionStorage.getItem('user-email' === null)) {
+      console.log(sessionStorage.getItem('user-email'))
+      setIsLogin(true)
+    } else {
+      console.log(sessionStorage.getItem('user-email'))
+      setIsLogin(false)
+    }
+  }
 
   const requestPost = async (url, data) => {
     try {
@@ -36,8 +57,7 @@ function App() {
         data
       }
       const req = await axios(options);
-      const res = req.data;
-      console.log(res);
+      return req;
     } catch (err) {
       console.log(err);
       throw new Error(err);
@@ -70,8 +90,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
           <Routes>
-              <Route exact path="/" element={<Main />}/>
-              <Route exact path="/user-login" element={<User requestPost={requestPost} login={login} />} />
+              <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin}/>}/>
+              <Route exact path="/user-login" element={<User requestPost={requestPost} onUserState={onUserState} />} />
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />

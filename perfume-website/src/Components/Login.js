@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/Login.module.css';
 
-const Login = ({requestPost, login}) => {
+const Login = ({ requestPost, onUserState }) => {
   const navigate = useNavigate();
   const [state, setState] = useState({
     email: '',
@@ -19,10 +19,12 @@ const Login = ({requestPost, login}) => {
     );
   }
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const url = '/users/login';
-    requestPost(url, state);
-    if(login === true) {
+    const req = await requestPost(url, state)
+    console.log(req.data)
+    if(req.data.loginSuccess === true) {
+      sessionStorage.setItem('user-email', state.email)
       navigate('/', {replace: true});
     } else {
       alert('사용자의 이메일과 비밀번호가 존재하지 않습니다.');
