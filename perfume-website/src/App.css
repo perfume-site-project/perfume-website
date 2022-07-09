@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
 body {
   background-color: #D0BEB0;
   font-family: 'Gowun Batang', serif;
 }
+
 input, button {
   font-family: 'Gowun Batang', serif;
 }

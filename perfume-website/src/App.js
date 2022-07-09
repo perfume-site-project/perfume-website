@@ -17,6 +17,7 @@ import OrderNonMember from './pages/OrderNonMember';
 import OrderShipping from './pages/OrderShipping';
 import OrderPaying from './pages/OrderPaying';
 import UserResetPw from './pages/UserResetPw';
+import AdminAddProduct from './pages/AdminAddProduct';
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -25,6 +26,7 @@ function App() {
   const [findId, setFindId] = useState(false);
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
+  const [files, setFiles] = useState([]);
 
   const requestPost = async (url, data) => {
     try {
@@ -42,6 +44,28 @@ function App() {
     }
   }
 
+  const onCreate = async (url, data) => {
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    
+    const blob = new Blob([JSON.stringify(data)], {type: "application/json"});
+    formData.append("data", blob)
+
+    await axios({
+      method: 'POST',
+      url,
+      mode: 'cors',
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -57,6 +81,7 @@ function App() {
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
+              <Route exact path="/admin-add-product" element={<AdminAddProduct onCreate={onCreate} />}/>
           </Routes>
       </div>
     </BrowserRouter>
