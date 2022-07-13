@@ -52,7 +52,7 @@ function App() {
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
               <Route exact path="/product" element={<Product />}/>
-              <Route exact path="/sign-up" element={<UserSignUp />}/>
+              <Route exact path="/sign-up" element={<UserSignUp requestPost={requestPost} />}/>
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
