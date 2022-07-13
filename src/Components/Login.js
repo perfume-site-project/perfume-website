@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/Login.module.css';
 
 const Login = ({ requestPost, onUserState }) => {
   const navigate = useNavigate();
+
+  const userEmailInput = useRef();
+  const userPasswordInput = useRef();
+
   const [login, setLogin] = useState(false);
   const [state, setState] = useState({
     email: '',
@@ -20,7 +24,25 @@ const Login = ({ requestPost, onUserState }) => {
     );
   }
 
+  const handleKeyUp = () => {
+    if(window.event.keyCode === 13) {
+      handleLogin();
+    }
+  }
+
   const handleLogin = async () => {
+    if(state.email.length < 1) {
+      alert('아이디를 입력해주세요.');
+      userEmailInput.current.focus();
+      return;
+    }
+
+    if(state.password.length < 1) {
+      alert('비밀번호를 입력해주세요.')
+      userPasswordInput.current.focus();
+      return;
+    }
+
     const url = '/users/login';
     const req = await requestPost(url, state)
     if(req.data.loginSuccess === true) {
@@ -46,6 +68,8 @@ const Login = ({ requestPost, onUserState }) => {
           type="text"
           name="email"
           value={state.email}
+          ref={userEmailInput}
+          onKeyUp={handleKeyUp}
           onChange={handleChangeState}
         />
       </div>
@@ -62,6 +86,8 @@ const Login = ({ requestPost, onUserState }) => {
           type="password"
           name="password"
           value={state.password}
+          ref={userPasswordInput}
+          onKeyUp={handleKeyUp}
           onChange={handleChangeState}
         />
       </div>

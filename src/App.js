@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'; 
 import axios from 'axios';
-import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Component
 import Main from "./Components/Main";
