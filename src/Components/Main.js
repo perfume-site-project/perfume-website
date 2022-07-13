@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import styles from '../assets/css/Main.module.css'
@@ -11,7 +11,7 @@ import FLORAL from "../assets/images/FLORAL.gif";
 import CITRUS from "../assets/images/CITRUS.gif";
 import GREEN from "../assets/images/GREEN.gif";
 
-const Main = () => {
+const Main = ({ onUserState, isLogin }) => {
     const [searchWord, setSearchWord] = useState("");
     const [type, setType] = useState(FLORAL);
 
@@ -31,7 +31,14 @@ const Main = () => {
                 break;
             default : 
                 setType(FLORAL)
-          }
+        }
+    }
+    
+    const handleLogout = () => {
+        if(window.confirm('로그아웃 하시겠습니까?')) {
+            sessionStorage.removeItem('user-email');
+            onUserState();
+        }
     }
 
     return(
@@ -40,7 +47,13 @@ const Main = () => {
                     <PerfumeList getType2={getType2}/>
                     <img className={styles.main_img} src={type} alt="main"/>
                     <div className={styles.login_box}>
-                        <Link to={"/user-login"} className={styles.text}>로그인</Link>
+                        {
+                            isLogin ? 
+                            <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
+                            : 
+                            <Link to={"/user-login"} className={styles.text}>로그인</Link>
+                        }
+                        
                         <p className={styles.text}>/</p>
                         <Link to={"/sign-up"} className={styles.text}>회원가입</Link>
                     </div>

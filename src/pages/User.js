@@ -6,12 +6,12 @@ import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
 import UserLogin from '../Components/UserLogin';
 
-const User = ({requestPost, login}) => {
+const User = ({ requestPost, onUserState }) => {
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<UserLogin requestPost={requestPost} login={login}/>} />
+        <Route exact path='/' element={<UserLogin requestPost={requestPost} onUserState={onUserState} />} />
       </Routes>
     </Wrapper>
   );
