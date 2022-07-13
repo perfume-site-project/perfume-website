@@ -50,6 +50,9 @@ function App() {
       const res = req.data;
       // 로그인
       res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
+      // 아이디 찾기
+      res.email.length > 0 && setFindId(res.email)
+      console.log(res)
       return req;
     } catch (err) {
       console.log(err);
@@ -70,7 +73,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
           <Routes>
-              <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin}/>}/>
+              <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin} />}/>
               <Route exact path="/user-login" element={<User requestPost={requestPost} onUserState={onUserState} />} />
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />

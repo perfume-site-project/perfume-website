@@ -35,9 +35,8 @@ const FindId = ({ requestPost, findId }) => {
 
     const url = '/users/findid';
     requestPost(url, state);
-    if(findId === true) {
-      // 사용자의 아이디(userData.email)를 alert로 출력
-      alert('사용자의 아이디는 {userData.email} 입니다.');
+    if(findId.length > 0) {
+      alert(`사용자의 아이디는 ${findId} 입니다.`);
     } else {
       alert('일치하는 사용자의 정보가 없습니다.');
     }
@@ -58,6 +57,7 @@ const FindId = ({ requestPost, findId }) => {
           id="phoneNumber"
           type="text" 
           name="phoneNumber"
+          placeholder="010-XXXX-XXXX"
           value={state.phoneNumber}
           ref={userPhoneNumberInput}
           onKeyUp={handleKeyUp}
