@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/FindPw.module.css'
 
 const FindPw = ({ requestPost, findPw }) => {
+  const userEmailInput = useRef();
+
   const navigate = useNavigate();
   const [state, setState] = useState(
     {
@@ -20,7 +22,19 @@ const FindPw = ({ requestPost, findPw }) => {
     );
   }
 
+  const handleKeyUp = () => {
+    if(window.event.keyCode === 13) {
+      handleFindPw();
+    }
+  }
+
   const handleFindPw = () => {
+    if(state.email.length < 1) {
+      alert('이메일을 입력해주세요.');
+      userEmailInput.current.focus(); 
+      return;
+    }
+
     const url = '/users/findpw';
     requestPost(url, state);
     if(findPw === true) {
@@ -47,6 +61,8 @@ const FindPw = ({ requestPost, findPw }) => {
           type="text"
           name="email"
           value={state.email}
+          ref={userEmailInput}
+          onKeyUp={handleKeyUp}
           onChange={handleChangeEmail}
         />
         <p className={styles.description}>
