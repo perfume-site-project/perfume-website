@@ -26,10 +26,8 @@ function App() {
   const [findId, setFindId] = useState(false);
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
-  const [files, setFiles] = useState([]);
   const [shippingInfo, setShippingInfo] = useState(false);
   const [orderInfo, setOrderInfo] = useState(false);
-
 
   // 로그인 상태 유지
   useEffect(() => {
@@ -68,29 +66,6 @@ function App() {
     }
   }
 
-  // 관리자 상품등록
-  const onCreate = async (url, data) => {
-    const formData = new FormData();
-    formData.append("file", files[0]);
-    
-    const blob = new Blob([JSON.stringify(data)], {type: "application/json"});
-    formData.append("data", blob)
-
-    await axios({
-      method: 'POST',
-      url,
-      mode: 'cors',
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      data: formData,
-    }).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -106,7 +81,7 @@ function App() {
               <Route exact path="/order-non-member" element={<OrderNonMember requestPost={requestPost} orderInfo={orderInfo} />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
-              <Route exact path="/admin-add-product" element={<AdminAddProduct onCreate={onCreate} />}/>
+              <Route exact path="/admin-add-product" element={<AdminAddProduct />}/>
           </Routes>
       </div>
     </BrowserRouter>

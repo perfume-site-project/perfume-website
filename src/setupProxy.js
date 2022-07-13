@@ -19,4 +19,10 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    createProxyMiddleware("/product/upload", {
+      target: "http://146.56.137.48:46578",
+      changeOrigin: true,
+    })
+  );
 };
