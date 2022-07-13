@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from '../assets/css/FindId.module.css'
 
-const FindId = ({ requestPost, findId, userData }) => {
+const FindId = ({ requestPost, findId }) => {
+  const userPhoneNumberInput = useRef();
+
   const [state, setState] = useState(
     {
       phoneNumber: '',
@@ -18,11 +20,23 @@ const FindId = ({ requestPost, findId, userData }) => {
     );
   }
 
+  const handleKeyUp = () => {
+    if(window.event.keyCode === 13) {
+      handleFindId();
+    }
+  }
+
   const handleFindId = () => {
+    if(state.phoneNumber.length < 1) {
+      alert('연락처를 입력해주세요.');
+      userPhoneNumberInput.current.focus();
+      return;
+    }
+
     const url = '/users/findid';
     requestPost(url, state);
     if(findId === true) {
-      // 사용자의 아이디(userData.email)를 modal로 출력
+      // 사용자의 아이디(userData.email)를 alert로 출력
       alert('사용자의 아이디는 {userData.email} 입니다.');
     } else {
       alert('일치하는 사용자의 정보가 없습니다.');
@@ -45,6 +59,8 @@ const FindId = ({ requestPost, findId, userData }) => {
           type="text" 
           name="phoneNumber"
           value={state.phoneNumber}
+          ref={userPhoneNumberInput}
+          onKeyUp={handleKeyUp}
           onChange={handleChangePhoneNumber}
         />
         <p className={styles.description}>
