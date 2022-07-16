@@ -4,7 +4,9 @@ const api = {
   login: "/users/login",
   findId: "/users/findid",
   findPw: "/users/findpw",
-  upload: "/product/upload"
+  upload: "/product/upload",
+  product: "/product",
+  review: "/product/review"
 }
 
 module.exports = function (app) {
