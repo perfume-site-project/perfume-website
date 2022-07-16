@@ -17,13 +17,15 @@ import OrderNonMember from './pages/OrderNonMember';
 import OrderShipping from './pages/OrderShipping';
 import OrderPaying from './pages/OrderPaying';
 import UserResetPw from './pages/UserResetPw';
+import ProductManagement from './pages/ProductManagement';
 import AdminAddProduct from './pages/AdminAddProduct';
+import AdminEditProduct from './pages/AdminEditProduct';
 
 function App() {
   const [userData, setUserData] = useState([]);
   // 로그인 상태 관리
   const [isLogin, setIsLogin] = useState(false);
-  const [findId, setFindId] = useState(false);
+  const [editData, setEditData] = useState([]);
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
   const [shippingInfo, setShippingInfo] = useState(false);
@@ -50,9 +52,6 @@ function App() {
       const res = req.data;
       // 로그인
       res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
-      // 아이디 찾기
-      res.email.length > 0 && setFindId(res.email)
-      console.log(res)
       return req;
     } catch (err) {
       console.log(err);
@@ -69,13 +68,18 @@ function App() {
     }
   }
 
+  // 상품 수정
+  const onEditProduct = () => {
+    // setEditData(향수이름, 가격, 상품정보, 성분...)
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
           <Routes>
               <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin} />}/>
               <Route exact path="/user-login" element={<User requestPost={requestPost} onUserState={onUserState} />} />
-              <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
+              <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} />} />
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
               <Route exact path="/product" element={<Product />}/>
@@ -84,7 +88,9 @@ function App() {
               <Route exact path="/order-non-member" element={<OrderNonMember requestPost={requestPost} orderInfo={orderInfo} />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
-              <Route exact path="/admin-add-product" element={<AdminAddProduct />}/>
+              <Route exact path="/product-management" element={<ProductManagement onEditProduct={onEditProduct}/>}/>
+              <Route exact path="/product-add" element={<AdminAddProduct />}/>
+              <Route exact path="/product-edit" element={<AdminEditProduct editData={editData} />}/>
           </Routes>
       </div>
     </BrowserRouter>

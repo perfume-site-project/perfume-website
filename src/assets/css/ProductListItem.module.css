@@ -1,0 +1,43 @@
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 12px;
+}
+
+.listItem:last-child {
+  margin-bottom: 0px;
+}
+
+.listItem .productName {
+  width: 500px;
+  line-height: 32px;
+  margin-right: 12px;
+}
+
+.listItem .boxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listItem .button {
+  display: block;
+  font-size: 16px;
+  height: 32px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+  margin-right: 4px;
+}
+
+.listItem .button:last-child {
+  margin-right: 0px;
+}
+
+.listItem .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}

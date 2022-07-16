@@ -53,7 +53,7 @@ const Main = ({ onUserState, isLogin }) => {
                             <> 
                                 <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
                                 <p className={styles.text}>/</p>
-                                <Link to="/admin-add-product" className={styles.text}>상품관리</Link>
+                                <Link to="/product-management" className={styles.text}>상품관리</Link>
                             </>
                         )}
                         {/* 회원 로그인 */}
