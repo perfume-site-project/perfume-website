@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import ProductManagementList from '../Components/ProductList';
+import ProductList from '../Components/ProductList';
 
-const ProductManagement = () => {
+const ProductManagement = ({ onEditProduct }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ProductManagement = () => {
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<ProductManagementList />} />
+        <Route exact path='/' element={<ProductList onEditProduct={onEditProduct} />} />
       </Routes>
     </Wrapper>
   );
