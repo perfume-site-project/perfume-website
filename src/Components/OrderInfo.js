@@ -1,4 +1,4 @@
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
+//import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/OrderInfo.module.css';
@@ -34,19 +34,31 @@ const OrderInfo = ({requestPost, orderInfo}) => {
   }
 
   const handleOrderInfo = () => {
-    navigate('/order-shipping-info', {replace: true});
 
-    /* DB가 구현되면 추가
+    //const url = /* 비회원정보 url */
+    //requestPost(url, state);
 
-    const url = 비회원정보 url
-    requestPost(url, state);
-    if(orderInfo === true) {
-      navigate('/order-shipping-info', {replace: true});
+    if(state.email!=="" && state.domain!=="" && state.userName!=="" && state.phoneNumber!=="") {
+      var regExpPhone = /^\d{2,3}-\d{3,4}-\d{4}$/; //특수기호를 포함한 경우
+      // var regExpPhone = /^\d{9,11}$/; //특수기호가 없을 경우
+
+      var regEmail = /^[0-9a-zA-Z]*$/;
+      if (regEmail.test(state.email)) {
+        if(regExpPhone.test(state.phoneNumber)){
+          if(checkedButtons.includes('allCheck')){
+            navigate('/order-shipping-info', {replace: true});
+          }else{
+            alert('필수 항목들이 모두 체크되지 않았습니다.');
+          }
+        }else{
+          alert('전화번호의 형식이 잘못되었습니다.');
+        }
+      }else{
+        alert('이메일은 영어와 숫자로만 이루어져있습니다.');
+      }
     } else {
       alert('정보가 모두 입력되지 않았습니다.');
     }
-
-    */
   }
 
   const changeHandler = (checked, id) => {
@@ -121,6 +133,7 @@ const OrderInfo = ({requestPost, orderInfo}) => {
             type="text"
             className={styles.phoneNumber}
             name="phoneNumber"
+            placeholder="000-0000-0000"
             value={state.phoneNumber}
             onChange={handleChangeState}
           />
