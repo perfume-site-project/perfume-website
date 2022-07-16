@@ -47,15 +47,32 @@ const Main = ({ onUserState, isLogin }) => {
                     <PerfumeList getType2={getType2}/>
                     <img className={styles.main_img} src={type} alt="main"/>
                     <div className={styles.login_box}>
-                        {
-                            isLogin ? 
-                            <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
-                            : 
-                            <Link to={"/user-login"} className={styles.text}>로그인</Link>
-                        }
-                        
-                        <p className={styles.text}>/</p>
-                        <Link to={"/sign-up"} className={styles.text}>회원가입</Link>
+                        {/* 관리자 로그인 */}
+                        {isLogin === true && 
+                        sessionStorage.getItem('user-email') === 'admin@naver.com' && (
+                            <> 
+                                <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
+                                <p className={styles.text}>/</p>
+                                <Link to="/admin-add-product" className={styles.text}>상품관리</Link>
+                            </>
+                        )}
+                        {/* 회원 로그인 */}
+                        {isLogin === true && 
+                        sessionStorage.getItem('user-email') !== 'admin@naver.com' && (
+                            <> 
+                                <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
+                                <p className={styles.text}>/</p>
+                                <button type="button" className={styles.text} onClick={handleLogout}>마이페이지</button>
+                            </>
+                        )}
+                        {/* 비로그인 */}
+                        {isLogin === false && (
+                            <>
+                                <Link to={"/user-login"} className={styles.text}>로그인</Link>
+                                <p className={styles.text}>/</p>
+                                <Link to={"/sign-up"} className={styles.text}>회원가입</Link>
+                            </>
+                        )}
                     </div>
                     <div className="logo_box">
                         <Link to={"/"}>
