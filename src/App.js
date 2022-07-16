@@ -30,6 +30,18 @@ function App() {
   const [resetPw, setResetPw] = useState(false);
   const [shippingInfo, setShippingInfo] = useState(false);
   const [orderInfo, setOrderInfo] = useState(false);
+  //상품정보
+  const [product, setProduct] = useState({
+    image_link:{sub_images:[], main_image:''},
+    review:[],
+    _id:'',
+    name:'',
+    price:'',
+    description:'',
+    ingredient_description:'',
+    tasting_note:'',
+    __v:0
+  });
 
   // 로그인 상태 유지
   useEffect(() => {
@@ -59,6 +71,22 @@ function App() {
     }
   }
 
+  //Get
+  const requestGet = async (url) => {
+    try {
+      const options = {
+        method: 'GET',
+        url
+      }
+      const req = await axios(options);
+      const res = req.data;
+      setProduct(() => res);
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  }
+
   // 로그아웃 
   const onUserState = () => {
     if(sessionStorage.getItem('user-email' === null)) {
@@ -82,6 +110,7 @@ function App() {
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} />} />
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
+              <Route exact path="/:type" element={<Product requestPost={requestPost} requestGet={requestGet} product={product}/>}/>
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp />}/>
               <Route exact path="/order" element={<Order />}/>

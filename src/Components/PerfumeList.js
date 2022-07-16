@@ -12,7 +12,7 @@ const PerfumeList = (props) => {
     return ( <div>
         <div className={`${styles.list_div}`}>
             {dummy.perfumes.map((perfumes, idx) => (
-                <Link to={"/product"} className={styles.text}>
+                <Link to={"/"+perfumes.type.toLowerCase()} className={styles.text}>
                     <ListElement getType={getType} id={perfumes.id} type={perfumes.type} loc={idx} key={idx}/>
                 </Link>
             ))}
