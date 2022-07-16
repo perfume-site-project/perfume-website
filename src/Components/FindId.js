@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styles from '../assets/css/FindId.module.css'
 
-const FindId = ({ requestPost, findId }) => {
+const FindId = ({ requestPost }) => {
   const userPhoneNumberInput = useRef();
 
   const [state, setState] = useState(
@@ -26,7 +26,7 @@ const FindId = ({ requestPost, findId }) => {
     }
   }
 
-  const handleFindId = () => {
+  const handleFindId = async () => {
     if(state.phoneNumber.length < 1) {
       alert('연락처를 입력해주세요.');
       userPhoneNumberInput.current.focus();
@@ -34,11 +34,15 @@ const FindId = ({ requestPost, findId }) => {
     }
 
     const url = '/users/findid';
-    requestPost(url, state);
-    if(findId.length > 0) {
-      alert(`사용자의 아이디는 ${findId} 입니다.`);
-    } else {
+    const req = await requestPost(url, state)
+
+    if(req.data.email === undefined) {
       alert('일치하는 사용자의 정보가 없습니다.');
+      return;
+    }
+
+    if(req.data.email !== '') {
+      alert(`사용자의 아이디는 ${req.data.email} 입니다.`);
     }
   }
 
