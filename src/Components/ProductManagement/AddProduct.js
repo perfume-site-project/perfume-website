@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styles from "../assets/css/AddProduct.module.css";
+import styles from "../../assets/css/ProductManagement/AdminProduct.module.css";
 
-const ProductInfo = ({ editData }) => {
+const ProductInfo = () => {
   const navigate = useNavigate();
 
   const nameInput = useRef();
@@ -13,6 +13,7 @@ const ProductInfo = ({ editData }) => {
   const tastingInput = useRef();
   const mainImageInput = useRef();
   const subImageInput = useRef();
+  const introImageInput = useRef();
 
   const formData = new FormData();
 
@@ -27,6 +28,7 @@ const ProductInfo = ({ editData }) => {
   const [files, setFiles] = useState({
     main_image: null,
     sub_images: null,
+    intro_image: null,
   });
 
   const handleChangeState = (e) => {
@@ -87,6 +89,12 @@ const ProductInfo = ({ editData }) => {
       return;
     }
 
+    if (files.intro_image === null) {
+      alert("인트로 이미지를 첨부하세요.");
+      introImageInput.current.focus();
+      return;
+    }
+
     handleRequest();
   };
 
@@ -105,6 +113,10 @@ const ProductInfo = ({ editData }) => {
       formData.append('sub_images', it)
     })
 
+    Array.from(files.intro_image).forEach((it) => {
+      formData.append('intro_image', it)
+    })
+
     await axios({
       method: "POST",
       url,
@@ -116,7 +128,7 @@ const ProductInfo = ({ editData }) => {
     })
     .then((res) => {
       alert("상품등록이 완료되었습니다.");
-      navigate("/", { replace: true });
+      navigate("/management-product", { replace: true });
       console.log(res);
     })
     .catch((err) => {
@@ -126,7 +138,7 @@ const ProductInfo = ({ editData }) => {
   };
 
   return (
-    <section className={styles.addProduct}>
+    <section className={styles.adminProduct}>
       <h1 className={styles.srOnly}>상품등록</h1>
       <div className={styles.container}>
         <div>
@@ -218,6 +230,18 @@ const ProductInfo = ({ editData }) => {
             name="sub_images"
             multiple="multiple"
             ref={subImageInput}
+            onChange={handleChangeFile}
+          />
+        </div>
+        <div>
+          <label className={styles.label} htmlFor="intro_image">
+            인트로 이미지
+          </label>
+          <input
+            type="file"
+            id="intro_image"
+            name="intro_image"
+            ref={introImageInput}
             onChange={handleChangeFile}
           />
         </div>

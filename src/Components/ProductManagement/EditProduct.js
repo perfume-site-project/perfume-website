@@ -1,9 +1,20 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styles from "../assets/css/AddProduct.module.css";
+import styles from "../../assets/css/ProductManagement/AdminProduct.module.css";
 
-const EditProduct = () => {
+const EditProduct = ({ editData }) => {
+  useEffect(() => {
+    setState({
+      name: editData.name,
+      price: editData.price,
+      description: editData.description,
+      ingredient_description: editData.ingredient_description,
+      tasting_note: editData.tasting_note,
+      _id: editData._id
+    })
+  }, []);
+
   const navigate = useNavigate();
   const nameInput = useRef();
   const priceInput = useRef();
@@ -12,20 +23,23 @@ const EditProduct = () => {
   const tastingInput = useRef();
   const mainImageInput = useRef();
   const subImageInput = useRef();
+  const introImageInput = useRef();
 
   const formData = new FormData();
 
   const [state, setState] = useState({
-    name: "",
+    name: '',
+    description: '',
+    ingredient_description: '',
     price: 0,
-    description: "",
-    ingredient_description: "",
-    tasting_note: "",
+    tasting_note: '',
+    _id: '',
   });
 
   const [files, setFiles] = useState({
     main_image: null,
     sub_images: null,
+    intro_image: null,
   });
 
   const handleChangeState = (e) => {
@@ -44,6 +58,8 @@ const EditProduct = () => {
   };
 
   const handleLogin = () => {
+    console.log(state)
+    
     if (state.name.length < 1) {
       alert("향수 이름을 입력하세요.");
       nameInput.current.focus();
@@ -61,7 +77,7 @@ const EditProduct = () => {
       descriptionInput.current.focus();
       return;
     }
-
+    
     if (state.ingredient_description.length < 1) {
       alert("향수 성분을 입력하세요.");
       ingredientInput.current.focus();
@@ -86,15 +102,22 @@ const EditProduct = () => {
       return;
     }
 
+    if (files.intro_image === null) {
+      alert("인트로 이미지를 첨부하세요.");
+      introImageInput.current.focus();
+      return;
+    }
+
     handleRequest();
   };
+  
   const handleRequest = async () => {
-    const url = "/product/upload";
+    const url = "/product/update";
 
     for (var i in state) {
       formData.append(i, state[i]);
     }
-
+    
     Array.from(files.main_image).forEach((it) => {
       formData.append('main_image', it)
     })
@@ -103,6 +126,10 @@ const EditProduct = () => {
       formData.append('sub_images', it)
     })
 
+    Array.from(files.intro_image).forEach((it) => {
+      formData.append('intro_image', it)
+    })
+    
     await axios({
       method: "POST",
       url,
@@ -113,18 +140,17 @@ const EditProduct = () => {
       data: formData,
     })
     .then((res) => {
-      alert("상품등록이 완료되었습니다.");
+      alert("수정이 완료되었습니다.");
       navigate("/", { replace: true });
-      console.log(res);
     })
     .catch((err) => {
-      alert("상품등록에 실패하였습니다.");
+      alert("수정에 실패하였습니다.");
       console.log(err);
     });
   };
 
   return (
-    <section className={styles.addProduct}>
+    <section className={styles.adminProduct}>
       <h1 className={styles.srOnly}>상품등록</h1>
       <div className={styles.container}>
         <div>
@@ -182,7 +208,7 @@ const EditProduct = () => {
           ></textarea>
         </div>
         <div>
-          <label className={styles.label} htmlFor="tasting_node">
+          <label className={styles.label} htmlFor="tasting_note">
             테이스팅 노트
           </label>
           <textarea
@@ -219,8 +245,20 @@ const EditProduct = () => {
             onChange={handleChangeFile}
           />
         </div>
+        <div>
+          <label className={styles.label} htmlFor="sub_images">
+            인트로 이미지
+          </label>
+          <input
+            type="file"
+            id="intro_image"
+            name="intro_image"
+            ref={introImageInput}
+            onChange={handleChangeFile}
+          />
+        </div>
         <button type="button" onClick={handleLogin} className={styles.button}>
-          추가하기
+          수정하기
         </button>
       </div>
     </section>

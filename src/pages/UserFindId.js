@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import FindId from '../Components/FindId';
+import FindId from '../Components/User/FindId';
 
 const UserFindId = ({ requestPost }) => {
   return (

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Wrapper from "../Components/Wrapper";
 import Header from "../Components/Header";
-import AddProduct from "../Components/AddProduct";
+import AddProduct from "../Components/ProductManagement/AddProduct";
 
 const AdminAddProduct = () => {
   return (

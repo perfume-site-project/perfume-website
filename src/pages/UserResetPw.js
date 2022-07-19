@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import ResetPw from '../Components/ResetPw';
+import ResetPw from '../Components/User/ResetPw';
 
 const UserResetPw = ({ requestPost, resetPw }) => {
   return (

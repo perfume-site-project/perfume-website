@@ -1,4 +1,4 @@
-import styles from '../assets/css/ResetPw.module.css';
+import styles from '../../assets/css/User/ResetPw.module.css';
 import { useState, useRef } from 'react';
 
 const ResetPw = ({ resetPw }) => {
