@@ -1,0 +1,15 @@
+.EditMemberInfo .button {
+  font-size: 18px;
+  width: 30%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.EditMemberInfo .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}
