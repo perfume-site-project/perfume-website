@@ -1,11 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../assets/css/AddProduct.module.css";
 
-const ProductInfo = ({ editData }) => {
+const EditProduct = () => {
   const navigate = useNavigate();
-
   const nameInput = useRef();
   const priceInput = useRef();
   const descriptionInput = useRef();
@@ -89,7 +88,6 @@ const ProductInfo = ({ editData }) => {
 
     handleRequest();
   };
-
   const handleRequest = async () => {
     const url = "/product/upload";
 
@@ -229,4 +227,4 @@ const ProductInfo = ({ editData }) => {
   );
 };
 
-export default ProductInfo;
+export default EditProduct;
