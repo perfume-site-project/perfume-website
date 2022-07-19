@@ -17,6 +17,7 @@ import OrderNonMember from './pages/OrderNonMember';
 import OrderShipping from './pages/OrderShipping';
 import OrderPaying from './pages/OrderPaying';
 import UserResetPw from './pages/UserResetPw';
+import UserInfoEdit from './pages/UserInfoEdit';
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -53,6 +54,7 @@ function App() {
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp requestPost={requestPost} />}/>
+              <Route exact path="/editmemberinfo" element={<UserInfoEdit requestPost={requestPost} />}/>
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping />}/>

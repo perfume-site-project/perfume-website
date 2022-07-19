@@ -12,6 +12,11 @@
     align-items: center;
     margin-right: 20px;
 }
+.login_box button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
 .main_img{
     height: 960px;
     width: 960px;

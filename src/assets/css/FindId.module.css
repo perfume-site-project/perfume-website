@@ -9,24 +9,24 @@
   border: 0;
 }
 
-.addProduct {
+.findId {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.addProduct .container {
+.findId .container {
   display: flex;
   flex-direction: column;
   width: 610px;
 }
 
-.addProduct .label {
+.findId .label {
   margin-bottom: 6px;
 }
 
-.addProduct .input {
+.findId .input {
   box-sizing: border-box;
   outline: none;
   padding: 12px;
@@ -35,7 +35,11 @@
   margin-bottom: 12px;
 }
 
-.addProduct .button {
+.findId .description {
+  margin: 0 0 24px 0;
+}
+
+.findId .button {
   font-size: 18px;
   width: 100%;
   box-sizing: border-box;
@@ -46,7 +50,25 @@
   transition: all ease 0.3s;
 }
 
-.addProduct .button:hover {
+.findId .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}
+
+/*EditMemberInfo.js EditMemberInfo.module.css와 연결되면 EditMemberInfo.module.css에 변형해 복붙*/
+
+.findId .buttonSmall {
+  font-size: 18px;
+  width: 20%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.findId .buttonSmall:hover {
   background-color: #6A5E5E;
   color: #fff;
 }
