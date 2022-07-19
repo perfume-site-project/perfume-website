@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Login from './Login';
+import Login from './User/Login';
 import styles from '../assets/css/OrderLogin.module.css';
 
 const OrderLogin = () => {

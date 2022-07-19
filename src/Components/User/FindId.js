@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import styles from '../assets/css/FindId.module.css'
+import styles from '../../assets/css/User/FindId.module.css'
 
 const FindId = ({ requestPost }) => {
   const userPhoneNumberInput = useRef();
