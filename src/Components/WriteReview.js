@@ -12,6 +12,7 @@ const WriteReview = ({requestPost, id, setShowModal}) => {
         content: "",
         _id: id
     });
+    
     const handleChangeState = (e) => {
         const target = e.target;
         setState(
