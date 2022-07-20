@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from '../assets/css/EditMemberInfo.module.css'
+import styles from '../../assets/css/Mypage/EditMemberInfo.module.css'
 
 const EditMemberInfo = ({requestPost, requestGet}) => {
     const [nowEmail, setEmail] = useState();

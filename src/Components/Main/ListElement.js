@@ -1,4 +1,4 @@
-import styles from '../assets/css/PerfumeList.module.css'
+import styles from '../../assets/css/Main/PerfumeList.module.css'
 import { useState } from "react";
 import classNames from 'classnames/bind';
 

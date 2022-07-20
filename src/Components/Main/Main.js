@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import styles from '../assets/css/Main.module.css'
-import main_logo from "../assets/images/main_logo.png";
+import styles from '../../assets/css/Main/Main.module.css'
+import main_logo from "../../assets/images/main_logo.png";
 import PerfumeList from "./PerfumeList";
 
-import WOODY from "../assets/images/WOODY.gif";
-import FRUITY from "../assets/images/FRUITY.gif";
-import FLORAL from "../assets/images/FLORAL.gif";
-import CITRUS from "../assets/images/CITRUS.gif";
-import GREEN from "../assets/images/GREEN.gif";
+import WOODY from "../../assets/images/WOODY.gif";
+import FRUITY from "../../assets/images/FRUITY.gif";
+import FLORAL from "../../assets/images/FLORAL.gif";
+import CITRUS from "../../assets/images/CITRUS.gif";
+import GREEN from "../../assets/images/GREEN.gif";
 
 const Main = ({ onUserState, isLogin, allProduct }) => {
     const [searchWord, setSearchWord] = useState("");

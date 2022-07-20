@@ -2,9 +2,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Wrapper from '../Components/Wrapper';
-import Header from '../Components/Header';
-import EditMemberInfo from '../Components/EditMemberInfo';
+import Wrapper from '../Components/Layout/Wrapper';
+import Header from '../Components/Layout/Header';
+import EditMemberInfo from '../Components/MyPage/EditMemberInfo';
 
 const UserInfoEdit = ({requestPost, requestGet}) => {
   return (

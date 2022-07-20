@@ -39,7 +39,7 @@
     width: 30vw;
     min-width: 300px;
 
-    background-image: url("../../assets/images/search_bar.png");
+    background-image: url("../../../assets/images/search_bar.png");
     background-position: right center;
     background-size: 150%;
     background-repeat: no-repeat;

@@ -4,8 +4,8 @@ import {
   Route,
   useNavigate
 } from 'react-router-dom';
-import Wrapper from '../Components/Wrapper';
-import Header from '../Components/Header';
+import Wrapper from '../Components/Layout/Wrapper';
+import Header from '../Components/Layout/Header';
 import ProductList from '../Components/ProductManagement/ProductList';
 
 const ProductManagement = ({ onEditProduct, requestGet }) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../assets/css/Cart.module.css';
+import styles from '../../assets/css/Order/Cart.module.css';
 
 const Cart = () => {
   return (

@@ -1,7 +1,7 @@
-import styles from "../assets/css/WriteReview.module.css";
+import styles from "../../assets/css/Product/WriteReview.module.css";
 import React, {useState} from "react";
-import filled_star from "../assets/images/filled_star.png";
-import empty_star from '../assets/images/empty_star.png';
+import filled_star from "../../assets/images/filled_star.png";
+import empty_star from '../../assets/images/empty_star.png';
 
 const WriteReview = ({requestPost, id, setShowModal}) => {
     const current = new Date();

@@ -1,4 +1,4 @@
-import styles from '../assets/css/PerfumeList.module.css'
+import styles from '../../assets/css/Main/PerfumeList.module.css'
 import ListElement from "./ListElement";
 import {Link} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";

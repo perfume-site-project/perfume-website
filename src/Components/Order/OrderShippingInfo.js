@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../assets/css/OrderShippingInfo.module.css';
+import styles from '../../assets/css/Order/OrderShippingInfo.module.css';
 
 const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
-import Header from '../Header';
-import Wrapper from '../Wrapper';
-import styles from '../assets/css/Product.module.css'
+import Header from '../Layout/Header';
+import Wrapper from '../Layout/Wrapper';
+import styles from '../../assets/css/Product/Product.module.css'
 import {useEffect, useRef, useState} from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import WriteReview from "./WriteReview.js";

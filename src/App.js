@@ -4,7 +4,7 @@ import axios from 'axios';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 // Component
-import Main from "./Components/Main";
+import Main from "./Components/Main/Main";
 import Product from "./Components/Product/Product";
 
 // Pages
