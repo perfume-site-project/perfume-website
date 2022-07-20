@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import Cart from '../Components/Cart';
+import Cart from '../Components/Order/Cart';
 import OrderShippingInfo from '../Components/OrderShippingInfo';
 
 const OrderShipping = ({requestPost, saveInfo2, resultInfo}) => {

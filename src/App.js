@@ -1,11 +1,11 @@
 import './App.css';
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
 import axios from 'axios';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 // Component
 import Main from "./Components/Main";
-import Product from "./Components/Product";
+import Product from "./Components/Product/Product";
 
 // Pages
 import User from './pages/User';
@@ -158,6 +158,7 @@ function App() {
               <Route exact path="/editmemberinfo" element={<UserInfoEdit requestPost={requestPost} requestGet={requestGet}/>}/>
               <Route exact path="/:name" element={<Product requestPost={requestPost} requestGet={requestGet} product={product}/>}/>
               <Route exact path="/product" element={<Product requestGet={requestGet}/>}/>
+              <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember orderInfo={orderInfo} saveInfo1={saveInfo1}/>} />
               <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} saveInfo2={saveInfo2} resultInfo={resultInfo}/>}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>

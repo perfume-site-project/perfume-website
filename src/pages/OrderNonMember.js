@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import Cart from '../Components/Cart';
-import OrderInfo from '../Components/OrderInfo';
+import Cart from '../Components/Order/Cart';
+import OrderInfo from '../Components/Order/OrderInfo';
 
 const OrderNonMember = ({ orderInfo, saveInfo1 }) => {
   return (

@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import Cart from '../Components/Cart';
+import Cart from '../Components/Order/Cart';
 import OrderPayment from '../Components/OrderPayment'
 
 const OrderPaying = () => {
