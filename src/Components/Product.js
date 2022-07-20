@@ -5,7 +5,7 @@ import {useEffect, useRef, useState} from "react";
 import {useParams, Link} from "react-router-dom";
 import WriteReview from "./WriteReview.js";
 
-const Product = ({requestGet, requestPost, product, username}) => {
+const Product = ({requestGet, requestPost, product}) => {
     const [showModal, setShowModal] = useState(false)
 
     const div1 = useRef(null);
@@ -24,11 +24,10 @@ const Product = ({requestGet, requestPost, product, username}) => {
         setHeightArr(div_height_arr);
     }
 
-    const {type} = useParams();
-    const fetchProduct = () => {
-        const name = '안녕하세요'; //type
+    const {name} = useParams();
+    const fetchProduct = () => { 
         const url = '/product?name='+name;
-        requestGet(url);
+        requestGet(url, false);
     }
 
     const handleReviewButton =() => {

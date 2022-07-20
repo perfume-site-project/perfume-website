@@ -6,7 +6,8 @@ const api = {
   findPw: "/users/findpw",
   upload: "/product/upload",
   product: "/product",
-  review: "/product/review"
+  review: "/product/review",
+  allproduct: "/allproduct"
 }
 
 module.exports = function (app) {
