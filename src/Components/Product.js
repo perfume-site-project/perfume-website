@@ -2,9 +2,10 @@ import Header from '../Components/Header';
 import Wrapper from '../Components/Wrapper';
 import styles from '../assets/css/Product.module.css'
 import {useEffect, useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const Product = () => {
+const Product = ({requestGet}) => {
+    const navigate = useNavigate();
     const div1 = useRef(null);
     const div2 = useRef(null);
     const div3 = useRef(null);
@@ -55,6 +56,17 @@ const Product = () => {
         ]
     }
 
+    const checkLogin = async () => {
+        if(sessionStorage.getItem("user-email") !== null){
+            navigate('/order-shipping-info', {replace: true});
+            const url = 'users/info';
+            const req = await requestGet(url);
+            console.log(req);
+        }else{
+            navigate('/order', {replace: true});
+        }
+    }
+
     return(
         <Wrapper>
             <Header category={['성분', '테이스팅 노트', '상세정보', '리뷰']} heights={heightArr}/>
@@ -68,9 +80,7 @@ const Product = () => {
                         <p>{productInfo['price'].toLocaleString('ko-KR')}원</p>
                         <p>{productInfo["shortInfo"]}</p>
                         <button>장바구니 담기</button>
-                        <Link to={"/order"}>
-                            <button>구매하기</button>
-                        </Link>
+                        <button onClick={checkLogin}>구매하기</button>
                     </div>
                 </div>
                 <div className={styles.ingredients} ref={div1}>

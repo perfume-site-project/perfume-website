@@ -1,0 +1,71 @@
+.myPage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.myPage .container {
+    display: flex;
+    flex-direction: column;
+    width: 610px;
+  }
+
+.myPage .infoTable {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #AC917B;
+    border-collapse: collapse;
+  }
+
+.myPage .background1 {
+    border: 1px solid #AC917B;
+    background-color: rgba(222, 210, 200, 0.4);
+    padding: 20px;
+  }
+
+.myPage .background2 {
+    border: 1px solid #AC917B;
+    background-color: rgba(222, 210, 200, 0.7);
+    padding: 10px;
+  }
+
+.myPage h1 {
+    color: #7e6959;
+    font-weight: normal;
+  }
+
+.myPage h2 {
+    color: #7e6959;
+    text-align: center;
+  }
+
+.myPage .image{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    background-color: rgba(222, 210, 200, 0.7);
+}
+
+.myPage .font{
+    color: #99806c;
+    font-weight: 600;
+    font-size: large;
+    text-align: center;
+}
+
+.myPage .space{
+    height: 30px;
+}
+
+.myPage .button{
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  cursor: pointer;
+  background-color: #6A5E5E;
+  color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}

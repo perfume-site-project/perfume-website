@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../assets/css/Order.module.css';
 import {
-  BrowserRouter,
   Routes,
   Route
 } from 'react-router-dom';
@@ -10,13 +9,13 @@ import Header from '../Components/Header';
 import Cart from '../Components/Cart';
 import OrderShippingInfo from '../Components/OrderShippingInfo';
 
-const OrderShipping = () => {
+const OrderShipping = ({requestPost, saveInfo2, resultInfo}) => {
   return (
     <Wrapper>
       <Header />
       <div className={styles.container}>
         <Routes>
-        <Route exact path="/" element={<OrderShippingInfo />}></Route>
+        <Route exact path="/" element={<OrderShippingInfo requestPost={requestPost} saveInfo2={saveInfo2} resultInfo={resultInfo}/>}></Route>
         </Routes>
         <Cart />
       </div>

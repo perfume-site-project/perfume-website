@@ -18,6 +18,7 @@ import OrderShipping from './pages/OrderShipping';
 import OrderPaying from './pages/OrderPaying';
 import UserResetPw from './pages/UserResetPw';
 import AdminAddProduct from './pages/AdminAddProduct';
+import UserMyPage from './pages/UserMyPage';
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -28,6 +29,10 @@ function App() {
   const [resetPw, setResetPw] = useState(false);
   const [shippingInfo, setShippingInfo] = useState(false);
   const [orderInfo, setOrderInfo] = useState(false);
+  const [info1, setInfo1] = useState({});
+  const [info2, setInfo2] = useState({});
+  const [cart, setCart] = useState({});
+  const [resInfo, setResInfo] = useState({});
 
   // 로그인 상태 유지
   useEffect(() => {
@@ -49,10 +54,25 @@ function App() {
       const req = await axios(options);
       const res = req.data;
       // 로그인
-      res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
+      res.loginSuccess && res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
       // 아이디 찾기
-      res.email.length > 0 && setFindId(res.email)
+      res.email && res.email.length > 0 && setFindId(res.email)
       console.log(res)
+      return req;
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  }
+
+  //GET
+  const requestGet = async (url) => {
+    try {
+      const options = {
+        method: 'GET',
+        url,
+      }
+      const req = await axios(options);
       return req;
     } catch (err) {
       console.log(err);
@@ -69,6 +89,41 @@ function App() {
     }
   }
 
+  const saveInfo1 = (name, email, phone_number) => {
+    setInfo1(
+      {
+        name,
+        email,
+        phone_number,
+      }
+    );
+  }
+
+  const saveInfo2 = (receiver, receiver_phone_number, address, message) => {
+    setInfo2(
+      {
+        receiver,
+        receiver_phone_number,
+        address,
+        message,
+      }
+    );
+  }
+
+  const resultInfo = () =>{
+    setResInfo({
+      name: info1.name,
+      email: info1.email,
+      phone_number: info1.phone_number,
+      receiver: info2.receiver,
+      receiver_phone_number: info2.receiver_phone_number,
+      address: info2.address,
+      message: info2.message,
+    });
+
+    return resInfo;
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -78,13 +133,14 @@ function App() {
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
-              <Route exact path="/product" element={<Product />}/>
+              <Route exact path="/product" element={<Product requestGet={requestGet}/>}/>
               <Route exact path="/sign-up" element={<UserSignUp />}/>
               <Route exact path="/order" element={<Order />}/>
-              <Route exact path="/order-non-member" element={<OrderNonMember requestPost={requestPost} orderInfo={orderInfo} />}/>
-              <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} />}/>
+              <Route exact path="/order-non-member" element={<OrderNonMember orderInfo={orderInfo} saveInfo1={saveInfo1}/>} />
+              <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} saveInfo2={saveInfo2} resultInfo={resultInfo}/>}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
               <Route exact path="/admin-add-product" element={<AdminAddProduct />}/>
+              <Route exact path="/mypage" element={<UserMyPage requestGet={requestGet}/>}/>
           </Routes>
       </div>
     </BrowserRouter>
