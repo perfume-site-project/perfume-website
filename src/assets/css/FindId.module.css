@@ -54,21 +54,3 @@
   background-color: #6A5E5E;
   color: #fff;
 }
-
-/*EditMemberInfo.js EditMemberInfo.module.css와 연결되면 EditMemberInfo.module.css에 변형해 복붙*/
-
-.findId .buttonSmall {
-  font-size: 18px;
-  width: 20%;
-  box-sizing: border-box;
-  height: 60px;
-  cursor: pointer;
-  background-color: #FDFAF8;
-  border: 1px solid #AC917B;
-  transition: all ease 0.3s;
-}
-
-.findId .buttonSmall:hover {
-  background-color: #6A5E5E;
-  color: #fff;
-}

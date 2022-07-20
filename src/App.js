@@ -17,20 +17,10 @@ import OrderNonMember from './pages/OrderNonMember';
 import OrderShipping from './pages/OrderShipping';
 import OrderPaying from './pages/OrderPaying';
 import UserResetPw from './pages/UserResetPw';
-<<<<<<< HEAD
-import UserInfoEdit from './pages/UserInfoEdit';
-
-function App() {
-  const [userData, setUserData] = useState([]);
-  // 하나의 state로 관리 예정
-  const [login, setLogin] = useState(false);
-  const [findId, setFindId] = useState(false);
-  const [findPw, setFindPw] = useState(false);
-  const [resetPw, setResetPw] = useState(false);
-=======
 import ProductManagement from './pages/ProductManagement';
 import AdminAddProduct from './pages/AdminAddProduct';
 import AdminEditProduct from './pages/AdminEditProduct';
+import UserInfoEdit from './pages/UserInfoEdit';
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -53,7 +43,6 @@ function App() {
     tasting_note:'',
     __v:0
   });
->>>>>>> 47b72f8d84acb71da9bcde4a32d71f5c3663aa5a
 
   const requestPost = async (url, data) => {
     try {
@@ -64,21 +53,14 @@ function App() {
       }
       const req = await axios(options);
       const res = req.data;
-<<<<<<< HEAD
-      console.log(res);
-=======
       // 로그인
       res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
       return req;
->>>>>>> 47b72f8d84acb71da9bcde4a32d71f5c3663aa5a
     } catch (err) {
       console.log(err);
       throw new Error(err);
     }
   }
-
-<<<<<<< HEAD
-=======
   //Get
   const requestGet = async (url) => {
     try {
@@ -88,6 +70,7 @@ function App() {
       }
       const req = await axios(options);
       const res = req.data;
+      return req;
       setProduct(() => res);
     } catch (err) {
       console.log(err);
@@ -109,36 +92,26 @@ function App() {
     // setEditData(향수이름, 가격, 상품정보, 성분...)
   }
 
->>>>>>> 47b72f8d84acb71da9bcde4a32d71f5c3663aa5a
   return (
     <BrowserRouter>
       <div className="App">
           <Routes>
-<<<<<<< HEAD
-              <Route exact path="/" element={<Main />}/>
-              <Route exact path="/user-login" element={<User requestPost={requestPost} login={login} />} />
-              <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
-=======
               <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin} />}/>
               <Route exact path="/user-login" element={<User requestPost={requestPost} onUserState={onUserState} />} />
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} />} />
->>>>>>> 47b72f8d84acb71da9bcde4a32d71f5c3663aa5a
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
               <Route exact path="/:type" element={<Product requestPost={requestPost} requestGet={requestGet} product={product}/>}/>
               <Route exact path="/product" element={<Product />}/>
               <Route exact path="/sign-up" element={<UserSignUp requestPost={requestPost} />}/>
-              <Route exact path="/editmemberinfo" element={<UserInfoEdit requestPost={requestPost} />}/>
+              <Route exact path="/editmemberinfo" element={<UserInfoEdit requestPost={requestPost} requestGet={requestGet}/>}/>
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
-<<<<<<< HEAD
-=======
               <Route exact path="/product-management" element={<ProductManagement onEditProduct={onEditProduct}/>}/>
               <Route exact path="/product-add" element={<AdminAddProduct />}/>
               <Route exact path="/product-edit" element={<AdminEditProduct editData={editData} />}/>
->>>>>>> 47b72f8d84acb71da9bcde4a32d71f5c3663aa5a
           </Routes>
       </div>
     </BrowserRouter>
