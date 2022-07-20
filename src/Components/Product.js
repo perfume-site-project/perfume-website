@@ -2,12 +2,13 @@ import Header from '../Components/Header';
 import Wrapper from '../Components/Wrapper';
 import styles from '../assets/css/Product.module.css'
 import {useEffect, useRef, useState} from "react";
-import {useParams, Link} from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom';
 import WriteReview from "./WriteReview.js";
 
 const Product = ({requestGet, requestPost, product, username}) => {
+    const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false)
-
+    
     const div1 = useRef(null);
     const div2 = useRef(null);
     const div3 = useRef(null);
@@ -48,6 +49,17 @@ const Product = ({requestGet, requestPost, product, username}) => {
         }
     }, []);
 
+    const checkLogin = async () => {
+        if(sessionStorage.getItem("user-email") !== null){
+            navigate('/order-shipping-info', {replace: true});
+            const url = 'users/info';
+            const req = await requestGet(url);
+            console.log(req);
+        }else{
+            navigate('/order', {replace: true});
+        }
+    }
+    
     return(
         <Wrapper>
             <Header category={['성분', '테이스팅 노트', '상세정보', '리뷰']} heights={heightArr}/>
@@ -61,9 +73,7 @@ const Product = ({requestGet, requestPost, product, username}) => {
                         <p>{product['price'].toLocaleString('ko-KR')}원</p>
                         <p>{product['description']}</p>
                         <button>장바구니 담기</button>
-                        <Link to={"/order"}>
-                            <button>구매하기</button>
-                        </Link>
+                        <button onClick={checkLogin}>구매하기</button>
                     </div>
                 </div>
                 <div className={styles.ingredients} ref={div1}>

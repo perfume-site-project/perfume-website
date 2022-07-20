@@ -4,7 +4,9 @@ const api = {
   login: "/users/login",
   findId: "/users/findid",
   findPw: "/users/findpw",
-  upload: "/product/upload",
+  info: "/users/info",
+  purchase: "/users/purchase",
+  upload: "/product/upload"
   update: "/product/update",
   product: "/product",
   review: "/product/review",

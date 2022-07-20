@@ -62,7 +62,9 @@ const Main = ({ onUserState, isLogin }) => {
                             <> 
                                 <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
                                 <p className={styles.text}>/</p>
-                                <button type="button" className={styles.text} onClick={handleLogout}>마이페이지</button>
+                                <Link to={"/mypage"}>
+                                <button type="button" className={styles.text}>마이페이지</button>
+                                </Link>
                             </>
                         )}
                         {/* 비로그인 */}

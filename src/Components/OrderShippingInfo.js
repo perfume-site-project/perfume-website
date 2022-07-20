@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/OrderShippingInfo.module.css';
 
-const OrderShippingInfo = ({requestPost, shippingInfo}) => {
+const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) => {
   const navigate = useNavigate();
   const [state, setState] = useState({
-    userName: '',
-    phoneNumber: '',
+    receiver: '',
+    receiver_phone_number: '',
+    address: '',
+    message: '',
+  });
+  const [address, setAddress] = useState({
     address1: '',
     address2: '',
-    memo: '',
-  });
+  })
 
   const handleChangeState = (e) => {
     const target = e.target;
@@ -22,19 +25,37 @@ const OrderShippingInfo = ({requestPost, shippingInfo}) => {
     );
   }
 
+  const handleAddress =(e) => {
+    const target = e.target;
+    setAddress(
+      {
+        ...address,
+        [target.name]: target.value,
+      }
+    )
+  }
+
+  useEffect(()=>{
+    setState({
+        ...state,
+        address: address.address1+' '+address.address2,
+    })
+  },[address.address1, address.address2])
+
   const handleShippingInfo = () => {
-    navigate('/order-pay', {replace: true});
-
-    /* DB가 구현되면 추가
-
-    const url = 배송정보 url
-    requestPost(url, state);
-    if(shippingInfo === true) {
+    saveInfo2(state.receiver, state.receiver_phone_number, state.address, state.message);
+    if(state.receiver!=="" && state.receiver_phone_number!=="" && state.address!=="" && state.message!=="") {
+      console.log(state);
       navigate('/order-pay', {replace: true});
-    } else {
-      alert('배송 정보가 모두 입력되지 않았습니다.');
+    }else{
+      alert("오류");
     }
+
+    resultInfo();
     
+    /*
+    const url = 'users/purchase';
+    requestPost(url, state);
     */
   }
 
@@ -43,24 +64,25 @@ const OrderShippingInfo = ({requestPost, shippingInfo}) => {
       <h1 className={styles.srOnly}>배송정보</h1>
       <div className={styles.container}>
         <div className={styles.inputContainer}>
-          <label htmlFor="userName" className={styles.label}>수령인</label>
+          <label htmlFor="receiver" className={styles.label}>수령인</label>
           <input
-            id="userName"
+            id="receiver"
             type="text"
             className={styles.input}
-            name="userName"
-            value={state.userName}
+            name="receiver"
+            value={state.receiver}
             onChange={handleChangeState}
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="phoneNumber" className={styles.label}>연락처</label>
+          <label htmlFor="receiver_phone_number" className={styles.label}>연락처</label>
           <input
-            id="phoneNumber"
+            id="receiver_phone_number"
             type="text"
             className={styles.input}
-            name="phoneNumber"
-            value={state.phoneNumber}
+            name="receiver_phone_number"
+            placeholder='010-0000-0000'
+            value={state.receiver_phone_number}
             onChange={handleChangeState}
           />
         </div>
@@ -73,8 +95,8 @@ const OrderShippingInfo = ({requestPost, shippingInfo}) => {
               placeholder="예) 서교동 아지오 빌딩, 와우산로"
               className={styles.input}
               name="address1"
-              value={state.address1}
-              onChange={handleChangeState}
+              value={address.address1}
+              onChange={handleAddress}
             />
             <button type="button">검색</button>
           </div>
@@ -84,18 +106,18 @@ const OrderShippingInfo = ({requestPost, shippingInfo}) => {
             placeholder="상세 주소 입력"
             className={styles.input}
             name="address2"
-            value={state.address2}
-            onChange={handleChangeState}
+            value={address.address2}
+            onChange={handleAddress}
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="memo" className={styles.label}>배송 메모</label>
+          <label htmlFor="message" className={styles.label}>배송 메모</label>
           <input
-            id="memo"
+            id="message"
             type="text"
             className={styles.input}
-            name="memo"
-            value={state.memo}
+            name="message"
+            value={state.message}
             onChange={handleChangeState}
           />
         </div>
