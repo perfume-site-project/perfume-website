@@ -5,9 +5,11 @@ const api = {
   findId: "/users/findid",
   findPw: "/users/findpw",
   upload: "/product/upload",
+  update: "/product/update",
   product: "/product",
   review: "/product/review",
-  allproduct: "/allproduct"
+  allProduct: "/allproduct",
+  productDelete: "/product/delete"
 }
 
 module.exports = function (app) {

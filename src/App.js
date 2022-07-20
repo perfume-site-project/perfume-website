@@ -17,18 +17,21 @@ import OrderNonMember from './pages/OrderNonMember';
 import OrderShipping from './pages/OrderShipping';
 import OrderPaying from './pages/OrderPaying';
 import UserResetPw from './pages/UserResetPw';
+import ProductManagement from './pages/ProductManagement';
 import AdminAddProduct from './pages/AdminAddProduct';
+import AdminEditProduct from './pages/AdminEditProduct';
 
 function App() {
   const [userData, setUserData] = useState([]);
+
   // 로그인 상태 관리
   const [isLogin, setIsLogin] = useState(false);
-  const [findId, setFindId] = useState(false);
+  const [editData, setEditData] = useState({});
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
   const [shippingInfo, setShippingInfo] = useState(false);
   const [orderInfo, setOrderInfo] = useState(false);
-  //상품정보
+  // 상품정보
   const [product, setProduct] = useState({
     image_link:{sub_images:[], main_image:''},
     review:[],
@@ -62,10 +65,7 @@ function App() {
       const req = await axios(options);
       const res = req.data;
       // 로그인
-      res.loginSuccess && res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
-      // 아이디 찾기
-      res.email && res.email.length > 0 && setFindId(res.email)
-      console.log(res)
+      res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
       return req;
     } catch (err) {
       console.log(err);
@@ -85,6 +85,7 @@ function App() {
       !all && setProduct(() => res);
       all && setAllProduct(() => res);
       console.log(res);
+      return req;
     } catch (err) {
       console.log(err);
       throw new Error(err);
@@ -106,13 +107,18 @@ function App() {
     requestGet(url, true);
   }, [])
 
+  // 상품 수정
+  const onEditProduct = (data) => {
+    setEditData(data)
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
           <Routes>
               <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin} allProduct={allProduct}/>}/>
               <Route exact path="/user-login" element={<User requestPost={requestPost} onUserState={onUserState} />} />
-              <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} findId={findId} userData={userData}/>} />
+              <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} />} />
               <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} findPw={findPw} />
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} resetPw={resetPw} />
               <Route exact path="/:name" element={<Product requestPost={requestPost} requestGet={requestGet} product={product}/>}/>
@@ -121,7 +127,9 @@ function App() {
               <Route exact path="/order-non-member" element={<OrderNonMember requestPost={requestPost} orderInfo={orderInfo} />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
-              <Route exact path="/admin-add-product" element={<AdminAddProduct />}/>
+              <Route exact path="/management-product" element={<ProductManagement onEditProduct={onEditProduct} requestGet={requestGet} />}/>
+              <Route exact path="/add-product" element={<AdminAddProduct />}/>
+              <Route exact path="/edit-product" element={<AdminEditProduct editData={editData} />}/>
           </Routes>
       </div>
     </BrowserRouter>
