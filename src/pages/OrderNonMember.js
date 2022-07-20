@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../assets/css/Order.module.css';
 import {
-  BrowserRouter,
   Routes,
   Route
 } from 'react-router-dom';
@@ -10,13 +9,13 @@ import Header from '../Components/Header';
 import Cart from '../Components/Cart';
 import OrderInfo from '../Components/OrderInfo';
 
-const OrderNonMember = () => {
+const OrderNonMember = ({ orderInfo, saveInfo1 }) => {
   return (
     <Wrapper>
       <Header />
       <div className={styles.container}>
         <Routes>
-        <Route exact path="/" element={<OrderInfo />}></Route>
+        <Route exact path="/" element={<OrderInfo orderInfo={orderInfo} saveInfo1={saveInfo1}/>}></Route>
         </Routes>
         <Cart />
       </div>

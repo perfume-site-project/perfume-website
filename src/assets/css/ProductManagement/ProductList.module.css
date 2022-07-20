@@ -1,0 +1,42 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.productList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.productList .ul {
+  box-sizing: border-box;
+  border: 1px solid #AC917B;
+  min-width: 610px;
+  padding: 24px;
+  margin-bottom: 12px;
+}
+
+.productList .button {
+  font-size: 18px;
+  width: 100px;
+  box-sizing: border-box;
+  height: 42px;
+  cursor: pointer;
+  background-color: #FDFAF8;
+  border: 1px solid #AC917B;
+  transition: all ease 0.3s;
+}
+
+.productList .button:hover {
+  background-color: #6A5E5E;
+  color: #fff;
+}

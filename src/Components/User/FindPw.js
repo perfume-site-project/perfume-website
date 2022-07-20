@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../assets/css/FindPw.module.css'
+import styles from '../../assets/css/User/FindPw.module.css'
 
 const FindPw = ({ requestPost, findPw }) => {
   const userEmailInput = useRef();

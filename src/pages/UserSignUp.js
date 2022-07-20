@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import SignUp from '../Components/SignUp';
+import SignUp from '../Components/User/SignUp';
 
 const User = () => {
   return (

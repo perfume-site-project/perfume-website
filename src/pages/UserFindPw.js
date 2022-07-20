@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import FindPw from '../Components/FindPw';
+import FindPw from '../Components/User/FindPw';
 
 const UserFindPw = ({ requestPost, findPw }) => {
   return (

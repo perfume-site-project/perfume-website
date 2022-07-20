@@ -53,7 +53,7 @@ const Main = ({ onUserState, isLogin, allProduct }) => {
                             <> 
                                 <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
                                 <p className={styles.text}>/</p>
-                                <Link to="/admin-add-product" className={styles.text}>상품관리</Link>
+                                <Link to="/management-product" className={styles.text}>상품관리</Link>
                             </>
                         )}
                         {/* 회원 로그인 */}
@@ -62,7 +62,9 @@ const Main = ({ onUserState, isLogin, allProduct }) => {
                             <> 
                                 <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
                                 <p className={styles.text}>/</p>
-                                <button type="button" className={styles.text} onClick={handleLogout}>마이페이지</button>
+                                <Link to={"/mypage"}>
+                                <button type="button" className={styles.text}>마이페이지</button>
+                                </Link>
                             </>
                         )}
                         {/* 비로그인 */}
