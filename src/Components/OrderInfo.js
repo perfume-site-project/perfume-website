@@ -1,17 +1,29 @@
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
-import React, { useState } from 'react';
+import React, { useState, useEffect, } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/css/OrderInfo.module.css';
 
-const OrderInfo = ({requestPost, orderInfo}) => {
+const OrderInfo = ({orderInfo, saveInfo1}) => {
   const navigate = useNavigate();
   const [checkedButtons, setCheckedButtons] = useState([]);
   const [state, setState] = useState({
     email: '',
-    domain: '',
-    userName: '',
-    phoneNumber: '',
+    name: '',
+    phone_number: '',
   });
+
+  const [email, setEmail] = useState({
+    first: '',
+    last: '',
+  })
+
+  useEffect(()=>{
+    setState({
+        ...state,
+        email: email.first+'@'+email.last
+    })
+  },[email.first, email.last])
+
 
   const handleChangeState = (e) => {
     const target = e.target;
@@ -23,30 +35,51 @@ const OrderInfo = ({requestPost, orderInfo}) => {
     );
   }
 
+  const handleEmailState = (e) => {
+    const target = e.target;
+    setEmail(
+      {
+        ...email,
+        [target.name]: target.value,
+      }
+    )
+  }
+
   const handleDomain = (e) => {
     const target = e.target;
-    setState(
+    setEmail(
       {
-        ...state,
-        domain: target.value,
+        ...email,
+        last: target.value,
       }
     );
   }
 
   const handleOrderInfo = () => {
-    navigate('/order-shipping-info', {replace: true});
+    console.log(state);
+    saveInfo1(state.name, state.email, state.phone_number);
 
-    /* DB가 구현되면 추가
+    if(email.first!=="" && email.last!=="" && state.name!=="" && state.phone_number!=="") {
+      var regExpPhone = /^\d{2,3}-\d{3,4}-\d{4}$/;
+      var regEmail = /^[0-9a-zA-Z]*$/;
 
-    const url = 비회원정보 url
-    requestPost(url, state);
-    if(orderInfo === true) {
-      navigate('/order-shipping-info', {replace: true});
+      if (regEmail.test(email.first)) {
+        if(regExpPhone.test(state.phone_number)){
+          
+          if(checkedButtons.includes('allCheck')){
+              navigate('/order-shipping-info', {replace: true});
+          }else{
+            alert('필수 항목들이 모두 체크되지 않았습니다.');
+          }
+        }else{
+          alert('전화번호의 형식이 잘못되었습니다.');
+        }
+      }else{
+        alert('이메일은 영어와 숫자로만 이루어져있습니다.');
+      }
     } else {
       alert('정보가 모두 입력되지 않았습니다.');
     }
-
-    */
   }
 
   const changeHandler = (checked, id) => {
@@ -78,21 +111,21 @@ const OrderInfo = ({requestPost, orderInfo}) => {
           <label htmlFor="" className={styles.label}>이메일</label>
           <div>
             <input
-              id="email"
+              id="first"
+              name="first"
               type="text"
               className={styles.email}
-              name="email"
-              value={state.email}
-              onChange={handleChangeState}
+              value={email.first}
+              onChange={handleEmailState}
             />
             <span>@</span>
             <input
-              id="domain"
-              name="domain"
+              id="last"
+              name="last"
               type="text"
               className={styles.domain}
-              value={state.domain}
-              onChange={handleChangeState}
+              value={email.last}
+              onChange={handleEmailState}
             />
             <select onChange={handleDomain} className={styles.select}>
               <option value="default" selected="selected" disabled>옵션 선택</option>
@@ -104,24 +137,25 @@ const OrderInfo = ({requestPost, orderInfo}) => {
           </div>
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="userName" className={styles.label}>이름</label>
+          <label htmlFor="name" className={styles.label}>이름</label>
           <input
-            id="userName"
+            id="name"
             type="text"
             className={styles.userName}
-            name="userName"
-            value={state.userName}
+            name="name"
+            value={state.name}
             onChange={handleChangeState}
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="phoneNumber" className={styles.label}>연락처</label>
+          <label htmlFor="phone_number" className={styles.label}>연락처</label>
           <input
-            id="phoneNumber"
+            id="phone_number"
             type="text"
             className={styles.phoneNumber}
-            name="phoneNumber"
-            value={state.phoneNumber}
+            name="phone_number"
+            placeholder="000-0000-0000"
+            value={state.phone_number}
             onChange={handleChangeState}
           />
         </div>

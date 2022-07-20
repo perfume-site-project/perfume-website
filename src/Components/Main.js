@@ -11,7 +11,7 @@ import FLORAL from "../assets/images/FLORAL.gif";
 import CITRUS from "../assets/images/CITRUS.gif";
 import GREEN from "../assets/images/GREEN.gif";
 
-const Main = ({ onUserState, isLogin }) => {
+const Main = ({ onUserState, isLogin, allProduct }) => {
     const [searchWord, setSearchWord] = useState("");
     const [type, setType] = useState(FLORAL);
 
@@ -44,7 +44,7 @@ const Main = ({ onUserState, isLogin }) => {
     return(
         <div className="Main">
                 <div className={styles.head_container}>
-                    <PerfumeList getType2={getType2}/>
+                    <PerfumeList getType2={getType2} allProduct={allProduct}/>
                     <img className={styles.main_img} src={type} alt="main"/>
                     <div className={styles.login_box}>
                     <Link to={"/editmemberinfo"} className={styles.text}>회원정보수정</Link>
@@ -63,7 +63,9 @@ const Main = ({ onUserState, isLogin }) => {
                             <> 
                                 <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
                                 <p className={styles.text}>/</p>
-                                <button type="button" className={styles.text} onClick={handleLogout}>마이페이지</button>
+                                <Link to={"/mypage"}>
+                                <button type="button" className={styles.text}>마이페이지</button>
+                                </Link>
                             </>
                         )}
                         {/* 비로그인 */}
