@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
-import UserLogin from '../Components/UserLogin';
+import UserLogin from '../Components/User/UserLogin';
 
 const User = ({ requestPost, onUserState }) => {
   const navigate = useNavigate();

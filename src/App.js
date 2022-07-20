@@ -24,14 +24,15 @@ import UserInfoEdit from './pages/UserInfoEdit';
 
 function App() {
   const [userData, setUserData] = useState([]);
+
   // 로그인 상태 관리
   const [isLogin, setIsLogin] = useState(false);
-  const [editData, setEditData] = useState([]);
+  const [editData, setEditData] = useState({});
   const [findPw, setFindPw] = useState(false);
   const [resetPw, setResetPw] = useState(false);
   const [shippingInfo, setShippingInfo] = useState(false);
   const [orderInfo, setOrderInfo] = useState(false);
-  //상품정보
+  // 상품정보
   const [product, setProduct] = useState({
     image_link:{sub_images:[], main_image:''},
     review:[],
@@ -61,7 +62,8 @@ function App() {
       throw new Error(err);
     }
   }
-  //Get
+
+  // GET
   const requestGet = async (url) => {
     try {
       const options = {
@@ -72,6 +74,7 @@ function App() {
       const res = req.data;
       return req;
       setProduct(() => res);
+      return req;
     } catch (err) {
       console.log(err);
       throw new Error(err);
@@ -88,8 +91,8 @@ function App() {
   }
 
   // 상품 수정
-  const onEditProduct = () => {
-    // setEditData(향수이름, 가격, 상품정보, 성분...)
+  const onEditProduct = (data) => {
+    setEditData(data)
   }
 
   return (
@@ -109,9 +112,9 @@ function App() {
               <Route exact path="/order-non-member" element={<OrderNonMember />}/>
               <Route exact path="/order-shipping-info" element={<OrderShipping />}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
-              <Route exact path="/product-management" element={<ProductManagement onEditProduct={onEditProduct}/>}/>
-              <Route exact path="/product-add" element={<AdminAddProduct />}/>
-              <Route exact path="/product-edit" element={<AdminEditProduct editData={editData} />}/>
+              <Route exact path="/management-product" element={<ProductManagement onEditProduct={onEditProduct} requestGet={requestGet} />}/>
+              <Route exact path="/add-product" element={<AdminAddProduct />}/>
+              <Route exact path="/edit-product" element={<AdminEditProduct editData={editData} />}/>
           </Routes>
       </div>
     </BrowserRouter>
