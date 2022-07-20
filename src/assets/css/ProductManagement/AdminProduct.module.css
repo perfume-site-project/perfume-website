@@ -9,24 +9,24 @@
   border: 0;
 }
 
-.addProduct {
+.adminProduct {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.addProduct .container {
+.adminProduct .container {
   display: flex;
   flex-direction: column;
   width: 610px;
 }
 
-.addProduct .label {
+.adminProduct .label {
   margin-bottom: 6px;
 }
 
-.addProduct .input {
+.adminProduct .input {
   box-sizing: border-box;
   outline: none;
   padding: 12px;
@@ -36,12 +36,12 @@
   margin-bottom: 12px;
 }
 
-.addProduct input[type="file"] {
+.adminProduct input[type="file"] {
   margin-left: 10px;
   margin-bottom: 12px;
 }
 
-.addProduct .textarea {
+.adminProduct .textarea {
   font-family: inherit;
   font-size: inherit;
   outline: none;
@@ -52,7 +52,7 @@
   margin-bottom: 12px;
 }
 
-.addProduct .button {
+.adminProduct .button {
   font-size: 18px;
   width: 100%;
   box-sizing: border-box;
@@ -63,7 +63,7 @@
   transition: all ease 0.3s;
 }
 
-.addProduct .button:hover {
+.adminProduct .button:hover {
   background-color: #6A5E5E;
   color: #fff;
 }

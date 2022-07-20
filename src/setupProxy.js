@@ -7,6 +7,11 @@ const api = {
   info: "/users/info",
   purchase: "/users/purchase",
   upload: "/product/upload"
+  update: "/product/update",
+  product: "/product",
+  review: "/product/review",
+  allProduct: "/allproduct",
+  productDelete: "/product/delete"
 }
 
 module.exports = function (app) {

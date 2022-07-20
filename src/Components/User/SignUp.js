@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from '../assets/css/FindId.module.css'
+import styles from '../../assets/css/User/FindId.module.css'
 
 const SignUp = () => {
   return (
