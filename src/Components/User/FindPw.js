@@ -28,7 +28,7 @@ const FindPw = ({ requestPost, findPw }) => {
     }
   }
 
-  const handleFindPw = () => {
+  const handleFindPw = async () => {
     if(state.email.length < 1) {
       alert('이메일을 입력해주세요.');
       userEmailInput.current.focus(); 
@@ -36,12 +36,11 @@ const FindPw = ({ requestPost, findPw }) => {
     }
 
     const url = '/users/findpw';
-    requestPost(url, state);
-    if(findPw === true) {
-      navigate('/', {replace: true});
-      // 비밀번호 재설정 경로로 변경
-    } else {
+    const res = await requestPost(url, state);
+    if(res.data.password === undefined) {
       alert('회원 정보가 없습니다.');
+    } else {
+      navigate('/reset-pw', {replace: true});
     }
   }
 
