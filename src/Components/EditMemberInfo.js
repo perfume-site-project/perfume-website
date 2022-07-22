@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from '../../assets/css/User/FindId.module.css'
+import styles from '../assets/css/EditMemberInfo.module.css'
 
-const SignUp = ({requestPost}) => {
+const EditMemberInfo = ({requestPost, requestGet}) => {
+    const [nowEmail, setEmail] = useState();
+    const [nowContact, setContact] = useState();
     const [check, setCheck] = useState(true);
     const [state, setState] = useState({
         id: '',
@@ -14,16 +16,17 @@ const SignUp = ({requestPost}) => {
         phone_number: '',
         birthDate: '',
     });
-    //const [checkbox, setCheckbox] = useState();
 
     const handleChangeState = (e) => {
         const target = e.target;
-        setState(
+        if(target.value != ''){
+          setState(
             {
                 ...state,
                 [target.name]: target.value,
             }
         );
+        }
     }
 
     const handleDomainSelect = (e) => {
@@ -36,34 +39,33 @@ const SignUp = ({requestPost}) => {
         );
     }
 
-    const handleSignUp = () => {
-       checkBlank(); //빈칸 체크
+    const handleUpdate = () => {
        checkPassword(); //비밀번호 확인 체크
        if(!check) return;
-       console.log(state.id);
        console.log(state.email);
-       const url = '/users/register';
-       requestPost(url, state);
+       console.log(state.password);
+       const url = '/users/update';
+      requestPost(url, state);
     }
 
     const checkPassword = () => {
         const pw = state.password;
         const confirmPw = state.confirmPasswd;
-        if(pw === '' || pw !== confirmPw){
+        if(pw !== confirmPw){
             alert('비밀번호가 일치하지 않습니다.');
             setCheck(false);
         }
     }
 
-    const checkBlank = () => {
-      for(const key in state){
-          if(state[key] === ""){
-              alert('모든 칸을 채워주세요.');
-              setCheck(false);
-              break;
-          }
-      }
-  }
+  //   const checkBlank = () => {
+  //     for(const key in state){
+  //         if(state[key] === ""){
+  //             alert('모든 칸을 채워주세요.');
+  //             setCheck(false);
+  //             break;
+  //         }
+  //     }
+  // }
 
     useEffect(()=>{
       setState({
@@ -72,15 +74,40 @@ const SignUp = ({requestPost}) => {
       })
       },[state.id, state.domain])
 
+      
+    const getInfo = async() => {
+      const url = "/users/info";
+      const req = await requestGet(url);
+      console.log(req);
+      setEmail(req.data.email);
+      setContact(req.data.phone_number);
+      console.log(req.data.email);
+   }
+
+   useEffect(()=>{
+    getInfo();
+    console.log(state);  
+  },[])
 
   return (
-    <section className={styles.findId}>
+    <section className={styles.EditMemberInfo}>
       <h1 className={styles.srOnly}>아이디</h1>
       <div className={styles.container}>
+      <label 
+          className={styles.label}
+        >
+            현재 아이디
+        </label>
+        <input
+          className={styles.input}
+          type="text" id="userId"
+          name="id"
+          value={nowEmail}
+        />
         <label 
           className={styles.label}
         >
-            아이디
+            새 아이디
         </label>
         <div>
         <input
@@ -114,16 +141,16 @@ const SignUp = ({requestPost}) => {
             <option value="">직접 입력</option>
         </select>
         </div>
-        
         <label 
           className={styles.label}
         >
-            비밀번호
+            새 비밀번호
         </label>
         <input
           className={styles.input}
           type="password"
           name="password"
+          autocomplete="no"
           value={state.password}
           onChange={handleChangeState}
         />
@@ -142,62 +169,30 @@ const SignUp = ({requestPost}) => {
         <label 
           className={styles.label}
         >
-            이름
-        </label>
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          value={state.name}
-          onChange={handleChangeState}
-        />
-        <label 
-          className={styles.label}
-        >
             연락처
         </label>
         <input
           className={styles.input}
           type="text"
           name="phone_number"
-          value={state.phone_number}
+          //value={state.phone_number}
+          value={nowContact}
           onChange={handleChangeState}
         />
-        <label 
-          className={styles.label}
-        >
-            생년월일
-        </label>
-        <input
-          className={styles.input}
-          type="text"
-          name="birthDate"
-          value={state.birthDate}
-          onChange={handleChangeState}
-        />
-        <form>
-        <input type='checkbox' name='all_checked' value='all_agree' />모두 동의합니다.
+
         <br></br>
-        <input type='checkbox' name='age_checked' value='age_check' />(필수) 본인은 만 14세 미만이 아닙니다.
-        <br></br>
-        <input type='checkbox' name='agree_checked' value='agree_check' />(필수) 이용약관에 동의합니다.
-        <br></br>
-        <input type='checkbox' name='personal_checked' value='personal_check' />(필수) 개인정보처리방침에 동의합니다.
-        <br></br>
-        <input type='checkbox' name='marketing_checked' value='marketing_agree' />(선택) 시향하다에서 제공하는 소식을 SMS, 이메일로 수신하겠습니다.
-        <br></br>
-        </form>
-        <br></br>
+        <div>
         <button 
           type="button"
           className={styles.button}
-          onClick={handleSignUp}
+          onClick={handleUpdate}
         >
-          회원가입
+          수정
         </button>
+        </div>
       </div>
     </section>
   );
 }
 
-export default SignUp
+export default EditMemberInfo

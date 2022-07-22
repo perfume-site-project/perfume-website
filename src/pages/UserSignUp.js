@@ -6,15 +6,15 @@ import Wrapper from '../Components/Wrapper';
 import Header from '../Components/Header';
 import SignUp from '../Components/User/SignUp';
 
-const User = () => {
+const UserSignUp = ({requestPost}) => {
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<SignUp />} />
+        <Route exact path='/' element={<SignUp requestPost={requestPost} />} />
       </Routes>
     </Wrapper>
   );
 }
 
-export default User
+export default UserSignUp

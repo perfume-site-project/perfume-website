@@ -9,24 +9,24 @@
   border: 0;
 }
 
-.findId {
+.EditMemberInfo {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.findId .container {
+.EditMemberInfo .container {
   display: flex;
   flex-direction: column;
   width: 610px;
 }
 
-.findId .label {
+.EditMemberInfo .label {
   margin-bottom: 6px;
 }
 
-.findId .input {
+.EditMemberInfo .input {
   box-sizing: border-box;
   outline: none;
   padding: 12px;
@@ -35,11 +35,11 @@
   margin-bottom: 12px;
 }
 
-.findId .description {
+.EditMemberInfo .description {
   margin: 0 0 24px 0;
 }
 
-.findId .button {
+.EditMemberInfo .button {
   font-size: 18px;
   width: 100%;
   box-sizing: border-box;
@@ -50,7 +50,7 @@
   transition: all ease 0.3s;
 }
 
-.findId .button:hover {
+.EditMemberInfo .button:hover {
   background-color: #6A5E5E;
   color: #fff;
 }

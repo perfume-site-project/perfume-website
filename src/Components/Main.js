@@ -47,6 +47,7 @@ const Main = ({ onUserState, isLogin, allProduct }) => {
                     <PerfumeList getType2={getType2} allProduct={allProduct}/>
                     <img className={styles.main_img} src={type} alt="main"/>
                     <div className={styles.login_box}>
+                    <Link to={"/editmemberinfo"} className={styles.text}>회원정보수정</Link>
                         {/* 관리자 로그인 */}
                         {isLogin === true && 
                         sessionStorage.getItem('user-email') === 'admin@naver.com' && (
@@ -62,7 +63,9 @@ const Main = ({ onUserState, isLogin, allProduct }) => {
                             <> 
                                 <button type="button" className={styles.text} onClick={handleLogout}>로그아웃</button>
                                 <p className={styles.text}>/</p>
-                                <button type="button" className={styles.text} onClick={handleLogout}>마이페이지</button>
+                                <Link to={"/mypage"}>
+                                <button type="button" className={styles.text}>마이페이지</button>
+                                </Link>
                             </>
                         )}
                         {/* 비로그인 */}
