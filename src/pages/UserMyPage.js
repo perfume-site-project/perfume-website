@@ -1,7 +1,7 @@
 import {Routes,Route} from 'react-router-dom';
-import Wrapper from '../Components/Wrapper';
-import Header from '../Components/Header';
-import MyPage from '../Components/MyPage';
+import Wrapper from '../Components/Layout/Wrapper';
+import Header from '../Components/Layout/Header';
+import MyPage from '../Components/MyPage/MyPage';
 
 const UserMyPage = ({requestGet}) => {
 
