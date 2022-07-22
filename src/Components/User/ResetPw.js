@@ -1,7 +1,7 @@
 import styles from '../../assets/css/User/ResetPw.module.css';
 import { useState, useRef } from 'react';
 
-const ResetPw = () => {
+const ResetPw = ({ resetPw }) => {
   const passwordInput = useRef()
   const newPasswordInput = useRef()
 
