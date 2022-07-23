@@ -72,7 +72,7 @@ const FindPw = ({ requestPost, onResetUserPw }) => {
       alert('연락처를 입력해주세요.');
       userPhoneNumberInput.current.focus(); 
     }
-
+    
     handleChangePhoneNumber();
 
     const url = '/users/findpw';

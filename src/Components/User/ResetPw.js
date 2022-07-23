@@ -1,5 +1,5 @@
 import styles from '../../assets/css/User/ResetPw.module.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ResetPw = ({ requestPost, resetPw }) => {
@@ -12,6 +12,13 @@ const ResetPw = ({ requestPost, resetPw }) => {
     beforePassword: '',
   });
   const [state, setState] = useState({})
+
+  useEffect(() => {
+    if(Object.keys(resetPw).length === 0) {
+      alert('비밀번호 찾기를 먼저 진행해주세요.')
+      navigate('/find-pw', {replace: true});
+    }
+  }, [])
 
   const handleChangeBeforePassword = (e) => {
     const target = e.target;
