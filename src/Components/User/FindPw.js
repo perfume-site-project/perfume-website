@@ -74,14 +74,15 @@ const FindPw = ({ requestPost, onResetUserPw }) => {
     }
 
     handleChangePhoneNumber();
-    setIsCertification(true)
 
     const url = '/users/findpw';
     const res = await requestPost(url, state);
+    console.log(res)
     if(res.data.success === false) {
       alert('회원 정보가 없습니다.');
       setIsCertification(false)
     } else {
+      alert('인증번호를 보냈습니다.');
       setIsCertification(true)
     }
   }
@@ -92,8 +93,8 @@ const FindPw = ({ requestPost, onResetUserPw }) => {
       userCodeInput.current.focus(); 
     }
 
-    onResetUserPw(certification)
     const url = '/users/findpwcode';
+    console.log(certification)
     const res = await requestPost(url, certification);
     if(res.data.success === false) {
       alert('인증번호가 일치하지 않습니다.');

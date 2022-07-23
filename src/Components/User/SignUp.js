@@ -12,7 +12,7 @@ const SignUp = ({requestPost}) => {
         confirmPasswd: '',
         name: '',
         phone_number: '',
-        birthDate: '',
+        birthday: '',
     });
     //const [checkbox, setCheckbox] = useState();
 
@@ -171,8 +171,8 @@ const SignUp = ({requestPost}) => {
         <input
           className={styles.input}
           type="text"
-          name="birthDate"
-          value={state.birthDate}
+          name="birthday"
+          value={state.birthday}
           onChange={handleChangeState}
         />
         <form>
