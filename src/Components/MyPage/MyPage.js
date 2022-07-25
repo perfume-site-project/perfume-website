@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-import styles from '../assets/css/MyPage.module.css'
+import styles from '../../assets/css/Mypage/MyPage.module.css'
 
 const MyPage = ({requestGet}) => {
     
@@ -66,7 +66,7 @@ const MyPage = ({requestGet}) => {
                 <h1>장바구니</h1>
                 <table className={styles.table}>
                     <tr>
-                        <td rowSpan={2}><img className={styles.image} src={require('../assets/images/logo.png')}></img></td>
+                        <td rowSpan={2}><img className={styles.image} src={require('../../assets/images/logo.png')}></img></td>
                         <td><h2>상품명1</h2></td>
                         <td className={styles.font} rowSpan={2}><span>18,000원</span></td>
                     </tr>

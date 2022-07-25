@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from '../assets/css/Order.module.css';
+import styles from '../assets/css/Order/Order.module.css';
 import {
   BrowserRouter,
   Routes,
   Route
 } from 'react-router-dom';
-import Wrapper from '../Components/Wrapper';
-import Header from '../Components/Header';
-import Cart from '../Components/Cart';
-import OrderLogin from '../Components/OrderLogin';
+import Wrapper from '../Components/Layout/Wrapper';
+import Header from '../Components/Layout/Header';
+import Cart from '../Components/Order/Cart';
+import OrderLogin from '../Components/Order/OrderLogin';
 
 const Order = () => {
   return (

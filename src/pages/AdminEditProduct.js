@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Wrapper from "../Components/Wrapper";
-import Header from "../Components/Header";
+import Wrapper from "../Components/Layout/Wrapper";
+import Header from "../Components/Layout/Header";
 import EditProduct from "../Components/ProductManagement/EditProduct";
 
 const AdminEditProduct = ({ editData }) => {

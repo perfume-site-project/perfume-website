@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../assets/css/OrderPayment.module.css';
+import styles from '../../assets/css/Order/OrderPayment.module.css';
 
 const OrderPayment = () => {
   const [checkedButtons, setCheckedButtons] = useState([]);

@@ -1,12 +1,12 @@
-import styles from '../assets/css/PerfumeList.module.css'
+import styles from '../../assets/css/Main/PerfumeList.module.css'
 import ListElement from "./ListElement";
 import {Link} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 
 
-const PerfumeList = ({getType2, allProduct}) => {
+const PerfumeList = ({allProduct, setType}) => {
     const allProductNames = allProduct.map(function(a) {return a.name;});
-    const allProductTypes = allProduct.map(function(a) {return a.type;});
+    const allProductIntros = allProduct.map(function(a) {return a.image_link.intro_image;});
     const numOfProduct = allProduct.length;
 
     const [state, setState] = useState({
@@ -15,10 +15,6 @@ const PerfumeList = ({getType2, allProduct}) => {
         product: [1, 2, 3, 0]
     });
 
-    const getType = (text) => {
-        getType2(text);
-    }
-
     let curr = 1;
     const productList = useRef(null);
     const handleWheel = (event) => {
@@ -26,11 +22,12 @@ const PerfumeList = ({getType2, allProduct}) => {
         const direction = event.deltaY > 0 ? 'down' : 'up'; 
         if (direction == 'down' && curr < numOfProduct){      
             curr += 1;    
+            setState({...state, num: curr});
         }
         else if(direction == 'up' && curr > 1){
             curr -= 1;
+            setState({...state, num: curr});
         }
-        setState({...state, num: curr});
     }
 
     const makeList = () => {
@@ -88,23 +85,32 @@ const PerfumeList = ({getType2, allProduct}) => {
             })
         }
     }
+    const showIntroImage = () => {
+        const index = state.loc.findIndex(e=>e==4);
+        const currProduct = state.product[index];
+        setType(allProductIntros[currProduct-1]);
+    }
 
     useEffect(()=>{
         productList.current.addEventListener('wheel', handleWheel);
+        showIntroImage();
     }, [allProduct]);
     useEffect(()=>{
-        makeList();
-    }, [state.num])
+        makeList();     
+    }, [state.num]);
+    useEffect(()=>{
+        showIntroImage();
+        console.log(state);
+    },[state.loc])
 
     return (
         <div className={styles.list_div} ref={productList}>            
             {state.product.map((element, idx) => {      
                 const name =  element!==0 ? allProductNames[element-1] : '';         
-                const type = element!==0 ? allProductTypes[element-1] : '';
                 const exist = element!==0 ? true : false;
                 return(
                     <Link to={exist?"/"+name:"#"} className={exist?styles.text:styles.nolink}>
-                        <ListElement getType={getType} id={idx+1} type={exist?type:""} loc={state.loc[idx]} key={idx}/>
+                        <ListElement id={idx+1} name={exist?name:""} loc={state.loc[idx]} key={idx}/>
                     </Link>
                 )               
             })}

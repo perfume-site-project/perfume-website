@@ -1,7 +1,7 @@
 import styles from '../../assets/css/User/ResetPw.module.css';
 import { useState, useRef } from 'react';
 
-const ResetPw = ({ resetPw }) => {
+const ResetPw = () => {
   const passwordInput = useRef()
   const newPasswordInput = useRef()
 
@@ -35,7 +35,6 @@ const ResetPw = ({ resetPw }) => {
 
     if(state.password !== state.newPassword) {
       alert('비밀번호가 서로 일치하지 않습니다.');
-      return;
     } else {
       console.log(state)
       // resetPw()

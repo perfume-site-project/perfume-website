@@ -1,38 +1,15 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import styles from '../assets/css/Main.module.css'
-import main_logo from "../assets/images/main_logo.png";
+import styles from '../../assets/css/Main/Main.module.css'
+import main_logo from "../../assets/images/main_logo.png";
 import PerfumeList from "./PerfumeList";
 
-import WOODY from "../assets/images/WOODY.gif";
-import FRUITY from "../assets/images/FRUITY.gif";
-import FLORAL from "../assets/images/FLORAL.gif";
-import CITRUS from "../assets/images/CITRUS.gif";
-import GREEN from "../assets/images/GREEN.gif";
+import FLORAL from "../../assets/images/FLORAL.gif";
 
 const Main = ({ onUserState, isLogin, allProduct }) => {
     const [searchWord, setSearchWord] = useState("");
     const [type, setType] = useState(FLORAL);
-
-    const getType2 = (text) => {
-        switch (text) {
-            case 'WOODY' :
-                setType(WOODY)
-                break;
-            case 'FRUITY' : 
-                setType(FRUITY)
-                break;
-            case 'CITRUS' : 
-                setType(CITRUS)
-                break;
-            case 'GREEN' : 
-                setType(GREEN)
-                break;
-            default : 
-                setType(FLORAL)
-        }
-    }
     
     const handleLogout = () => {
         if(window.confirm('로그아웃 하시겠습니까?')) {
@@ -44,8 +21,8 @@ const Main = ({ onUserState, isLogin, allProduct }) => {
     return(
         <div className="Main">
                 <div className={styles.head_container}>
-                    <PerfumeList getType2={getType2} allProduct={allProduct}/>
-                    <img className={styles.main_img} src={type} alt="main"/>
+                    <PerfumeList setType={setType} allProduct={allProduct}/>
+                    <img className={styles.main_img} src={type || FLORAL} alt="main"/>
                     <div className={styles.login_box}>
                     <Link to={"/editmemberinfo"} className={styles.text}>회원정보수정</Link>
                         {/* 관리자 로그인 */}

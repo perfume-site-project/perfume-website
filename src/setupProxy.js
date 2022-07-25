@@ -6,6 +6,7 @@ const api = {
   findPw: "/users/findpw",
   info: "/users/info",
   purchase: "/users/purchase",
+  register: "/users/register",
   upload: "/product/upload",
   update: "/product/update",
   product: "/product",
