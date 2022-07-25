@@ -15,7 +15,7 @@ const ProductList = ({ onEditProduct, requestGet }) => {
 
   useEffect(() => {
     getData();
-  });
+  },[]);
 
   const onEdit = async (id) => {
     const url = "/product?id=" + id;
@@ -30,6 +30,7 @@ const ProductList = ({ onEditProduct, requestGet }) => {
     });
 
     if (res.data.success === true) {
+      getData();
       alert("삭제가 완료되었습니다.");
     } else {
       alert("삭제에 실패하였습니다.");
