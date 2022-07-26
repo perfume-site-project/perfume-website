@@ -1,43 +1,76 @@
 import styles from '../../assets/css/User/ResetPw.module.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ResetPw = () => {
+const ResetPw = ({ requestPost, resetPw }) => {
+  const navigate = useNavigate();
+  
   const passwordInput = useRef()
   const newPasswordInput = useRef()
 
-  const [state, setState] = useState({
-    password: '',
-    newPassword: '',
-  })
+  const [password, setPassword] = useState({
+    beforePassword: '',
+  });
+  const [state, setState] = useState({})
 
-  const handleStateChange = (e) => {
+  useEffect(() => {
+    if(Object.keys(resetPw).length === 0) {
+      alert('비밀번호 찾기를 먼저 진행해주세요.')
+      navigate('/find-pw', {replace: true});
+    }
+  }, [])
+
+  const handleChangeBeforePassword = (e) => {
     const target = e.target;
-    setState(
+    setPassword(
       {
-        ...state,
+        ...password,
         [target.name]: target.value,
       }
     )
   }
+
+  const handleChangeNewPassword = (e) => {
+    const target = e.target;
+    setState(
+      {
+        ...resetPw,
+        password: target.value,
+      }
+    )
+  }
+
+  const handleKeyUp = () => {
+    if(window.event.keyCode === 13) {
+      handleSubmit();
+    }
+  }
   
-  const handleSubmit = () => {
-    if(state.password.length < 1) {
+  const handleSubmit = async () => {
+    if(password.beforePassword.length < 1) {
       alert('비밀번호를 입력해주세요.')
       passwordInput.current.focus()
       return;
     }
 
-    if(state.newPassword.length < 1) {
+    if(state.password.length < 1) {
       alert('새로운 비밀번호를 입력해주세요.')
       newPasswordInput.current.focus()
       return;
     }
 
-    if(state.password !== state.newPassword) {
+    if(password.beforePassword !== state.password) {
       alert('비밀번호가 서로 일치하지 않습니다.');
+      return;
+    }
+
+    const url = '/users/resetpw';
+    const res = await requestPost(url, state);
+    if(res.data.success === false) {
+      alert('비밀번호 재설정에 실패하였습니다.');
     } else {
-      console.log(state)
-      // resetPw()
+      alert('비밀번호 재설정이 완료되었습니다.');
+      navigate('/', {replace: true});
     }
   }
 
@@ -46,7 +79,7 @@ const ResetPw = () => {
       <h1 className={styles.srOnly}>비밀번호 재설정</h1>
       <div className={styles.container}>
         <label 
-          htmlFor="password" 
+          htmlFor="beforePassword" 
           className={styles.label}
         >
           기존 비밀번호
@@ -55,10 +88,11 @@ const ResetPw = () => {
           type="password" 
           ref={passwordInput}
           className={styles.input}
-          id="Password" 
-          name="password" 
-          value={state.password} 
-          onChange={handleStateChange} 
+          id="beforePassword" 
+          name="beforePassword" 
+          value={password.beforePassword}
+          onKeyUp={handleKeyUp}
+          onChange={handleChangeBeforePassword} 
         />
         <label 
           htmlFor="password" 
@@ -70,10 +104,11 @@ const ResetPw = () => {
           type="password" 
           ref={newPasswordInput}
           className={styles.input}
-          id="newPassword" 
-          name="newPassword" 
+          id="password" 
+          name="password" 
           value={state.newPassword} 
-          onChange={handleStateChange} 
+          onKeyUp={handleKeyUp}
+          onChange={handleChangeNewPassword} 
         />
         <button 
           type="button"
