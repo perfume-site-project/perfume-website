@@ -173,7 +173,7 @@ const SignUp = ({requestPost}) => {
           className={styles.input}
           type="text"
           name="birthday"
-          value={state.birthDate}
+          value={state.birthday}
           onChange={handleChangeState}
         />
         <form>

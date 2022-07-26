@@ -22,6 +22,10 @@
   width: 610px;
 }
 
+.findPw .container:last-child {
+  margin-top: 24px;
+}
+
 .findPw .label {
   margin-bottom: 6px;
 }

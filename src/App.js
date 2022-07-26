@@ -32,8 +32,7 @@ function App() {
   const [info2, setInfo2] = useState({});
   const [cart, setCart] = useState({});
   const [resInfo, setResInfo] = useState({});
-
-  // 상품정보
+  const [resetPw, setResetPw] = useState({});
   const [product, setProduct] = useState({
     image_link:{sub_images:[], main_image:''},
     review:[],
@@ -110,6 +109,11 @@ function App() {
     }
   }
 
+  // 비밀번호 찾기
+  const onResetUserPw = (data) => {
+    setResetPw(data)
+  }
+
   const saveInfo1 = (name, email, phone_number) => {
     setInfo1(
       {
@@ -156,8 +160,8 @@ function App() {
               <Route exact path="/" element={<Main onUserState={onUserState} isLogin={isLogin} allProduct={allProduct}/>}/>
               <Route exact path="/user-login" element={<User requestPost={requestPost} onUserState={onUserState} />} />
               <Route exact path="/find-id" element={<UserFindId requestPost={requestPost} />} />
-              <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} />} />
-              <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} />} />
+              <Route exact path="/find-pw" element={<UserFindPw requestPost={requestPost} onResetUserPw={onResetUserPw} />} />
+              <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} resetPw={resetPw} />} />
               <Route exact path="/sign-up" element={<UserSignUp requestPost={requestPost} />}/>
               <Route exact path="/editmemberinfo" element={<UserInfoEdit requestPost={requestPost} requestGet={requestGet}/>}/>
               <Route exact path="/:name" element={<Product requestPost={requestPost} requestGet={requestGet} product={product}/>}/>
