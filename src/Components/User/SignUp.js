@@ -42,6 +42,7 @@ const SignUp = ({requestPost}) => {
        if(!check) return;
        console.log(state.id);
        console.log(state.email);
+       console.log(state);
        const url = '/users/register';
        requestPost(url, state);
     }

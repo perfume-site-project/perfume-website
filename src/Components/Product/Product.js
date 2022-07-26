@@ -48,6 +48,10 @@ const Product = ({requestGet, requestPost, product}) => {
         }
     }, []);
 
+    useEffect(()=>{
+        fetchProduct();
+    }, [showModal]);
+
     const checkLogin = async () => {
         if(sessionStorage.getItem("user-email") !== null){
             navigate('/order-shipping-info', {replace: true});

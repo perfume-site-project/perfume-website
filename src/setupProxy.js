@@ -9,6 +9,7 @@ const api = {
   resetPw: "/users/resetpw",
   info: "/users/info",
   purchase: "/users/purchase",
+  register: "/users/register",
   upload: "/product/upload",
   update: "/product/update",
   product: "/product",
