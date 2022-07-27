@@ -2,10 +2,14 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const api = {
   login: "/users/login",
+  register: "/users/register",
   findId: "/users/findid",
   findPw: "/users/findpw",
+  findPwCode: "/users/findpwcode",
+  resetPw: "/users/resetpw",
   info: "/users/info",
   purchase: "/users/purchase",
+  register: "/users/register",
   upload: "/product/upload",
   update: "/product/update",
   product: "/product",
