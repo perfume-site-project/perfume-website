@@ -1,9 +1,9 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import styles from '../assets/css/Order/Order.module.css';
 import {
-  BrowserRouter,
   Routes,
-  Route
+  Route,
+  useNavigate,
 } from 'react-router-dom';
 import Wrapper from '../Components/Layout/Wrapper';
 import Header from '../Components/Layout/Header';
@@ -11,6 +11,15 @@ import Cart from '../Components/Order/Cart';
 import OrderLogin from '../Components/Order/OrderLogin';
 
 const Order = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if(sessionStorage.getItem('user-email') !== '') {
+      alert('이미 로그인 상태입니다.');
+      navigate('/', {replace: true})
+    }
+  })
+
   return (
     <Wrapper>
       <Header />

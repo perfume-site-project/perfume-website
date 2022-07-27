@@ -45,7 +45,7 @@ const OrderInfo = ({orderInfo, saveInfo1}) => {
     )
   }
 
-  const handleDomain = (e) => {
+  const handleDomainSelect = (e) => {
     const target = e.target;
     setEmail(
       {
@@ -127,7 +127,7 @@ const OrderInfo = ({orderInfo, saveInfo1}) => {
               value={email.last}
               onChange={handleEmailState}
             />
-            <select onChange={handleDomain} className={styles.select}>
+            <select onChange={handleDomainSelect} className={styles.select}>
               <option value="default" selected="selected" disabled>옵션 선택</option>
               <option value="naver.com">naver.com</option>
               <option value="gmail.com">gmail.com</option>
@@ -154,7 +154,7 @@ const OrderInfo = ({orderInfo, saveInfo1}) => {
             type="text"
             className={styles.phoneNumber}
             name="phone_number"
-            placeholder="000-0000-0000"
+            placeholder="'-' 없이 숫자만 입력"
             value={state.phone_number}
             onChange={handleChangeState}
           />

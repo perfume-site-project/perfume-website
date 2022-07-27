@@ -3,13 +3,13 @@ import Wrapper from '../Components/Layout/Wrapper';
 import Header from '../Components/Layout/Header';
 import MyPage from '../Components/MyPage/MyPage';
 
-const UserMyPage = ({requestGet}) => {
+const UserMyPage = ({ requestPost, requestGet}) => {
 
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<MyPage requestGet={requestGet}/>} />
+        <Route exact path='/' element={<MyPage requestPost={requestPost} requestGet={requestGet}/>} />
       </Routes>
     </Wrapper>
   );
