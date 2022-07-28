@@ -1,7 +1,9 @@
 import React, { useState, } from 'react';
+import { useNavigate, Link } from "react-router-dom";
 import styles from '../../assets/css/Mypage/MyPage.module.css'
 
-const MyPage = ({requestGet}) => {
+const MyPage = ({requestPost, requestGet}) => {
+    const navigate = useNavigate();
     
     const [state, setState] = useState({
         name: '',
@@ -12,19 +14,35 @@ const MyPage = ({requestGet}) => {
     });
 
     const userInfo = async () => {
-        const url = 'users/info';
-        const req = await requestGet(url);
+        const infoUrl = 'users/info';
+        const infoReq = await requestGet(infoUrl);
         setState({
             ...state,
-            name: req.data.name,
-            email: req.data.email,
-            birthday: req.data.birthday,
-            address: req.data.address,
-            phone_number: req.data.phone_number,
+            name: infoReq.data.name,
+            email: infoReq.data.email,
+            birthday: infoReq.data.birthday.substr(0,10),
+            address: infoReq.data.address,
+            phone_number: infoReq.data.phone_number,
         });
     }
 
     userInfo();
+
+    const handleDelete = async () => {
+        if(window.confirm("회원 탈퇴를 진행하시겠습니까?")){
+            const delUrl = 'users/delete';
+            const delReq = await requestPost(delUrl);
+            if(delReq.data.success){
+                sessionStorage.removeItem('user-email');
+                alert("회원 탈퇴가 완료되었습니다.");
+                navigate('/', {replace: true});
+            }else{
+                alert("오류가 발생하였습니다. 다시 시도해주세요.");
+            }
+        }else{
+            alert("취소되었습니다.");
+        }
+    }
 
     return(
         <section className={styles.myPage}>
@@ -55,8 +73,10 @@ const MyPage = ({requestGet}) => {
                     </tbody>
                 </table>
                 <br></br>
-                <button className={styles.button}>회원 정보 수정</button>
-                <button className={styles.button}>회원 탈퇴</button>
+                <Link to={"/editmemberinfo"}>
+                    <button className={styles.button}>회원 정보 수정</button>
+                </Link>
+                <button className={styles.button} onClick={handleDelete}>회원 탈퇴</button>
                 <br></br>
                 <br></br>
                 <br></br>

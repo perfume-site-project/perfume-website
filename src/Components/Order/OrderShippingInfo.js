@@ -81,7 +81,7 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
             type="text"
             className={styles.input}
             name="receiver_phone_number"
-            placeholder='010-0000-0000'
+            placeholder="'-' 없이 숫자만 입력"
             value={state.receiver_phone_number}
             onChange={handleChangeState}
           />

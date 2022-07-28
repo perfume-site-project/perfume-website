@@ -92,7 +92,7 @@ function App() {
       const res = req.data;
       !all && setProduct(() => res);
       all && setAllProduct(() => res);
-      console.log(res);
+      //console.log(res);
       return req;
     } catch (err) {
       console.log(err);
@@ -170,7 +170,7 @@ function App() {
               <Route exact path="/order-non-member" element={<OrderNonMember orderInfo={orderInfo} saveInfo1={saveInfo1}/>} />
               <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} saveInfo2={saveInfo2} resultInfo={resultInfo}/>}/>
               <Route exact path="/order-pay" element={<OrderPaying />}/>
-              <Route exact path="/mypage" element={<UserMyPage requestGet={requestGet}/>}/>
+              <Route exact path="/mypage" element={<UserMyPage requestPost={requestPost} requestGet={requestGet}/>}/>
               <Route exact path="/management-product" element={<ProductManagement onEditProduct={onEditProduct} requestGet={requestGet} />}/>
               <Route exact path="/add-product" element={<AdminAddProduct />}/>
               <Route exact path="/edit-product" element={<AdminEditProduct editData={editData} />}/>
