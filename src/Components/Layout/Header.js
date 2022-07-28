@@ -14,7 +14,7 @@ const Header = (props) => {
           <ul className={styles.category}>
             {props.category &&
                 props.category.map((items, idx) => (
-                <div id={"item"+idx} style={{height: props.heights[idx], margin: '50px'}}>
+                <div id={"item"+idx} style={{height: props.heights[idx], margin: '50px'}} key={idx}>
                     <li id={items} >{items}</li>
                 </div>
             ))}

@@ -42,8 +42,6 @@ const EditMemberInfo = ({requestPost, requestGet}) => {
     const handleUpdate = () => {
        checkPassword(); //비밀번호 확인 체크
        if(!check) return;
-       console.log(state.email);
-       console.log(state.password);
        const url = '/users/update';
       requestPost(url, state);
     }
@@ -78,15 +76,12 @@ const EditMemberInfo = ({requestPost, requestGet}) => {
     const getInfo = async() => {
       const url = "/users/info";
       const req = await requestGet(url);
-      console.log(req);
       setEmail(req.data.email);
       setContact(req.data.phone_number);
-      console.log(req.data.email);
    }
 
    useEffect(()=>{
     getInfo();
-    console.log(state);  
   },[])
 
   return (

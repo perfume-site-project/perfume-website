@@ -73,7 +73,6 @@ function App() {
       const res = req.data;
       // 로그인
       res.loginSuccess === true ? setIsLogin(true) : setIsLogin(false)
-      console.log(res);
       return req;
     } catch (err) {
       console.log(err);
