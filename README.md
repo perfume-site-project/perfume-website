@@ -61,18 +61,22 @@
 
 * Node.js
 <img src="https://user-images.githubusercontent.com/33623123/181490653-41c4ad6b-7fdc-4ab8-ae76-8de79edfc87e.svg" width="282px">
+
 > 자바스크립트 런타임이다. 주로 서버 사이드 개발에 사용된다.
 
 * Express.js
 <img src="https://user-images.githubusercontent.com/33623123/181491197-1ea808d2-6dd6-4f54-a9bd-112a68f5d415.png" width="450px" >
+
 > HTTP 요청에 대한 핸들러를 만들고, 서버를 구동한다.
 
 * JWT
 <img src="https://user-images.githubusercontent.com/33623123/181491499-6533b174-f72c-4201-b615-d8bc2151bfb7.jpg">
+
 > 유저를 인증하고 식별하기 위한 토큰기반 인증 시스템이다. JWT 자체에 권한 정보 등을 담을 수 있는 것이 특징이다.
 
 * MongoDB
 <img src="https://user-images.githubusercontent.com/33623123/181491654-b11490ec-7af1-4efd-a19e-77c209f85b55.png">
+
 > 대표적인 NoSQL 기반 데이터베이스다.
 
 ### 2.2. 프론트엔드
