@@ -1,8 +1,17 @@
-# 🌺 향수 쇼핑 웹 사이트 프로젝트[시향하다]
+# 🌺 향수 쇼핑 웹 사이트 프로젝트 [시향하다]
 
-[시향하다 바로가기](http://i02b208.p.ssafy.io/)
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/33623123/181521649-f5a9f730-369e-4414-ab81-97f340eef1d3.png">
+ 
+</div>
 
-[팀 노션 바로가기](https://www.notion.so/e89e794cf439444994ab31f82d06f37a) 
+<br/>
+
+### 👉[시향하다 바로가기](http://i02b208.p.ssafy.io/)
+
+### 👉[팀 노션 바로가기](https://www.notion.so/e89e794cf439444994ab31f82d06f37a) 
+
+<br/>
 
 ### 목차
 
