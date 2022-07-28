@@ -77,7 +77,6 @@ const FindPw = ({ requestPost, onResetUserPw }) => {
 
     const url = '/users/findpw';
     const res = await requestPost(url, state);
-    console.log(res)
     if(res.data.success === false) {
       alert('회원 정보가 없습니다.');
       setIsCertification(false)
@@ -94,7 +93,6 @@ const FindPw = ({ requestPost, onResetUserPw }) => {
     }
 
     const url = '/users/findpwcode';
-    console.log(certification)
     const res = await requestPost(url, certification);
     if(res.data.success === false) {
       alert('인증번호가 일치하지 않습니다.');

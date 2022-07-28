@@ -45,7 +45,6 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
   const handleShippingInfo = () => {
     saveInfo2(state.receiver, state.receiver_phone_number, state.address, state.message);
     if(state.receiver!=="" && state.receiver_phone_number!=="" && state.address!=="" && state.message!=="") {
-      console.log(state);
       navigate('/order-pay', {replace: true});
     }else{
       alert("오류");

@@ -30,7 +30,6 @@ const WriteReview = ({requestPost, id, setShowModal}) => {
         }else if(state.content === ""){
             alert('내용을 작성해주세요')
         }else{
-            console.log(state);
             const url = '/product/review';
             const res = await requestPost(url, state);
             if(res.data.success === true){
