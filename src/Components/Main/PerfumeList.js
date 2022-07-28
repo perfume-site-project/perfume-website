@@ -100,7 +100,6 @@ const PerfumeList = ({allProduct, setType}) => {
     }, [state.num]);
     useEffect(()=>{
         showIntroImage();
-        console.log(state);
     },[state.loc])
 
     return (
@@ -109,8 +108,8 @@ const PerfumeList = ({allProduct, setType}) => {
                 const name =  element!==0 ? allProductNames[element-1] : '';         
                 const exist = element!==0 ? true : false;
                 return(
-                    <Link to={exist?"/"+name:"#"} className={exist?styles.text:styles.nolink}>
-                        <ListElement id={idx+1} name={exist?name:""} loc={state.loc[idx]} key={idx}/>
+                    <Link to={exist?"/"+name:"#"} className={exist?styles.text:styles.nolink} key={idx}>
+                        <ListElement id={idx+1} name={exist?name:""} loc={state.loc[idx]} />
                     </Link>
                 )               
             })}

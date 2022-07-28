@@ -57,7 +57,6 @@ const Product = ({requestGet, requestPost, product}) => {
             navigate('/order-shipping-info', {replace: true});
             const url = 'users/info';
             const req = await requestGet(url);
-            console.log(req);
         }else{
             navigate('/order', {replace: true});
         }
@@ -73,7 +72,7 @@ const Product = ({requestGet, requestPost, product}) => {
                     </div>
                     <div className={styles.introText}>
                         <h1>{product['name']}</h1>
-                        <p>{product['price'].toLocaleString('ko-KR')}원</p>
+                        <p>{product['price'].toLocaleString('ko-KR')}$</p>
                         <p>{product['description']}</p>
                         <button>장바구니 담기</button>
                         <button onClick={checkLogin}>구매하기</button>
@@ -89,18 +88,18 @@ const Product = ({requestGet, requestPost, product}) => {
                 </div>
                 <div className={styles.detail} ref={div3}>
                     <h2>detail</h2>
-                    {product['image_link']['sub_images'].map((data)=>{
-                        return <img src={data} onLoad={() => handleResize()}/>
+                    {product['image_link']['sub_images'].map((data, idx)=>{
+                        return <img src={data} onLoad={() => handleResize()} key={idx}/>
                     })}
                     <div className={styles.line}/>
                 </div>
 
                 <div className={styles.review} ref={div4}>
                     <button className={styles.review_button} onClick={handleReviewButton}>리뷰 참여하기</button>
-                    {product['review'].map((data)=>{
+                    {product['review'].map((data, idx)=>{
                         const date = new Date(data['date']).toLocaleDateString();
                         return(
-                            <div className={styles.review_item}>
+                            <div className={styles.review_item} key={idx}>
                                 <p className={styles.rate}>{data['score'].toFixed(1)}/5.0</p>
                                 <div className={styles.review_head}>
                                     <h3>{data['title']}</h3>
