@@ -57,7 +57,7 @@ const Product = ({requestGet, requestPost, product}) => {
             navigate('/order-shipping-info', {replace: true});
             const url = 'users/info';
             const req = await requestGet(url);
-        }else{
+        } else{
             navigate('/order', {replace: true});
         }
     }
