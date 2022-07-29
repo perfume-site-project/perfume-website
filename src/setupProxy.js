@@ -16,8 +16,8 @@ const api = {
   product: "/product",
   review: "/product/review",
   allProduct: "/allproduct",
-  productDelete: "/product/delete"
-}
+  productDelete: "/product/delete",
+};
 
 module.exports = function (app) {
   for (let i in api) {
@@ -25,7 +25,7 @@ module.exports = function (app) {
       createProxyMiddleware(api[i], {
         target: "http://146.56.137.48:46578",
         changeOrigin: true,
-      })
+      }),
     );
   }
 };

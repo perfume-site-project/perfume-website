@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../../assets/css/ProductManagement/AdminProduct.module.css";
@@ -11,8 +11,8 @@ const EditProduct = ({ editData }) => {
       description: editData.description,
       ingredient_description: editData.ingredient_description,
       tasting_note: editData.tasting_note,
-      _id: editData._id
-    })
+      _id: editData._id,
+    });
   }, []);
 
   const navigate = useNavigate();
@@ -28,12 +28,12 @@ const EditProduct = ({ editData }) => {
   const formData = new FormData();
 
   const [state, setState] = useState({
-    name: '',
-    description: '',
-    ingredient_description: '',
+    name: "",
+    description: "",
+    ingredient_description: "",
     price: 0,
-    tasting_note: '',
-    _id: '',
+    tasting_note: "",
+    _id: "",
   });
 
   const [files, setFiles] = useState({
@@ -58,8 +58,8 @@ const EditProduct = ({ editData }) => {
   };
 
   const handleLogin = () => {
-    console.log(state)
-    
+    console.log(state);
+
     if (state.name.length < 1) {
       alert("향수 이름을 입력하세요.");
       nameInput.current.focus();
@@ -77,7 +77,7 @@ const EditProduct = ({ editData }) => {
       descriptionInput.current.focus();
       return;
     }
-    
+
     if (state.ingredient_description.length < 1) {
       alert("향수 성분을 입력하세요.");
       ingredientInput.current.focus();
@@ -110,26 +110,26 @@ const EditProduct = ({ editData }) => {
 
     handleRequest();
   };
-  
+
   const handleRequest = async () => {
     const url = "/product/update";
 
     for (var i in state) {
       formData.append(i, state[i]);
     }
-    
+
     Array.from(files.main_image).forEach((it) => {
-      formData.append('main_image', it)
-    })
+      formData.append("main_image", it);
+    });
 
     Array.from(files.sub_images).forEach((it) => {
-      formData.append('sub_images', it)
-    })
+      formData.append("sub_images", it);
+    });
 
     Array.from(files.intro_image).forEach((it) => {
-      formData.append('intro_image', it)
-    })
-    
+      formData.append("intro_image", it);
+    });
+
     await axios({
       method: "POST",
       url,
@@ -139,14 +139,14 @@ const EditProduct = ({ editData }) => {
       },
       data: formData,
     })
-    .then((res) => {
-      alert("수정이 완료되었습니다.");
-      navigate("/", { replace: true });
-    })
-    .catch((err) => {
-      alert("수정에 실패하였습니다.");
-      console.log(err);
-    });
+      .then((res) => {
+        alert("수정이 완료되었습니다.");
+        navigate("/", { replace: true });
+      })
+      .catch((err) => {
+        alert("수정에 실패하였습니다.");
+        console.log(err);
+      });
   };
 
   return (
@@ -224,13 +224,7 @@ const EditProduct = ({ editData }) => {
           <label className={styles.label} htmlFor="main_image">
             메인 상품 이미지
           </label>
-          <input
-            type="file"
-            id="main_image"
-            name="main_image"
-            ref={mainImageInput}
-            onChange={handleChangeFile}
-          />
+          <input type="file" id="main_image" name="main_image" ref={mainImageInput} onChange={handleChangeFile} />
         </div>
         <div>
           <label className={styles.label} htmlFor="sub_images">
@@ -249,13 +243,7 @@ const EditProduct = ({ editData }) => {
           <label className={styles.label} htmlFor="sub_images">
             인트로 이미지
           </label>
-          <input
-            type="file"
-            id="intro_image"
-            name="intro_image"
-            ref={introImageInput}
-            onChange={handleChangeFile}
-          />
+          <input type="file" id="intro_image" name="intro_image" ref={introImageInput} onChange={handleChangeFile} />
         </div>
         <button type="button" onClick={handleLogin} className={styles.button}>
           수정하기

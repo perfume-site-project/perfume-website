@@ -1,63 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from '../../assets/css/Order/OrderShippingInfo.module.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../../assets/css/Order/OrderShippingInfo.module.css";
 
-const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) => {
+const OrderShippingInfo = ({ requestPost, shippingInfo, saveInfo2, resultInfo }) => {
   const navigate = useNavigate();
   const [state, setState] = useState({
-    receiver: '',
-    receiver_phone_number: '',
-    address: '',
-    message: '',
+    receiver: "",
+    receiver_phone_number: "",
+    address: "",
+    message: "",
   });
   const [address, setAddress] = useState({
-    address1: '',
-    address2: '',
-  })
+    address1: "",
+    address2: "",
+  });
 
   const handleChangeState = (e) => {
     const target = e.target;
-    setState(
-      {
-        ...state,
-        [target.name]: target.value,
-      }
-    );
-  }
-
-  const handleAddress =(e) => {
-    const target = e.target;
-    setAddress(
-      {
-        ...address,
-        [target.name]: target.value,
-      }
-    )
-  }
-
-  useEffect(()=>{
     setState({
-        ...state,
-        address: address.address1+' '+address.address2,
-    })
-  },[address.address1, address.address2])
+      ...state,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleAddress = (e) => {
+    const target = e.target;
+    setAddress({
+      ...address,
+      [target.name]: target.value,
+    });
+  };
+
+  useEffect(() => {
+    setState({
+      ...state,
+      address: address.address1 + " " + address.address2,
+    });
+  }, [address.address1, address.address2]);
 
   const handleShippingInfo = async () => {
     saveInfo2(state.receiver, state.receiver_phone_number, state.address, state.message);
-    if(state.receiver!=="" && state.receiver_phone_number!=="" && state.address!=="" && state.message!=="") {
+    if (state.receiver !== "" && state.receiver_phone_number !== "" && state.address !== "" && state.message !== "") {
       const res = await resultInfo();
-      navigate('/order-pay', {replace: true});
-    }else{
+      navigate("/order-pay", { replace: true });
+    } else {
       alert("입력되지 않은 칸이 존재합니다.");
     }
-  }
+  };
 
   return (
     <section className={styles.orderShippingInfo}>
       <h1 className={styles.srOnly}>배송정보</h1>
       <div className={styles.container}>
         <div className={styles.inputContainer}>
-          <label htmlFor="receiver" className={styles.label}>수령인</label>
+          <label htmlFor="receiver" className={styles.label}>
+            수령인
+          </label>
           <input
             id="receiver"
             type="text"
@@ -68,7 +66,9 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="receiver_phone_number" className={styles.label}>연락처</label>
+          <label htmlFor="receiver_phone_number" className={styles.label}>
+            연락처
+          </label>
           <input
             id="receiver_phone_number"
             type="text"
@@ -80,7 +80,9 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="address1" className={styles.label}>배송 주소</label>
+          <label htmlFor="address1" className={styles.label}>
+            배송 주소
+          </label>
           <div className={styles.addressContainer}>
             <input
               id="address1"
@@ -104,7 +106,9 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="message" className={styles.label}>배송 메모</label>
+          <label htmlFor="message" className={styles.label}>
+            배송 메모
+          </label>
           <input
             id="message"
             type="text"
@@ -114,16 +118,12 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
             onChange={handleChangeState}
           />
         </div>
-        <button
-          type="button"
-          onClick={handleShippingInfo}
-          className={styles.button}
-        >
+        <button type="button" onClick={handleShippingInfo} className={styles.button}>
           저장하고 다음 단계로
         </button>
       </div>
     </section>
   );
-}
+};
 
-export default OrderShippingInfo
+export default OrderShippingInfo;

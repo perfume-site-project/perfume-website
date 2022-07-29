@@ -1,84 +1,83 @@
-.productInfo{
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
+.productInfo {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
 }
-.intro{
-    min-width: 800px;
-    margin: 0 100px;
-    display: flex;
-    height: 335px;
+.intro {
+  min-width: 800px;
+  margin: 0 100px;
+  display: flex;
+  height: 335px;
 }
-.imgBox{
-    min-width: 300px;
-    max-width:400px;
-    height: 100%;
-    background-color: transparent;
+.imgBox {
+  min-width: 300px;
+  max-width: 400px;
+  height: 100%;
+  background-color: transparent;
 }
-.imgBox img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 50%;
+.imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
-.detail{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.detail img{
-    margin: 10px 0;
-    max-width: 60%;
+.detail img {
+  margin: 10px 0;
+  max-width: 60%;
 }
-.introText{
-    margin-left: 100px;
-    max-height: 300px;
+.introText {
+  margin-left: 100px;
+  max-height: 300px;
 }
-.introText p{
-    max-height: 200px;
-    text-overflow: clip;
+.introText p {
+  max-height: 200px;
+  text-overflow: clip;
 }
-.introText button{
-    width: 120px;
-    height: 40px;
-    background-color: black;
-    color: white;
-    margin: 50px 10px;
-
+.introText button {
+  width: 120px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  margin: 50px 10px;
 }
-.count{
-    width: 50px;
+.count {
+  width: 50px;
 }
-section>div{
-    margin: 50px 0;
+section > div {
+  margin: 50px 0;
 }
-.review_head{
-    display: flex;
-    justify-content: space-between;
+.review_head {
+  display: flex;
+  justify-content: space-between;
 }
-.review_item{
-    margin: 40px 0;
+.review_item {
+  margin: 40px 0;
 }
-.review_head h3{
-    margin: 10px 0;
+.review_head h3 {
+  margin: 10px 0;
 }
-p{
-    margin: 0;
+p {
+  margin: 0;
 }
-.rate{
-    font-size: 20px;
+.rate {
+  font-size: 20px;
 }
-.review_button{
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 0;
+.review_button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0;
 }
-.line{
-    height: 2px;
-    width: 100%;
-    background-color: #B59887;
-    margin: 50px 0 0 0;
+.line {
+  height: 2px;
+  width: 100%;
+  background-color: #b59887;
+  margin: 50px 0 0 0;
 }
