@@ -7,9 +7,9 @@
 
 <br/>
 
-### 👉[시향하다 바로가기](http://i02b208.p.ssafy.io/)
+### 👉[시향하다 바로가기](http://perfume.kro.kr/)
 
-### 👉[팀 노션 바로가기](https://www.notion.so/e89e794cf439444994ab31f82d06f37a) 
+### 👉[팀 노션 바로가기](https://understood-sphere-46d.notion.site/PROB-Junior-42346cd6f08f4c9e8d740ad57af122cb) 
 
 <br/>
 
