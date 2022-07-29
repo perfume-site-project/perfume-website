@@ -9,7 +9,7 @@ import Header from '../Components/Layout/Header';
 import Cart from '../Components/Order/Cart';
 import OrderInfo from '../Components/Order/OrderInfo';
 
-const OrderNonMember = ({ orderInfo, saveInfo1 }) => {
+const OrderNonMember = ({ requestGet, orderInfo, saveInfo1 }) => {
   return (
     <Wrapper>
       <Header />
@@ -17,7 +17,7 @@ const OrderNonMember = ({ orderInfo, saveInfo1 }) => {
         <Routes>
         <Route exact path="/" element={<OrderInfo orderInfo={orderInfo} saveInfo1={saveInfo1}/>}></Route>
         </Routes>
-        <Cart />
+        <Cart requestGet={requestGet} />
       </div>
     </Wrapper>
   );

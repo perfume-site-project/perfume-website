@@ -10,6 +10,7 @@ const api = {
   info: "/users/info",
   delete: "/users/delete",
   purchase: "/users/purchase",
+  cartview: "/users/cartview",
   upload: "/product/upload",
   update: "/product/update",
   product: "/product",

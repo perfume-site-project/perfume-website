@@ -1,21 +1,22 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import styles from '../../assets/css/Mypage/MyPage.module.css'
 
 const MyPage = ({requestPost, requestGet}) => {
     const navigate = useNavigate();
-    
+    let total = 0;
     const [state, setState] = useState({
         name: '',
         email: '',
         birthday: '',
         address: '',
         phone_number: '',
+        cart_view: []
     });
 
     const userInfo = async () => {
         const infoUrl = 'users/info';
-        const infoReq = await requestGet(infoUrl);
+        const infoReq = await requestGet(infoUrl, false);
         setState({
             ...state,
             name: infoReq.data.name,
@@ -23,10 +24,19 @@ const MyPage = ({requestPost, requestGet}) => {
             birthday: infoReq.data.birthday.substr(0,10),
             address: infoReq.data.address,
             phone_number: infoReq.data.phone_number,
+            cart_view: infoReq.data.cart_view,
         });
+        howMuch();
     }
 
-    userInfo();
+    useEffect(() => {userInfo()}, []);
+
+    const howMuch = () => {
+        state.cart_view.forEach(element => {
+            total = total+Number(element.price);
+        });
+        console.log(total);
+    }
 
     const handleDelete = async () => {
         if(window.confirm("회원 탈퇴를 진행하시겠습니까?")){
@@ -43,6 +53,7 @@ const MyPage = ({requestPost, requestGet}) => {
             alert("취소되었습니다.");
         }
     }
+
 
     return(
         <section className={styles.myPage}>
@@ -84,29 +95,26 @@ const MyPage = ({requestPost, requestGet}) => {
                 <br></br>
                 <br></br>
                 <h1>장바구니</h1>
-                <table className={styles.table}>
-                    <tr>
-                        <td rowSpan={2}><img className={styles.image} src={require('../../assets/images/logo.png')}></img></td>
-                        <td><h2>상품명1</h2></td>
-                        <td className={styles.font} rowSpan={2}><span>18,000원</span></td>
-                    </tr>
-                    <tr>
-                        <td className={styles.font}><span>300ml / 1개</span></td>
-                    </tr>
-                    <tr className={styles.space}></tr>
-                    <tr>
-                        <td className={styles.image} rowSpan={2}></td>
-                        <td><h2>상품명2</h2></td>
-                        <td className={styles.font} rowSpan={2}>18,000원</td>
-                    </tr>
-                    <tr>
-                        <td className={styles.font}>300ml / 1개</td>
-                    </tr>
-                    <tr className={styles.space}></tr>
+                {state.cart_view.map((data, idx) =>{
+                    return(
+                        <table className={styles.div} key={idx}>
+                            <tr>
+                                <td className={styles.td} rowSpan={2}><img className={styles.image} src={data['productImage']}></img></td>
+                                <td className={styles.td}><h2>{data['name']}</h2></td>
+                                <td className={styles.font} rowSpan={2}><span>{(data['price']*1298*data['count']).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span></td>
+                            </tr>
+                            <tr>
+                                <td className={styles.font}><span>300ml / {data['count']}개</span></td>
+                            </tr>
+                            <tr className={styles.space}></tr>
+                        </table>
+                    )
+                })}
+                <table>
                     <tr className={styles.space}></tr>
                     <tr className={styles.font}>
                         <td colSpan={2}>주문 금액</td>
-                        <td>36,000원</td>
+                        <td>{total}원</td>
                     </tr>
                     <tr className={styles.font}>
                         <td colSpan={2}>배송비</td>
@@ -119,7 +127,7 @@ const MyPage = ({requestPost, requestGet}) => {
                     <tr className={styles.space}></tr>
                     <tr className={styles.font}>
                         <td colSpan={2}>총 금액</td>
-                        <td>39,000원</td>
+                        <td>{total}원</td>
                     </tr>
                 </table>
             </div>

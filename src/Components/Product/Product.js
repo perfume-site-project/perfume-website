@@ -5,9 +5,11 @@ import {useEffect, useRef, useState} from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import WriteReview from "./WriteReview.js";
 
-const Product = ({requestGet, requestPost, product}) => {
+const Product = ({requestGet, requestPost, product, setResultCart}) => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false)
+    const [cart, setCart] = useState([]);
+    const [addCart, setAddCart] = useState(false);
     
     const div1 = useRef(null);
     const div2 = useRef(null);
@@ -52,15 +54,52 @@ const Product = ({requestGet, requestPost, product}) => {
         fetchProduct();
     }, [showModal]);
 
-    const checkLogin = async () => {
-        if(sessionStorage.getItem("user-email") !== null){
+    const handleCount = (e) => {
+        const target = e.target;
+        setCart(
+            {
+                productId: product['_id'],
+                count: target.value,
+            }
+        );
+        //console.log(cart);
+    }
+
+    const handleCart = () => {
+        if(sessionStorage.getItem("user-email") !== null){ //회원 장바구니
+            if(!addCart){
+                alert("장바구니에 추가되었습니다.");
+                setResultCart(cart.productId, cart.count);
+                setAddCart(true);
+            }else{
+                alert("이미 장바구니에 추가된 상품입니다.");
+            }
+        }else{ //비회원 장바구니
+            if(!addCart){
+                alert("장바구니에 추가되었습니다.");
+                const url = 'users/cartview';
+                const req = requestPost(url, cart);
+                setAddCart(true);
+            }else{
+                alert("이미 장바구니에 추가된 상품입니다.");
+            }
+        }
+    }
+
+    const buyProduct = async () => {
+        if(sessionStorage.getItem("user-email") !== null){ //회원 주문
+            if(!addCart){
+                setResultCart(cart.productId, cart.count);
+                setAddCart(true);
+            }
             navigate('/order-shipping-info', {replace: true});
             const url = 'users/info';
             const req = await requestGet(url);
-        } else{
+        } else {
             navigate('/order', {replace: true});
         }
     }
+
     
     return(
         <Wrapper>
@@ -74,8 +113,9 @@ const Product = ({requestGet, requestPost, product}) => {
                         <h1>{product['name']}</h1>
                         <p>{product['price'].toLocaleString('ko-KR')}$</p>
                         <p>{product['description']}</p>
-                        <button>장바구니 담기</button>
-                        <button onClick={checkLogin}>구매하기</button>
+                        <input className={styles.count} type={'number'} min={0} onChange={handleCount}></input>
+                        <button onClick={handleCart}>장바구니 담기</button>
+                        <button onClick={buyProduct}>구매하기</button>
                     </div>
                 </div>
                 <div className={styles.ingredients} ref={div1}>

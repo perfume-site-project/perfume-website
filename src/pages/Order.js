@@ -10,7 +10,7 @@ import Header from '../Components/Layout/Header';
 import Cart from '../Components/Order/Cart';
 import OrderLogin from '../Components/Order/OrderLogin';
 
-const Order = () => {
+const Order = ({requestGet}) => {
   const navigate = useNavigate();
 
   return (
@@ -20,7 +20,7 @@ const Order = () => {
         <Routes>
           <Route exact path="/" element={<OrderLogin />}></Route>
         </Routes>
-        <Cart />
+        <Cart requestGet={{requestGet}}/>
       </div>
     </Wrapper>
   );
