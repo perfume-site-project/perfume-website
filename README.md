@@ -178,24 +178,16 @@
 - 장바구니는 마이페이지와 결제 내역에서 확인할 수 있다.
 
 #### 3.3.4 상품구매
-**1. 회원 구매**
-
 ![상품구매](https://user-images.githubusercontent.com/33623123/181506684-fc64f9de-33fd-4b71-8d5c-216d15d866bd.gif)
 - 로그인 상태일 경우 배송관련 정보를 입력받는다.
-- 결제에 대한 약관에 모두 동의 시 결제시스템(import)을 실행한다.
-
-**2. 비회원 구매**
-
-![비회원상품구매](https://user-images.githubusercontent.com/33623123/181506393-a2a8e8c6-4e5a-4b22-8e38-2613bd1edb62.gif)
-- 로그인 상태일 경우 비회원으로 주문할 수 있다.
-- 비회원 주문 시 사용자의 기본 정보와 배송정보를 입력 받는다.
 - 결제에 대한 약관에 모두 동의 시 결제시스템(import)을 실행한다.
 
 <hr/>
 
 ## 4. 아키텍처 상세
 
-![소프트웨어아키텍처](https://user-images.githubusercontent.com/33623123/181488092-67d11e0e-d63a-4641-a280-c0ff820b5dea.jpg)
+![소프트웨어아키텍처](https://user-images.githubusercontent.com/33623123/181793237-1ce39f8e-ce78-47f0-8f7d-1e93953c379c.jpg)
+
 
 <hr />
 
