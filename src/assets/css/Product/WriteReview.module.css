@@ -1,67 +1,72 @@
-.score>img{
-    width: 30px;
-    object-fit: contain;
+.score > img {
+  width: 30px;
+  object-fit: contain;
 }
-.score, .username, .date, .name_box{
-    display: inline-block;
+.score,
+.username,
+.date,
+.name_box {
+  display: inline-block;
 }
-.score, .username, .date{
-    margin: 15px 10px;
+.score,
+.username,
+.date {
+  margin: 15px 10px;
 }
-.date_box{
-    height: 65px;
-    float: right;
-    display: flex;
-    align-items: center;
+.date_box {
+  height: 65px;
+  float: right;
+  display: flex;
+  align-items: center;
 }
-.title{
-    width: 300px;
-    font-size: 18px;
+.title {
+  width: 300px;
+  font-size: 18px;
 }
-.content{
-    width: 520px;
-    height: 200px;
-    resize: none;
-    outline-color: #B59887;
-    border: 1px solid #B59887;
-    font-size: 18px;
-    padding: 10px;
+.content {
+  width: 520px;
+  height: 200px;
+  resize: none;
+  outline-color: #b59887;
+  border: 1px solid #b59887;
+  font-size: 18px;
+  padding: 10px;
 }
-.modal_wrap{
-    background-color:rgba(0,0,0,.3);
-    justify-content:center;
-    align-items:center;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    display:flex;
-    padding:15px;
+.modal_wrap {
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 15px;
 }
-.modal{
-    padding: 30px;
-    max-width:600px;
-    box-sizing: border-box;
-    border-radius:20px;
-    overflow:hidden;
-    background-color:#F0ECE8;
-    box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3);
+.modal {
+  padding: 30px;
+  max-width: 600px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #f0ece8;
+  box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.3);
 }
-.review_button{
-    display: flex;
-    justify-content: center;
+.review_button {
+  display: flex;
+  justify-content: center;
 }
 .review_button button {
-    font-size: 18px;
-    width: 200px;
-    height: 60px;
-    cursor: pointer;
-    background-color: #FDFAF8;
-    border: 1px solid #AC917B;
-    margin: 20px;
+  font-size: 18px;
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  background-color: #fdfaf8;
+  border: 1px solid #ac917b;
+  margin: 20px;
 }
 .review_button button:hover {
-    background-color: #6A5E5E;
-    color: #fff;
+  background-color: #6a5e5e;
+  color: #fff;
 }

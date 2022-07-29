@@ -1,25 +1,26 @@
-import { Link } from 'react-router-dom';
-import Login from './Login';
-import styles from '../../assets/css/User/UserLogin.module.css';
+import { Link } from "react-router-dom";
+import Login from "./Login";
+import styles from "../../assets/css/User/UserLogin.module.css";
 
-const UserLogin = ({requestPost, login}) => {
+const UserLogin = ({ requestPost, login }) => {
   return (
     <section className={styles.userLogin}>
       <h1 className={styles.srOnly}>로그인</h1>
       <div className={styles.container}>
-        <Login requestPost={requestPost} login={login}/>
+        <Login requestPost={requestPost} login={login} />
         <div>
           <div className={styles.links}>
-            <Link to="/find-id" className={styles.link}>아이디 찾기</Link>
+            <Link to="/find-id" className={styles.link}>
+              아이디 찾기
+            </Link>
             <span>|</span>
-            <Link to="/find-pw" className={styles.link}>비밀번호 찾기</Link>
+            <Link to="/find-pw" className={styles.link}>
+              비밀번호 찾기
+            </Link>
           </div>
           {/* Link to Sign-up */}
           <Link to={"/sign-up"}>
-            <button 
-              type="button" 
-              className={styles.button}
-            >
+            <button type="button" className={styles.button}>
               회원가입
             </button>
           </Link>
@@ -27,6 +28,6 @@ const UserLogin = ({requestPost, login}) => {
       </div>
     </section>
   );
-}
+};
 
-export default UserLogin
+export default UserLogin;

@@ -7,7 +7,7 @@ import axios from "axios";
 const ProductList = ({ onEditProduct, requestGet }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
- 
+
   const getData = async () => {
     const res = await requestGet("allproduct");
     setData(res.data);
@@ -15,13 +15,13 @@ const ProductList = ({ onEditProduct, requestGet }) => {
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   const onEdit = async (id) => {
     const url = "/product?id=" + id;
     const res = await requestGet(url);
     onEditProduct(res.data);
-    navigate('/edit-product');
+    navigate("/edit-product");
   };
 
   const onRemove = async (_id) => {
@@ -42,13 +42,7 @@ const ProductList = ({ onEditProduct, requestGet }) => {
       <h1 className={styles.srOnly}>리스트</h1>
       <ul className={styles.ul}>
         {data.map((item) => (
-          <ProductListItem
-            onEdit={onEdit}
-            onRemove={onRemove}
-            key={item._id}
-            name={item.name}
-            _id={item._id}
-          />
+          <ProductListItem onEdit={onEdit} onRemove={onRemove} key={item._id} name={item.name} _id={item._id} />
         ))}
       </ul>
       <Link to="/add-product">

@@ -1,5 +1,4 @@
 .login {
-
 }
 
 .login .inputContainer {
@@ -15,7 +14,7 @@
   box-sizing: border-box;
   outline: none;
   padding: 12px;
-  border: 1px solid #AC917B;
+  border: 1px solid #ac917b;
   height: 40px;
   margin-bottom: 14px;
 }
@@ -26,12 +25,12 @@
   box-sizing: border-box;
   height: 60px;
   cursor: pointer;
-  background-color: #FDFAF8;
-  border: 1px solid #AC917B;
+  background-color: #fdfaf8;
+  border: 1px solid #ac917b;
   transition: all ease 0.3s;
 }
 
 .login .button:hover {
-  background-color: #6A5E5E;
+  background-color: #6a5e5e;
   color: #fff;
 }

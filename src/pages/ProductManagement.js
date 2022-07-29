@@ -1,32 +1,27 @@
-import { useEffect } from 'react';
-import {
-  Routes,
-  Route,
-  useNavigate
-} from 'react-router-dom';
-import Wrapper from '../Components/Layout/Wrapper';
-import Header from '../Components/Layout/Header';
-import ProductList from '../Components/ProductManagement/ProductList';
+import { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Wrapper from "../Components/Layout/Wrapper";
+import Header from "../Components/Layout/Header";
+import ProductList from "../Components/ProductManagement/ProductList";
 
 const ProductManagement = ({ onEditProduct, requestGet }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(sessionStorage.getItem('user-email') !== 'admin@naver.com') {
-      alert('관리자 계정이 아닙니다.');
-      navigate('/', {replace: true})
+    if (sessionStorage.getItem("user-email") !== "admin@naver.com") {
+      alert("관리자 계정이 아닙니다.");
+      navigate("/", { replace: true });
     }
-  })
+  });
 
   return (
     <Wrapper>
       <Header />
       <Routes>
-        <Route exact path='/' element={<ProductList onEditProduct={onEditProduct} requestGet={requestGet} />} />
+        <Route exact path="/" element={<ProductList onEditProduct={onEditProduct} requestGet={requestGet} />} />
       </Routes>
     </Wrapper>
   );
-}
+};
 
-export default ProductManagement
-
+export default ProductManagement;

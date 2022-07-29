@@ -2,15 +2,15 @@
   box-sizing: border-box;
   width: 312px;
   /*height: 100vh;*/
-  background-color: #F4F2EC;
+  background-color: #f4f2ec;
   background-color: rgb(255, 255, 255, 0.3);
-  border-right: 2px solid #B59887;
+  border-right: 2px solid #b59887;
 }
 
 .header .container {
   width: 300px;
   height: 100%;
-  border-right: 2px solid #B59887;
+  border-right: 2px solid #b59887;
 }
 
 .header .logo_box {
@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   height: 385px;
-  border-bottom: 2px solid #B59887;
+  border-bottom: 2px solid #b59887;
 }
 
 .header .logo_box img {
@@ -32,7 +32,7 @@
 }
 
 /* li: title, subtitle관련해서 font 다르게 설정 */
-.header .category li{
+.header .category li {
   font-size: 28px;
   float: right;
 }

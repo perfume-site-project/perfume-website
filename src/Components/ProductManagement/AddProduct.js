@@ -106,16 +106,16 @@ const ProductInfo = () => {
     }
 
     Array.from(files.main_image).forEach((it) => {
-      formData.append('main_image', it)
-    })
+      formData.append("main_image", it);
+    });
 
     Array.from(files.sub_images).forEach((it) => {
-      formData.append('sub_images', it)
-    })
+      formData.append("sub_images", it);
+    });
 
     Array.from(files.intro_image).forEach((it) => {
-      formData.append('intro_image', it)
-    })
+      formData.append("intro_image", it);
+    });
 
     await axios({
       method: "POST",
@@ -126,15 +126,15 @@ const ProductInfo = () => {
       },
       data: formData,
     })
-    .then((res) => {
-      alert("상품등록이 완료되었습니다.");
-      navigate("/management-product", { replace: true });
-      console.log(res);
-    })
-    .catch((err) => {
-      alert("상품등록에 실패하였습니다.");
-      console.log(err);
-    });
+      .then((res) => {
+        alert("상품등록이 완료되었습니다.");
+        navigate("/management-product", { replace: true });
+        console.log(res);
+      })
+      .catch((err) => {
+        alert("상품등록에 실패하였습니다.");
+        console.log(err);
+      });
   };
 
   return (
@@ -212,13 +212,7 @@ const ProductInfo = () => {
           <label className={styles.label} htmlFor="main_image">
             메인 상품 이미지
           </label>
-          <input
-            type="file"
-            id="main_image"
-            name="main_image"
-            ref={mainImageInput}
-            onChange={handleChangeFile}
-          />
+          <input type="file" id="main_image" name="main_image" ref={mainImageInput} onChange={handleChangeFile} />
         </div>
         <div>
           <label className={styles.label} htmlFor="sub_images">
@@ -237,13 +231,7 @@ const ProductInfo = () => {
           <label className={styles.label} htmlFor="intro_image">
             인트로 이미지
           </label>
-          <input
-            type="file"
-            id="intro_image"
-            name="intro_image"
-            ref={introImageInput}
-            onChange={handleChangeFile}
-          />
+          <input type="file" id="intro_image" name="intro_image" ref={introImageInput} onChange={handleChangeFile} />
         </div>
         <button type="button" onClick={handleLogin} className={styles.button}>
           추가하기
