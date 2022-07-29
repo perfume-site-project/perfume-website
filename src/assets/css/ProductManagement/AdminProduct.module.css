@@ -5,7 +5,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
@@ -30,7 +30,7 @@
   box-sizing: border-box;
   outline: none;
   padding: 12px;
-  border: 1px solid #AC917B;
+  border: 1px solid #ac917b;
   width: 100%;
   height: 40px;
   margin-bottom: 12px;
@@ -45,7 +45,7 @@
   font-family: inherit;
   font-size: inherit;
   outline: none;
-  border: 1px solid #AC917B;
+  border: 1px solid #ac917b;
   resize: none;
   width: 100%;
   height: 100px;
@@ -58,12 +58,12 @@
   box-sizing: border-box;
   height: 60px;
   cursor: pointer;
-  background-color: #FDFAF8;
-  border: 1px solid #AC917B;
+  background-color: #fdfaf8;
+  border: 1px solid #ac917b;
   transition: all ease 0.3s;
 }
 
 .adminProduct .button:hover {
-  background-color: #6A5E5E;
+  background-color: #6a5e5e;
   color: #fff;
 }

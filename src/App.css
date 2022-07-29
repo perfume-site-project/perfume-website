@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap");
 
 body {
-  background-color: #D0BEB0;
-  font-family: 'Gowun Batang', serif;
+  background-color: #d0beb0;
+  font-family: "Gowun Batang", serif;
 }
 
-input, button, textarea {
-  font-family: 'Gowun Batang', serif;
+input,
+button,
+textarea {
+  font-family: "Gowun Batang", serif;
 }
 
 .App {

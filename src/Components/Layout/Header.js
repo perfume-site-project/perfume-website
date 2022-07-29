@@ -1,5 +1,5 @@
-import styles from '../../assets/css/Layout/Header.module.css';
-import logo from '../../assets/images/logo.png';
+import styles from "../../assets/css/Layout/Header.module.css";
+import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
@@ -11,20 +11,20 @@ const Header = (props) => {
             <img src={logo} alt="logo" />
           </Link>
         </div>
-          <ul className={styles.category}>
-            {props.category &&
-                props.category.map((items, idx) => (
-                <div id={"item"+idx} style={{height: props.heights[idx], margin: '50px'}} key={idx}>
-                    <li id={items} >{items}</li>
-                </div>
+        <ul className={styles.category}>
+          {props.category &&
+            props.category.map((items, idx) => (
+              <div id={"item" + idx} style={{ height: props.heights[idx], margin: "50px" }} key={idx}>
+                <li id={items}>{items}</li>
+              </div>
             ))}
         </ul>
       </div>
     </header>
   );
-}
+};
 
 Header.defaultProps = {
-    category:[]
-}
-export default Header
+  category: [],
+};
+export default Header;

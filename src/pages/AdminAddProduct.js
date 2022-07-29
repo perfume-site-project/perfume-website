@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Wrapper from "../Components/Layout/Wrapper";
 import Header from "../Components/Layout/Header";
 import AddProduct from "../Components/ProductManagement/AddProduct";

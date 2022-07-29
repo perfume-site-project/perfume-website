@@ -27,8 +27,8 @@
   height: 32px;
   box-sizing: border-box;
   cursor: pointer;
-  background-color: #FDFAF8;
-  border: 1px solid #AC917B;
+  background-color: #fdfaf8;
+  border: 1px solid #ac917b;
   transition: all ease 0.3s;
   margin-right: 4px;
 }
@@ -38,6 +38,6 @@
 }
 
 .listItem .button:hover {
-  background-color: #6A5E5E;
+  background-color: #6a5e5e;
   color: #fff;
 }
