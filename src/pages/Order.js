@@ -12,13 +12,6 @@ import OrderLogin from '../Components/Order/OrderLogin';
 
 const Order = ({requestGet}) => {
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    if(sessionStorage.getItem('user-email') !== null) {
-      alert('이미 로그인 상태입니다.');
-      navigate('/', {replace: true})
-    }
-  })
 
   return (
     <Wrapper>

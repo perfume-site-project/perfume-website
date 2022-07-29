@@ -93,7 +93,9 @@ const Product = ({requestGet, requestPost, product, setResultCart}) => {
                 setAddCart(true);
             }
             navigate('/order-shipping-info', {replace: true});
-        }else{ //비회원 주문
+            const url = 'users/info';
+            const req = await requestGet(url);
+        } else {
             navigate('/order', {replace: true});
         }
     }
