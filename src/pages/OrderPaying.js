@@ -10,7 +10,7 @@ import Header from '../Components/Layout/Header';
 import Cart from '../Components/Order/Cart';
 import OrderPayment from '../Components/Order/OrderPayment'
 
-const OrderPaying = () => {
+const OrderPaying = ({ requestGet }) => {
   return (
     <Wrapper>
       <Header />
@@ -18,7 +18,7 @@ const OrderPaying = () => {
         <Routes>
           <Route exact path="/" element={<OrderPayment />}></Route>
           </Routes>
-        <Cart />
+        <Cart requestGet={requestGet}/>
       </div>
     </Wrapper>
   );

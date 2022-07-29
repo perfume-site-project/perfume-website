@@ -42,10 +42,10 @@ const OrderShippingInfo = ({requestPost, shippingInfo, saveInfo2, resultInfo}) =
     })
   },[address.address1, address.address2])
 
-  const handleShippingInfo = () => {
+  const handleShippingInfo = async () => {
     saveInfo2(state.receiver, state.receiver_phone_number, state.address, state.message);
     if(state.receiver!=="" && state.receiver_phone_number!=="" && state.address!=="" && state.message!=="") {
-      resultInfo();
+      const res = await resultInfo();
       navigate('/order-pay', {replace: true});
     }else{
       alert("입력되지 않은 칸이 존재합니다.");

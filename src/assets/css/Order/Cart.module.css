@@ -37,9 +37,12 @@
 .cart .listItemImage {
   width: 72px;
   height: 72px;
-  background-color: #444;
-  opacity: 0.3;
   margin-right: 16px;
+}
+
+.cart .listItemImage img {
+  width: 100%;
+  height: 100%;
 }
 
 .cart .listItemContainer {

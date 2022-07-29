@@ -89,14 +89,13 @@ const SignUp = ({requestPost}) => {
       if(blank && pw && box){
         const url = '/users/register';
         const req = await requestPost(url, state);
-        console.log(req.data.success);
   
         if(req.data.success){
           alert('회원가입이 완료되었습니다. 다시 로그인 해주세요.');
           navigate('/', {replace: true});
         }
-      }else{
-        console.log(blank+" "+pw+" "+box);
+      } else {
+        alert('회원가입에 실패하였습니다.');
       }
   }
 
@@ -112,7 +111,6 @@ const SignUp = ({requestPost}) => {
   }
 
   const checkBlank = () => {
-    console.log(state);
     for(const key in state){
         if(state[key] === ""){
             alert('모든 칸을 채워주세요.');

@@ -45,6 +45,7 @@ function App() {
     __v:0
   });
   const [allProduct, setAllProduct] = useState([]);
+  const [isValid, setIsValid] = useState(false)
 
   // 로그인 상태 유지
   useEffect(() => {
@@ -142,43 +143,49 @@ function App() {
         count
       }
     ])
-    console.log(cart);
   }
 
   const resultInfo = async () =>{
-    if(sessionStorage.getItem("user-email") !== null){ //회원
-      const infourl = 'users/info';
-      const inforeq = await requestGet(infourl, false);
-      setResInfo({
-        name: inforeq.data.name,
-        email: inforeq.data.email,
-        phone_number: inforeq.data.phone_number,
-        receiver: info2.receiver,
-        receiver_phone_number: info2.receiver_phone_number,
-        address: info2.address,
-        message: info2.message,
-        products: cart
-      });
-    }else{ //비회원
-      setResInfo({
-        name: info1.name,
-        email: info1.email,
-        phone_number: info1.phone_number,
-        receiver: info2.receiver,
-        receiver_phone_number: info2.receiver_phone_number,
-        address: info2.address,
-        message: info2.message,
-        products: cart //비회원 장바구니를 가져오는 api가 필요할 것 같음
-      });
+    const infourl = 'users/info';
+    const inforeq = await requestGet(infourl, false);
+    if(inforeq.status === 200) {
+      if(sessionStorage.getItem("user-email") !== null){ //회원
+        setResInfo({
+          name: inforeq.data.name,
+          email: inforeq.data.email,
+          phone_number: inforeq.data.phone_number,
+          receiver: info2.receiver,
+          receiver_phone_number: info2.receiver_phone_number,
+          address: info2.address,
+          message: info2.message,
+          products: cart
+        });
+      }else{ //비회원
+        setResInfo({
+          name: info1.name,
+          email: info1.email,
+          phone_number: info1.phone_number,
+          receiver: info2.receiver,
+          receiver_phone_number: info2.receiver_phone_number,
+          address: info2.address,
+          message: info2.message,
+          products: cart //비회원 장바구니를 가져오는 api가 필요할 것 같음
+        });
+      }
+      console.log(resInfo)
     }
+  }
 
+  const onPurchase = async () => {
     const buyurl = 'users/purchase';
     const buyreq = await requestPost(buyurl, resInfo);
+    console.log(buyreq)
+
     console.log(buyreq.data.success);
     console.log(resInfo);
     return resInfo;
   }
-  
+
   // 상품 수정
   const onEditProduct = (data) => {
     setEditData(data)
@@ -199,8 +206,8 @@ function App() {
               <Route exact path="/product" element={<Product requestGet={requestGet}/>}/>
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember orderInfo={orderInfo} saveInfo1={saveInfo1}/>} />
-              <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} shippingInfo={shippingInfo} saveInfo2={saveInfo2} resultInfo={resultInfo}/>}/>
-              <Route exact path="/order-pay" element={<OrderPaying />}/>
+              <Route exact path="/order-shipping-info" element={<OrderShipping requestPost={requestPost} requestGet={requestGet} shippingInfo={shippingInfo} saveInfo2={saveInfo2} resultInfo={resultInfo}/>}/>
+              <Route exact path="/order-pay" element={<OrderPaying requestGet={requestGet}/>}/>
               <Route exact path="/mypage" element={<UserMyPage requestPost={requestPost} requestGet={requestGet}/>}/>
               <Route exact path="/management-product" element={<ProductManagement onEditProduct={onEditProduct} requestGet={requestGet} />}/>
               <Route exact path="/add-product" element={<AdminAddProduct />}/>

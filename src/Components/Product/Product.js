@@ -7,6 +7,7 @@ import WriteReview from "./WriteReview.js";
 
 const Product = ({requestGet, requestPost, product, setResultCart}) => {
     const navigate = useNavigate();
+
     const [showModal, setShowModal] = useState(false)
     const [cart, setCart] = useState([]);
     const [addCart, setAddCart] = useState(false);
@@ -62,14 +63,16 @@ const Product = ({requestGet, requestPost, product, setResultCart}) => {
                 count: target.value,
             }
         );
-        //console.log(cart);
+        // console.log(cart);
     }
 
-    const handleCart = () => {
+    const handleCart = async () => {
         if(sessionStorage.getItem("user-email") !== null){ //회원 장바구니
             if(!addCart){
                 alert("장바구니에 추가되었습니다.");
                 setResultCart(cart.productId, cart.count);
+                const url = "/users/cartview"
+                await requestPost(url, cart)
                 setAddCart(true);
             }else{
                 alert("이미 장바구니에 추가된 상품입니다.");
@@ -80,7 +83,7 @@ const Product = ({requestGet, requestPost, product, setResultCart}) => {
                 const url = 'users/cartview';
                 const req = requestPost(url, cart);
                 setAddCart(true);
-            }else{
+            } else{
                 alert("이미 장바구니에 추가된 상품입니다.");
             }
         }
@@ -93,8 +96,6 @@ const Product = ({requestGet, requestPost, product, setResultCart}) => {
                 setAddCart(true);
             }
             navigate('/order-shipping-info', {replace: true});
-            const url = 'users/info';
-            const req = await requestGet(url);
         } else {
             navigate('/order', {replace: true});
         }

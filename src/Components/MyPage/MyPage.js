@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import styles from '../../assets/css/Mypage/MyPage.module.css'
 
 const MyPage = ({requestPost, requestGet}) => {
     const navigate = useNavigate();
-    let total = 0;
+    const [isValid, setIsValid] = useState(false);
+
     const [state, setState] = useState({
         name: '',
         email: '',
         birthday: '',
         address: '',
         phone_number: '',
-        cart_view: []
+        cart_view: [],
     });
+
+    const [total, setTotal] = useState(0)
 
     const userInfo = async () => {
         const infoUrl = 'users/info';
@@ -26,19 +29,28 @@ const MyPage = ({requestPost, requestGet}) => {
             phone_number: infoReq.data.phone_number,
             cart_view: infoReq.data.cart_view,
         });
-        howMuch();
+        setIsValid(true)
     }
 
-    useEffect(() => {userInfo()}, []);
+    useEffect(() => {
+        userInfo()
+    }, []);
+
+    useEffect(() => {
+        howMuch()
+    }, [isValid]);
 
     const howMuch = () => {
+        let totalPrice = 0;
         state.cart_view.forEach(element => {
-            total = total+Number(element.price);
+            totalPrice += element.price
         });
-        console.log(total);
+        setTotal(totalPrice * 1298)
     }
 
     const handleDelete = async () => {
+        console.log(state)
+        console.log(total)
         if(window.confirm("회원 탈퇴를 진행하시겠습니까?")){
             const delUrl = 'users/delete';
             const delReq = await requestPost(delUrl);
@@ -99,7 +111,9 @@ const MyPage = ({requestPost, requestGet}) => {
                     return(
                         <table className={styles.div} key={idx}>
                             <tr>
-                                <td className={styles.td} rowSpan={2}><img className={styles.image} src={data['productImage']}></img></td>
+                                <td className={styles.td} rowSpan={2}>
+                                    <img className={styles.image} src={data['productImage']}></img>
+                                    </td>
                                 <td className={styles.td}><h2>{data['name']}</h2></td>
                                 <td className={styles.font} rowSpan={2}><span>{(data['price']*1298*data['count']).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span></td>
                             </tr>
@@ -113,8 +127,8 @@ const MyPage = ({requestPost, requestGet}) => {
                 <table>
                     <tr className={styles.space}></tr>
                     <tr className={styles.font}>
-                        <td colSpan={2}>주문 금액</td>
-                        <td>{total}원</td>
+                        <td colSpan={2}>주문 금액</td><p></p>
+                        <td>{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</td>
                     </tr>
                     <tr className={styles.font}>
                         <td colSpan={2}>배송비</td>
@@ -127,7 +141,7 @@ const MyPage = ({requestPost, requestGet}) => {
                     <tr className={styles.space}></tr>
                     <tr className={styles.font}>
                         <td colSpan={2}>총 금액</td>
-                        <td>{total}원</td>
+                        <td>{(total+ 3000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</td>
                     </tr>
                 </table>
             </div>
