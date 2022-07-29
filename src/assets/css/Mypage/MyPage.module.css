@@ -69,3 +69,8 @@
   border: 1px solid #AC917B;
   transition: all ease 0.3s;
 }
+
+.myPage .td{
+  padding: 15px;
+  vertical-align: middle;
+}

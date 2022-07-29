@@ -30,7 +30,7 @@ function App() {
   const [orderInfo, setOrderInfo] = useState(false);
   const [info1, setInfo1] = useState({});
   const [info2, setInfo2] = useState({});
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
   const [resInfo, setResInfo] = useState({});
   const [resetPw, setResetPw] = useState({});
   const [product, setProduct] = useState({
@@ -134,16 +134,48 @@ function App() {
     );
   }
 
-  const resultInfo = () =>{
-    setResInfo({
-      name: info1.name,
-      email: info1.email,
-      phone_number: info1.phone_number,
-      receiver: info2.receiver,
-      receiver_phone_number: info2.receiver_phone_number,
-      address: info2.address,
-      message: info2.message,
-    });
+  const setResultCart = (productId, count) => {
+    setCart([
+      ...cart,
+      {
+        productId,
+        count
+      }
+    ])
+    console.log(cart);
+  }
+
+  const resultInfo = async () =>{
+    if(sessionStorage.getItem("user-email") !== null){ //회원
+      const infourl = 'users/info';
+      const inforeq = await requestGet(infourl, false);
+      setResInfo({
+        name: inforeq.data.name,
+        email: inforeq.data.email,
+        phone_number: inforeq.data.phone_number,
+        receiver: info2.receiver,
+        receiver_phone_number: info2.receiver_phone_number,
+        address: info2.address,
+        message: info2.message,
+        products: cart
+      });
+    }else{ //비회원
+      setResInfo({
+        name: info1.name,
+        email: info1.email,
+        phone_number: info1.phone_number,
+        receiver: info2.receiver,
+        receiver_phone_number: info2.receiver_phone_number,
+        address: info2.address,
+        message: info2.message,
+        products: cart //비회원 장바구니를 가져오는 api가 필요할 것 같음
+      });
+    }
+
+    const buyurl = 'users/purchase';
+    const buyreq = await requestPost(buyurl, resInfo);
+    console.log(buyreq.data.success);
+    console.log(resInfo);
     return resInfo;
   }
   
@@ -163,7 +195,7 @@ function App() {
               <Route exact path="/reset-pw" element={<UserResetPw requestPost={requestPost} resetPw={resetPw} />} />
               <Route exact path="/sign-up" element={<UserSignUp requestPost={requestPost} />}/>
               <Route exact path="/editmemberinfo" element={<UserInfoEdit requestPost={requestPost} requestGet={requestGet}/>}/>
-              <Route exact path="/:name" element={<Product requestPost={requestPost} requestGet={requestGet} product={product}/>}/>
+              <Route exact path="/:name" element={<Product requestPost={requestPost} requestGet={requestGet} product={product} setResultCart={setResultCart}/>}/>
               <Route exact path="/product" element={<Product requestGet={requestGet}/>}/>
               <Route exact path="/order" element={<Order />}/>
               <Route exact path="/order-non-member" element={<OrderNonMember orderInfo={orderInfo} saveInfo1={saveInfo1}/>} />

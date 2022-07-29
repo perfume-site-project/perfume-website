@@ -10,11 +10,11 @@ import Header from '../Components/Layout/Header';
 import Cart from '../Components/Order/Cart';
 import OrderLogin from '../Components/Order/OrderLogin';
 
-const Order = () => {
+const Order = ({requestGet}) => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    if(sessionStorage.getItem('user-email') !== '') {
+    if(sessionStorage.getItem('user-email') !== null) {
       alert('이미 로그인 상태입니다.');
       navigate('/', {replace: true})
     }
@@ -27,7 +27,7 @@ const Order = () => {
         <Routes>
           <Route exact path="/" element={<OrderLogin />}></Route>
         </Routes>
-        <Cart />
+        <Cart requestGet={{requestGet}}/>
       </div>
     </Wrapper>
   );

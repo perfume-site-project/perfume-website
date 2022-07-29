@@ -60,19 +60,13 @@ const OrderInfo = ({orderInfo, saveInfo1}) => {
     saveInfo1(state.name, state.email, state.phone_number);
 
     if(email.first!=="" && email.last!=="" && state.name!=="" && state.phone_number!=="") {
-      var regExpPhone = /^\d{2,3}-\d{3,4}-\d{4}$/;
       var regEmail = /^[0-9a-zA-Z]*$/;
 
       if (regEmail.test(email.first)) {
-        if(regExpPhone.test(state.phone_number)){
-          
-          if(checkedButtons.includes('allCheck')){
-              navigate('/order-shipping-info', {replace: true});
-          }else{
-            alert('필수 항목들이 모두 체크되지 않았습니다.');
-          }
+        if(checkedButtons.includes('allCheck')){
+            navigate('/order-shipping-info', {replace: true});
         }else{
-          alert('전화번호의 형식이 잘못되었습니다.');
+          alert('필수 항목들이 모두 체크되지 않았습니다.');
         }
       }else{
         alert('이메일은 영어와 숫자로만 이루어져있습니다.');
