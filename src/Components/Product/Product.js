@@ -80,27 +80,19 @@ const Product = ({ requestGet, requestPost, product, setResultCart }) => {
       }
     } else {
       //비회원 장바구니
-      if (!addCart) {
-        alert("장바구니에 추가되었습니다.");
-        const url = "users/cartview";
-        const req = requestPost(url, cart);
-        setAddCart(true);
-      } else {
-        alert("이미 장바구니에 추가된 상품입니다.");
-      }
+      alert("로그인 후 이용할 수 있습니다.");
     }
   };
 
   const buyProduct = async () => {
-    if (sessionStorage.getItem("user-email") !== null) {
-      //회원 주문
-      if (!addCart) {
+    if(sessionStorage.getItem("user-email") !== null){
+        if (!addCart) {
         setResultCart(cart.productId, cart.count);
         setAddCart(true);
-      }
-      navigate("/order-shipping-info", { replace: true });
-    } else {
-      navigate("/order", { replace: true });
+        }
+        navigate("/order-shipping-info", { replace: true });
+    }else{
+        alert("로그인 후 이용할 수 있습니다.");
     }
   };
 

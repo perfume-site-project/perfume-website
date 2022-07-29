@@ -12,8 +12,6 @@ import User from "./pages/User";
 import UserFindId from "./pages/UserFindId";
 import UserFindPw from "./pages/UserFindPw";
 import UserSignUp from "./pages/UserSignUp";
-import Order from "./pages/Order";
-import OrderNonMember from "./pages/OrderNonMember";
 import OrderShipping from "./pages/OrderShipping";
 import OrderPaying from "./pages/OrderPaying";
 import UserResetPw from "./pages/UserResetPw";
@@ -225,12 +223,6 @@ function App() {
             }
           />
           <Route exact path="/product" element={<Product requestGet={requestGet} />} />
-          <Route exact path="/order" element={<Order />} />
-          <Route
-            exact
-            path="/order-non-member"
-            element={<OrderNonMember orderInfo={orderInfo} saveInfo1={saveInfo1} />}
-          />
           <Route
             exact
             path="/order-shipping-info"
